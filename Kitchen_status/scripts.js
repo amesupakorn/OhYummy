@@ -1,0 +1,33 @@
+function updateOrderStatus(id, status) {
+    // ส่งค่า table_status และ tableID ไปยัง PHP script ด้วย Fetch API
+    let formData = new URLSearchParams();
+    formData.append('order_id', id);
+    formData.append('order_status', status);
+
+    fetch('./index.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: formData.toString()
+    })
+    .then(response => {
+        if (response.ok) {
+            Swal.fire({
+                icon: "success",
+                title: "เปลี่ยนสถานะรายการอาหารเสร็จสิ้น",
+                showConfirmButton: false,
+                timer: 3500
+              });
+            setTimeout(function() {
+                location.reload();
+            }, 1000);
+            return response.text();
+        }
+        throw new Error('Network response was not ok.');
+    })
+    .catch(error => {
+        alert('There was a problem with the fetch operation: ' + error.message);
+    });
+    
+}
