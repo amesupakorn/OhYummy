@@ -8,7 +8,7 @@
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@100..900&display=swap" rel="stylesheet">
-	
+
 
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
@@ -22,6 +22,14 @@
 	<!-- <link href="styles.css" rel="stylesheet" /> -->
 	<title>Document</title>
 </head>
+<?php
+session_start();
+include('../connectDatabase/connectToDatabase.php');
+
+$conn = new database();
+
+
+?>
 
 <body style="font-family: Noto Sans Thai, sans-serif;">
 
@@ -48,226 +56,96 @@
 		</a>
 	</nav>
 
-	<div class="">
-		<div style="height: auto; background-color: white;">
-			<div class="container">
-				<div style="height: 30px;"></div>
-				<h3>
-					มีรายการอาหารทั้งหมด 2 รายการ</h3>
-				<div style="height: 10px;"></div>
-			</div>
-		</div>
 
 
-		<!-- <div class="row">
-			<div class="col-6">
-				<h1 class="text-center">ครัว : มีรายการอาหารทั้งหมด 2 รายการ</p>
-				</h1>
-			</div>
-			<div class="col-6">
-				<h1 class="text-center">
-					</p>
-				</h1>
-			</div> -->
-	</div>
+	<?php
+	$sqlOrder = "SELECT * FROM OrderTable;";
+	$result = mysqli_query($conn->getDatabase(), $sqlOrder);
+
+	$num = mysqli_num_rows($result);
+	echo
+	'<div class="">
+				<div style="height: auto; background-color: white;">
+					<div class="container">
+						<div style="height: 30px;"></div>
+						<h3>
+						มีรายการอาหารทั้งหมด ' . $num . ' รายการ</h3>
+					<div style="height: 10px;"></div>
+				</div>
+			</div>';
+	?>
+
+
+
 	<div class="container">
 		<div class="row">
 
-			<div class="col-sm-4 py-2">
-				<div class="card">
-					<div class="card-bg">
-						<h3 class="card-title text-center" style="line-height: 80px">โต็ะ หมายเลข 1</h3>
-					</div>
-					<div class="card-body">
+			<?php
+			$sqlOrder = "SELECT * FROM OrderTable;";
+			$result = mysqli_query($conn->getDatabase(), $sqlOrder);
+			if (mysqli_num_rows($result) > 0) {
+				while ($row = mysqli_fetch_assoc($result)) {
 
-						<h5 class="card-subtitle mb-3">รายการอาหารที่สั่ง</h5>
-						<div class="row">
-							<div class="col-8">รายการอาหาร</div>
-							<div class="col-4">จำนวน</div>
-						</div><br>
-						<div class="menu">
-							<div class="row">
-								<div class="col-9">กิมจิ</div>
-								<div class="col-3">1</div>
-							</div><br>
-							<div class="row">
-								<div class="col-9">กิมจิ</div>
-								<div class="col-3">1</div>
-							</div><br>
-							<div class="row">
-								<div class="col-9">กิมจิ</div>
-								<div class="col-3">1</div>
-							</div><br>
-							<div class="row">
-								<div class="col-9">กิมจิ</div>
-								<div class="col-3">1</div>
-							</div><br>
-							<div class="row">
-								<div class="col-9">กิมจิ</div>
-								<div class="col-3">1</div>
-							</div><br>
-							<div class="row">
-								<div class="col-9">กิมจิ</div>
-								<div class="col-3">1</div>
-							</div><br>
-							<div class="row">
-								<div class="col-9">กิมจิ</div>
-								<div class="col-3">1</div>
-							</div><br>
-							<div class="row">
-								<div class="col-9">กิมจิ</div>
-								<div class="col-3">1</div>
-							</div><br>
-						</div>
+					if ($row['orderStatus'] == "take" || $row['orderStatus'] == "doing") {
+						echo
+						'<div class="col-sm-4 py-2">
+							<div class="card">
+								<div class="card-bg">
+									<h3 class="card-title text-center" style="line-height: 80px">โต็ะ หมายเลข ' . $row['tableid'] . '</h3>
+								</div>
+									<div class="card-body">
+											<h5 class="card-subtitle mb-3">รายการอาหารที่สั่ง</h5>
+									<div class="row">
+										<div class="col-8">รายการอาหาร</div>
+										<div class="col-4">จำนวน</div>
+									</div><br>
+									<div class="menu">';
+								$orderid = $row['orderID'];
+								$select_sql = "SELECT orderMenu FROM OrderTable WHERE orderid = '$orderid'";
+								$resultorder = mysqli_query($conn->getDatabase(), $select_sql);
 
-						<h6 class="card-subtitle mb-2 text-muted">
-							<div class="bottom-text">
-								<button class="button-24" role="button">กำลังทำ</button>
-								<button class="button-24G" role="button">เสร็จสิ้น</button>
-							</div>
+								if ($resultorder->num_rows > 0) {
+									while ($row = $resultorder->fetch_assoc()) {
+										$order_menu_json = $row['orderMenu'];
 
-					</div>
-				</div>
-			</div>
-			<div class="col-sm-4 py-2">
-				<div class="card">
-					<div class="card-bg">
-						<h3 class="card-title text-center" style="line-height: 80px">โต็ะ หมายเลข 1</h3>
-					</div>
-					<div class="card-body">
+										// แปลง JSON เป็น associative array
+										$order_menu_data = json_decode($order_menu_json, true);
 
-						<h5 class="card-subtitle mb-3">รายการอาหารที่สั่ง</h5>
-						<div class="row">
-							<div class="col-8">รายการอาหาร</div>
-							<div class="col-4">จำนวน</div>
-						</div><br>
-						<div class="menu">
-							<div class="row">
-								<div class="col-9">กิมจิ</div>
-								<div class="col-3">1</div>
-							</div><br>
-							<div class="row">
-								<div class="col-9">กิมจิ</div>
-								<div class="col-3">1</div>
-							</div><br>
-							<div class="row">
-								<div class="col-9">กิมจิ</div>
-								<div class="col-3">1</div>
-							</div><br>
-							<div class="row">
-								<div class="col-9">กิมจิ</div>
-								<div class="col-3">1</div>
-							</div><br>
-							<div class="row">
-								<div class="col-9">กิมจิ</div>
-								<div class="col-3">1</div>
-							</div><br>
-							<div class="row">
-								<div class="col-9">กิมจิ</div>
-								<div class="col-3">1</div>
-							</div><br>
-							<div class="row">
-								<div class="col-9">กิมจิ</div>
-								<div class="col-3">1</div>
-							</div><br>
-							<div class="row">
-								<div class="col-9">กิมจิ</div>
-								<div class="col-3">1</div>
-							</div><br>
-						</div>
+										if (isset($order_menu_data['order'])) {
+											$order_items = $order_menu_data['order'];
 
-						<h6 class="card-subtitle mb-2 text-muted">
-							<div class="bottom-text">
-								<button class="button-24" role="button">กำลังทำ</button>
-								<button class="button-24G" role="button">เสร็จสิ้น</button>
-							</div>
-
-					</div>
-				</div>
-			</div>
-			<div class="col-sm-4 py-2">
-				<div class="card">
-					<div class="card-bg">
-						<h3 class="card-title text-center" style="line-height: 80px">โต็ะ หมายเลข 1</h3>
-					</div>
-					<div class="card-body">
-
-						<h5 class="card-subtitle mb-3">รายการอาหารที่สั่ง</h5>
-						<div class="row">
-							<div class="col-8">รายการอาหาร</div>
-							<div class="col-4">จำนวน</div>
-						</div><br>
-						<div class="menu">
-							<div class="row">
-								<div class="col-9">กิมจิ</div>
-								<div class="col-3">1</div>
-							</div><br>
-							<div class="row">
-								<div class="col-9">กิมจิ</div>
-								<div class="col-3">1</div>
-							</div><br>
-							<div class="row">
-								<div class="col-9">กิมจิ</div>
-								<div class="col-3">1</div>
-							</div><br>
-							<div class="row">
-								<div class="col-9">กิมจิ</div>
-								<div class="col-3">1</div>
-							</div><br>
-							<div class="row">
-								<div class="col-9">กิมจิ</div>
-								<div class="col-3">1</div>
-							</div><br>
-							<div class="row">
-								<div class="col-9">กิมจิ</div>
-								<div class="col-3">1</div>
-							</div><br>
-							<div class="row">
-								<div class="col-9">กิมจิ</div>
-								<div class="col-3">1</div>
-							</div><br>
-							<div class="row">
-								<div class="col-9">กิมจิ</div>
-								<div class="col-3">1</div>
-							</div><br>
-						</div>
-
-						<h6 class="card-subtitle mb-2 text-muted">
-							<div class="bottom-text">
-								<button class="button-24" role="button">กำลังทำ</button>
-								<button class="button-24G" role="button">เสร็จสิ้น</button>
-							</div>
-
-					</div>
-				</div>
-			</div>
-			
-			<!-- <div class="row">
-			<div class="col-md-12" id="head"><br>
-				<div class="row">
-					<div class="col-3">
-						<div class="card-deck">
-							<div class="card" style="width: 18rem;">
-								<div class="card card-body h-100">
-									<h4 class="card-title">โต็ะ หมายเลข 1</h4>
-									<h6 class="card-subtitle mb-3"> รายการอาหารที่สั่ง</h6>
-									<p class="card-text">
-										1 กิมจิ<br>
-										3 รามยอน<br>
-										1 มุลแนงเมียน<br>
-									</p>
+											foreach ($order_items as $order_item) {
+												$menu_id =  $order_item['menuId'];
+												$name = "SELECT * FROM Menu WHERE menuID = $menu_id;";
+												$resultmenu = mysqli_query($conn->getDatabase(), $name);
+												if (mysqli_num_rows($resultmenu) > 0) {
+													while ($row = mysqli_fetch_assoc($resultmenu)) {
+														echo '<div class="row">
+																<div class="col-9">' . $row['menu_name'] . '</div>
+																<div class="col-3">' . $order_item['menuCount'] . '</div>
+															</div><br>';
+													}
+												}
+											}
+										}
+									}
+								}
+						echo '
+									</div>
 									<h6 class="card-subtitle mb-2 text-muted">
-										<button class="button-24" role="button">กำลังทำ</button>
-										<button class="button-24G" role="button">เสร็จสิ้น</button>
-									</h6>
-									<p class="card-text"></p>
+										<div class="bottom-text">
+											<button class="button-24" role="button">กำลังทำ</button>
+											<button class="button-24G" role="button">เสร็จสิ้น</button>
+									</div>
 								</div>
 							</div>
-						</div>
-					</div>
-				</div>
+						</div>';
+					}
+				}
+			}
+
+	?>
 			</div>
-		</div> -->
 		</div>
 		<script src="scripts.js"></script>
 		<script src='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js'></script>
