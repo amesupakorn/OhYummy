@@ -52,26 +52,35 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <body style="font-family: Noto Sans Thai, sans-serif;">
 
 	<nav class="nav">
-		<a href="#" class="nav__link">
-			<i class="material-icons nav__icon">dashboard</i>
-			<span class="nav__text">Dashboard</span>
-		</a>
-		<a href="#" class="nav__link nav__link--active">
-			<i class="material-icons nav__icon">table_restaurant</i>
-			<span class="nav__text">จัดการโต๊ะ</span>
-		</a>
-		<a href="#" class="nav__link">
-			<i class="material-icons nav__icon">restaurant_menu</i>
-			<span class="nav__text">จัดการเมนู</span>
-		</a>
-		<a href="#" class="nav__link">
-			<i class="material-icons nav__icon">payments</i>
-			<span class="nav__text">เช็คบิล</span>
-		</a>
-		<a href="#" class="nav__link">
-			<i class="material-icons nav__icon">receipt_long</i>
-			<span class="nav__text">ประวัติใบเสร็จ</span>
-		</a>
+	<a href="../editTable/index.php" class="nav__link">
+            <i class="material-icons nav__icon">table_restaurant</i>
+            <span class="nav__text">จัดการโต๊ะ</span>
+          </a>
+          <a href="../editTable/index.php" class="nav__link">
+          <i class="material-icons nav__icon">reorder</i>
+            <span class="nav__text">ดูสถานะออเดอร์</span>
+          </a>
+          <a href="../kitchen_status/index.php" class="nav__link  nav__link--active">
+          <i class="material-icons nav__icon">soup_kitchen</i>
+            <span class="nav__text">จัดการออเดอร์ (ครัว)</span>
+          </a>
+          <a href="#" class="nav__link">
+          <i class="material-icons nav__icon">dashboard</i>
+          <span class="nav__text">Dashboard</span>
+        </a>
+        <a href="../editMenu/index.php" class="nav__link">
+          <i class="material-icons nav__icon">restaurant_menu</i>
+          <span class="nav__text">จัดการเมนู</span>
+        </a>
+        <a href="#" class="nav__link">
+            <i class="material-icons nav__icon">payments</i>
+            <span class="nav__text">เช็คบิล</span>
+          </a>
+          <a href="#" class="nav__link">
+            <i class="material-icons nav__icon">receipt_long</i>
+            <span class="nav__text">ประวัติใบเสร็จ</span>
+          </a>
+        </nav>
 	</nav>
 
 
@@ -92,7 +101,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 					<div class="container">
 						<div style="height: 30px;"></div>
 						<h3>
-						มีรายการอาหารทั้งหมด ' . $num . ' รายการ</h3>
+						มีรายการอาหารทั้งหมด ' . $num . ' รายการ | <span id=\'clock\'></span></h3> 
 					<div style="height: 10px;"></div>
 				</div>
 			</div>';

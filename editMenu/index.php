@@ -24,7 +24,7 @@
           <i class="material-icons nav__icon">reorder</i>
             <span class="nav__text">ดูสถานะออเดอร์</span>
           </a>
-          <a href="../editTable/index.php" class="nav__link">
+          <a href="../kitchen_status/index.php" class="nav__link">
           <i class="material-icons nav__icon">soup_kitchen</i>
             <span class="nav__text">จัดการออเดอร์ (ครัว)</span>
           </a>
@@ -75,7 +75,7 @@
             if(in_array($fileActualExt, $allowed)){
                 if($fileError === 0){
                     $fileNameNew = uniqid('', true).".".$fileActualExt;
-                    $fileDestination = 'image_menu/'.$fileNameNew;
+                    $fileDestination = '../image_menu/'.$fileNameNew;
                     move_uploaded_file($fileTmpName, $fileDestination);            
                     
                     $num = mysqli_num_rows($conn->executeQuery("Menu"))+1;
@@ -207,7 +207,7 @@
                     while($row = mysqli_fetch_assoc($result)) {
                        echo '<tr>
                                 <td>
-                                   <img src="./image_menu/'.$row['image_menu'].'" style="height: 110px;" alt="">
+                                   <img src="../image_menu/'.$row['image_menu'].'" style="height: 110px;" alt="">
                                 </td>
                                 <td style="vertical-align: middle;">';  
                                if($row['menu_status'] == 'on'){

@@ -21,7 +21,7 @@
           <i class="material-icons nav__icon">reorder</i>
             <span class="nav__text">ดูสถานะออเดอร์</span>
           </a>
-          <a href="../editTable/index.php" class="nav__link">
+          <a href="../kitchen_status/index.php" class="nav__link">
           <i class="material-icons nav__icon">soup_kitchen</i>
             <span class="nav__text">จัดการออเดอร์ (ครัว)</span>
           </a>
@@ -106,7 +106,7 @@
         <div style="height: 30px;"></div>
         <?php 
                 $num = mysqli_num_rows($conn->executeQuery("Tables"));
-                echo  "<h3>สถานะโต๊ะอาหาร $num โต๊ะ / <span id='clock'></span></h3>";
+                echo  "<h3>สถานะโต๊ะอาหาร $num โต๊ะ | <span id='clock'></span></h3>";
             ?>
         <div style="height: 10px;"></div>
       </div>
