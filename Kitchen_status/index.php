@@ -19,8 +19,7 @@
 	<link rel="stylesheet" href=".css">
 	<link rel="stylesheet" href="styles.css">
 	<link rel="stylesheet" href="button.css">
-	<link href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@4/dark.css" rel="stylesheet">
-		<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 	<!-- <link href="styles.css" rel="stylesheet" /> -->
 	<title>Document</title>
 </head>
@@ -127,9 +126,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 											<div class="row">
 												<div class="col-6">รายการอาหารที่สั่ง</div>';
 												if ($row['orderStatus'] == "take"){
-													echo '<div class="col-6"><button type="button" class="btn btn-danger" disabled>รอดำเนิดการ</button></div>';
+													echo '<div class="col-6"><button type="button" style="padding: 5px 25px;" class="btn btn-danger" disabled>รอดำเนิดการ</button></div>';
 												} else{
-													echo '<div class="col-6"><button type="button" class="btn btn-warning" disabled>กำลังทำ</button></div>';
+													echo '<div class="col-6"><button type="button" style="padding: 5px 40px; color: white;" class="btn btn-warning" disabled>กำลังทำ</button></div>';
 												}
 										echo'</div><br>
 									<div class="row">
@@ -171,8 +170,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 									</div>
 									<h6 class="card-subtitle mb-2 text-muted">
 										<div class="bottom-text">
-											<button class="button-24" onclick="updateOrderStatus('.$orderid.',\'doing\')" role="button">กำลังทำ</button>
-											<button class="button-24G" onclick="updateOrderStatus('.$orderid.',\'finish\')" role="button">เสร็จสิ้น</button>
+											<button class="btn btn-warning" style="padding: 5px 20px;" onclick="updateOrderStatus('.$orderid.',\'doing\')" role="button">กำลังทำ</button>
+											<button class="btn btn-success" style="padding: 5px 20px;" onclick="updateOrderStatus('.$orderid.',\'finish\')" role="button">เสร็จสิ้น</button>
 									</div>
 								</div>
 							</div>
@@ -184,6 +183,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 			?>
 		</div>
 	</div>
+
+	<div style="height: 50px;"></div>
 	<script src="scripts.js"></script>
 	<script src='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js'></script>
 	<script src="./script.js"></script>

@@ -45,7 +45,7 @@ hr.hr1 {
 }
 
 .card-bg {
-	height: 80px;
+	height: 70px;
 	background-color: #205ded;
 	color: #ffffff;
 	border-radius: 5px;
@@ -59,7 +59,7 @@ hr.hr1 {
 	position: fixed;
 	bottom: 0;
 	width: 100%;
-	height: 55px;
+	height: 50px;
 	box-shadow: 0 0 3px rgba(255, 255, 255, 0.2);
 	background-color: #ffffff;
 	display: flex;
