@@ -1,0 +1,190 @@
+
+
+
+$(document).ready(function() {
+    $("#example").DataTable({
+        aaSorting: [],
+        responsive: true,
+        columnDefs: [
+            { targets: [0, 6, 7], orderable: false }, // เลขคอลัมน์ที่ไม่ต้องการให้เรียง
+        ]
+    });
+
+    $(".dataTables_filter input")
+    .attr("placeholder", "ค้นหา...")
+    .css({
+      width: "300px",
+      display: "inline-block"
+    });
+
+  $('[data-toggle="tooltip"]').tooltip();
+
+  $('#filterAllButton').click(function() {
+    $('#example').DataTable().column(5).search('').draw();
+  });
+
+  $('#filterMainButton').click(function() {
+    $('#example').DataTable().column(5).search('เมนูหลัก').draw();
+
+  });
+  $('#filterPlayButton').click(function() {
+    $('#example').DataTable().column(5).search('กินเล่น').draw();
+
+  });
+  $('#filterSweetButton').click(function() {
+    $('#example').DataTable().column(5).search('ของหวาน').draw();
+
+  });
+  $('#filterDrinkButton').click(function() {
+    $('#example').DataTable().column(5).search('เครื่องดื่ม').draw();
+
+  });
+  $('#filterSoupButton').click(function() {
+    $('#example').DataTable().column(5).search('ซุป').draw();
+
+  });
+});
+
+
+
+function openCard() {
+    document.getElementById("addMenu").style.display = "block";
+    document.getElementById("cardOverlay").style.display = "block";
+}
+
+function closeCard() {
+    document.getElementById("addMenu").style.display = "none";
+    document.getElementById("cardOverlay").style.display = "none";
+}
+
+
+function openCardEdit(id) {
+  document.getElementById("editMenu" + id).style.display = "block";
+  document.getElementById("cardOverlay").style.display = "block";
+}
+
+function closeCardEdit(id) {
+  document.getElementById("editMenu" + id).style.display = "none";
+  document.getElementById("cardOverlay").style.display = "none";
+}
+
+function updateMenuStatus(id, status) {
+    
+    let formData = new URLSearchParams();
+    formData.append('menu_id', id);
+    formData.append('menu_status', status);
+    
+    fetch('./index.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: formData.toString()
+    })
+    .then(response => {
+        if (response.ok) {
+            Swal.fire({
+                icon: "success",
+                title: "เปลี่ยนสถานะเมนูเสร็จสิ้น",
+                showConfirmButton: false,
+                timer: 3500
+              });
+            setTimeout(function() {
+                location.reload();
+            }, 1000);
+            return response.text();
+        }
+        throw new Error('Network response was not ok.');
+    })
+    .catch(error => {
+        alert('There was a problem with the fetch operation: ' + error.message);
+    });
+    
+}
+
+function updateMenu(id){
+
+  let price = document.getElementById('menu_price' + id).value;
+  let type = document.getElementById('menu_type' + id).value;
+
+  let formData = new URLSearchParams();
+    formData.append('menu_id', id);
+    formData.append('menu_type', type)
+    formData.append('menu_price', price);
+
+
+    fetch('./index.php', {
+      method: 'POST',
+      headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      body: formData.toString()
+  })
+  .then(response => {
+      if (response.ok) {
+          Swal.fire({
+              icon: "success",
+              title: "เปลี่ยนข้อมูลเสร็จสิ้น",
+              showConfirmButton: false,
+              timer: 3500
+            });
+          setTimeout(function() {
+              location.reload();
+          }, 1000);
+          return response.text();
+      }
+      throw new Error('Network response was not ok.');
+  })
+  .catch(error => {
+      alert('There was a problem with the fetch operation: ' + error.message);
+  });
+    
+}
+
+
+function deleteMenu(id){
+
+  let formData = new URLSearchParams();
+    formData.append('menuDelete', id);
+      
+          Swal.fire({
+            title: "คุณต้องการลบใช่ไหม?",
+            text: "รายการอาหารนี้จะถูกลบ",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#137BFF",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "ยืนยัน",
+            cancelButtonText: "ยกเลิก"
+
+          }).then((result) => {
+                  fetch('./index.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                    },
+                    body: formData.toString()
+                })
+                .then(response => {
+                  if (response.ok) {
+                        Swal.fire({
+                          title: "ลบข้อมูลสำเร็จ",
+                          icon: "success",
+                          showConfirmButton: false,
+                          timer: 1000
+
+                        });
+                        setTimeout(function() {
+                          location.reload();
+                      }, 1000);
+                      return response.text();
+                    }
+                    throw new Error('Network response was not ok.');
+                })
+                .catch(error => {
+                    alert('There was a problem with the fetch operation: ' + error.message);
+                });
+          })
+        }
+                
+      
