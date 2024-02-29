@@ -127,9 +127,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 											<div class="row">
 												<div class="col-6">รายการอาหารที่สั่ง</div>';
 												if ($row['orderStatus'] == "take"){
-													echo '<div class="col-6"><button type="button" class="btn btn-danger">รอดำเนิดการ</button></div>';
+													echo '<div class="col-6"><button type="button" class="btn btn-danger" disabled>รอดำเนิดการ</button></div>';
 												} else{
-													echo '<div class="col-6"><button type="button" class="btn btn-warning">รอดำเนิดการ</button></div>';
+													echo '<div class="col-6"><button type="button" class="btn btn-warning" disabled>กำลังทำ</button></div>';
 												}
 										echo'</div><br>
 									<div class="row">
