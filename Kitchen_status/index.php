@@ -170,12 +170,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 									</div>
 									<h6 class="card-subtitle mb-2 text-muted">
 										<div class="bottom-text">
-											<button class="btn btn-warning" style="padding: 5px 20px;" onclick="updateOrderStatus('.$orderid.',\'doing\')" role="button">กำลังทำ</button>
-											<button class="btn btn-success" style="padding: 5px 20px;" onclick="updateOrderStatus('.$orderid.',\'finish\')" role="button">เสร็จสิ้น</button>
+											<button class="btn btn-warning" style="padding: 8px 50px;" onclick="updateOrderStatus('.$orderid.',\'doing\')" role="button">กำลังทำ</button>
+											<button class="btn btn-primary" style="padding: 8px 50px;" onclick="updateOrderStatus('.$orderid.',\'finish\')" role="button">เสร็จสิ้น</button>
 									</div>
 								</div>
 							</div>
 						</div>';
+					}
+					else {
+						echo '<h1 style="color: #9C9C9C; margin-top: 25%; margin-left: 35%;">ไม่มีออเดอร์ในขณะนี้....</h1>';
+						break;
 					}
 				}
 			}

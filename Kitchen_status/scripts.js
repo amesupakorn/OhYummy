@@ -15,7 +15,7 @@ function updateOrderStatus(id, status) {
         if (response.ok) {
             Swal.fire({
                 icon: "success",
-                title: "เปลี่ยนสถานะรายการอาหารเสร็จสิ้น",
+                title: "เปลี่ยนสถานะเสร็จสิ้น",
                 showConfirmButton: false,
                 timer: 3500
               });
