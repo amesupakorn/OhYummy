@@ -137,7 +137,7 @@
         <div style="height: 30px;"></div>
         <?php 
                 $num = mysqli_num_rows($conn->executeQuery("Menu"));
-                echo  "<h3>รายการอาหารทั้งหมด $num รายการ</h3>";
+                echo  "<h3>รายการอาหารทั้งหมด $num รายการ | <span id=clock></span></h3>";
             ?>
         <div style="height: 10px;"></div>
       </div>

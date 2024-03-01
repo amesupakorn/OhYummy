@@ -61,15 +61,49 @@
 
     ?>
 
-    <div style="height: auto; background-color: white;">
+
+  <div style="height: auto; background-color: white;">
       <div class="container">
         <div style="height: 30px;"></div>
-            <h3>สถานะออเดอร์</h3>
+        <?php 
+                $num = mysqli_num_rows($conn->executeQuery("OrderTable"));
+                echo  "<h3>สถานะออเดอร์ทั้งหมด $num ออเดอร์ | <span id=clock></span></h3>";
+            ?>
         <div style="height: 10px;"></div>
       </div>
     </div>
 
-          <div class="container">
+    
+          
+
+      <div class="container">
+        <div class="row py-5">
+          <div class="headcenter"> 
+              <div class="headmenu">
+                    <div class="row">
+                          <div class="col-md-3 my-1">
+                              <h4>ชนิดของอาหาร : </h4>
+                              </div>
+                              <div class="col-md-6">
+                                  <div class="row">
+                                      <div class="col-6 col-md-4 col-lg-2 my-3">
+                                          <button style="padding: 2px 10px;"  id="filterAllButton" type="button" class="btn btn-dark">ทั้งหมด</button>
+                                      </div>
+                                      <div class="col-6 col-md-4 col-lg-2 my-3">
+                                          <button style="padding: 2px 10px;" id="filterMainButton" type="button" class="btn btn-primary">&nbsp;เมนูหลัก&nbsp;</button>
+                                      </div>
+                                      <div class="col-6 col-md-4 col-lg-2 my-3">
+                                          <button style="padding: 2px 10px;" id="filterPlayButton" type="button" class="btn btn-primary">&nbsp;&nbsp;กินเล่น&nbsp;&nbsp;</button>
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="col-md-3 my-3">
+                                  <button style="padding: 4px 10px;" type="button" onclick="openCard()" class="btn btn-success">เพิ่มรายการอาหาร</button>
+                              </div>
+                          </div>
+                        </div>
+                    </div>
+            </div>
             <div class="row py-5">
               <div class="col-12">
                 <table id="example" class="table table-hover responsive nowrap" style="width:100%">

@@ -106,7 +106,7 @@
         <div style="height: 30px;"></div>
         <?php 
                 $num = mysqli_num_rows($conn->executeQuery("Tables"));
-                echo  "<h3>สถานะโต๊ะอาหาร $num โต๊ะ | <span id='clock'></span></h3>";
+                echo  "<h3>สถานะโต๊ะอาหารทั้งหมด $num โต๊ะ | <span id='clock'></span></h3>";
             ?>
         <div style="height: 10px;"></div>
       </div>

@@ -188,6 +188,7 @@ function deleteMenu(id){
         }
              
         
+    
 
 
   function previewImage(event) {
@@ -199,3 +200,24 @@ function deleteMenu(id){
         }
         reader.readAsDataURL(event.target.files[0]);
     }
+
+
+var clockElement = document.getElementById('clock');
+
+function updateClock() {
+    var now = new Date();
+    var hours = now.getHours();
+    var minutes = now.getMinutes();
+    var seconds = now.getSeconds();
+
+    var timeString = pad(hours) + ":" + pad(minutes) + ":" + pad(seconds);
+
+    clockElement.textContent = timeString;
+}
+
+function pad(num) {
+    return (num < 10 ? "0" : "") + num;
+}
+
+setInterval(updateClock, 1000);
+updateClock();
