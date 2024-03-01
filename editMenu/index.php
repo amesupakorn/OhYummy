@@ -320,13 +320,20 @@
                                     <div class="form-group row">
                                         <label  class="col-sm-3 col-form-label">เลือกไฟล์รูปภาพ</label>
                                         <div class="col-sm-9">
-                                            <input type="file" name="file" accept=".jpg, .jpeg, .png" class="form-control-file" id="exampleFormControlFile1">
+                                                <input type="file" name="file" accept=".jpg, .jpeg, .png" class="form-control-file" id="exampleFormControlFile1" onchange="previewImage(event)">
                                         </div>
                                     </div>
 
-                                    <div style="height: 50px;"></div>
 
-                                    <button id="confirmButton" name="save" class="btn btn-primary" onclick="">เพิ่มรายการอาหาร</button>
+
+                                 </form>
+                                 <img id="previewImage" src="#" alt="Preview" style="display: none; max-width: 50%; max-height: 50%;">
+
+                                 <div style="height: 50px;"></div>
+                                 <button id="confirmButton" name="save" class="btn btn-primary">เพิ่มรายการอาหาร</button>
+
+            
+
                             </div>
                          </div>
                      </div>

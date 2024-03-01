@@ -186,5 +186,16 @@ function deleteMenu(id){
                 });
           })
         }
-                
-      
+             
+        
+
+
+  function previewImage(event) {
+        var reader = new FileReader();
+        reader.onload = function() {
+            var output = document.getElementById('previewImage');
+            output.src = reader.result;
+            output.style.display = 'block'; // แสดงรูปภาพ
+        }
+        reader.readAsDataURL(event.target.files[0]);
+    }
