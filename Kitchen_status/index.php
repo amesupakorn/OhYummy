@@ -34,14 +34,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		// รับค่า order_id และ order_status จากการส่งคำขอ HTTP POST
 		$orderID = $_POST['order_id'];
 		$orderStatus = $_POST['order_status'];
+		$tableID = $_POST['table_id'];
+		$orderTotal = $_POST['order_Total'];
 
-		if($orderStatus == 'take'){
+		if ($orderStatus == 'take') {
 			$query = "UPDATE OrderTable SET orderStatus = '$orderStatus'  WHERE orderID = $orderID";
 			mysqli_query($conn->getDatabase(), $query);
-		}
-		else{
+		} else {
 			$query = "UPDATE OrderTable SET orderStatus = '$orderStatus'  WHERE orderID = $orderID";
 			mysqli_query($conn->getDatabase(), $query);
+
+			$num = mysqli_num_rows($conn->executeQuery("Bill"))+1;
+			$insert_sql = "INSERT INTO Bill VALUES ($num, $tableID, $orderTotal, $orderID)";
+			mysqli_query($conn->getDatabase(), $insert_sql);
 		}
 	}
 }
@@ -51,35 +56,35 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <body style="font-family: Noto Sans Thai, sans-serif;">
 
 	<nav class="nav">
-	<a href="../editTable/index.php" class="nav__link">
-            <i class="material-icons nav__icon">table_restaurant</i>
-            <span class="nav__text">จัดการโต๊ะ</span>
-          </a>
-          <a href="../editTable/index.php" class="nav__link">
-          <i class="material-icons nav__icon">reorder</i>
-            <span class="nav__text">ดูสถานะออเดอร์</span>
-          </a>
-          <a href="../kitchen_status/index.php" class="nav__link  nav__link--active">
-          <i class="material-icons nav__icon">soup_kitchen</i>
-            <span class="nav__text">จัดการออเดอร์ (ครัว)</span>
-          </a>
-          <a href="#" class="nav__link">
-          <i class="material-icons nav__icon">dashboard</i>
-          <span class="nav__text">Dashboard</span>
-        </a>
-        <a href="../editMenu/index.php" class="nav__link">
-          <i class="material-icons nav__icon">restaurant_menu</i>
-          <span class="nav__text">จัดการเมนู</span>
-        </a>
-        <a href="#" class="nav__link">
-            <i class="material-icons nav__icon">payments</i>
-            <span class="nav__text">เช็คบิล</span>
-          </a>
-          <a href="#" class="nav__link">
-            <i class="material-icons nav__icon">receipt_long</i>
-            <span class="nav__text">ประวัติใบเสร็จ</span>
-          </a>
-        </nav>
+		<a href="../editTable/index.php" class="nav__link">
+			<i class="material-icons nav__icon">table_restaurant</i>
+			<span class="nav__text">จัดการโต๊ะ</span>
+		</a>
+		<a href="../editTable/index.php" class="nav__link">
+			<i class="material-icons nav__icon">reorder</i>
+			<span class="nav__text">ดูสถานะออเดอร์</span>
+		</a>
+		<a href="../kitchen_status/index.php" class="nav__link  nav__link--active">
+			<i class="material-icons nav__icon">soup_kitchen</i>
+			<span class="nav__text">จัดการออเดอร์ (ครัว)</span>
+		</a>
+		<a href="#" class="nav__link">
+			<i class="material-icons nav__icon">dashboard</i>
+			<span class="nav__text">Dashboard</span>
+		</a>
+		<a href="../editMenu/index.php" class="nav__link">
+			<i class="material-icons nav__icon">restaurant_menu</i>
+			<span class="nav__text">จัดการเมนู</span>
+		</a>
+		<a href="#" class="nav__link">
+			<i class="material-icons nav__icon">payments</i>
+			<span class="nav__text">เช็คบิล</span>
+		</a>
+		<a href="#" class="nav__link">
+			<i class="material-icons nav__icon">receipt_long</i>
+			<span class="nav__text">ประวัติใบเสร็จ</span>
+		</a>
+	</nav>
 	</nav>
 
 
@@ -112,15 +117,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 			<?php
 			$sqlOrder = "SELECT * FROM OrderTable;";
 			$result = mysqli_query($conn->getDatabase(), $sqlOrder);
-			if($num > 0){
+			if ($num > 0) {
 
-		
-			if (mysqli_num_rows($result) > 0) {
-				while ($row = mysqli_fetch_assoc($result)) {
 
-					if ($row['orderStatus'] == "take" || $row['orderStatus'] == "doing") {
-						echo
-						'<div class="col-sm-4 py-2">
+				if (mysqli_num_rows($result) > 0) {
+					while ($row = mysqli_fetch_assoc($result)) {
+
+						if ($row['orderStatus'] == "take" || $row['orderStatus'] == "doing") {
+							echo
+							'<div class="col-sm-4 py-2">
 							<div class="card" style="width: 370px;">
 								<div class="card-bg">
 									<h3 class="card-title text-center" style="line-height: 80px">โต็ะ หมายเลข ' . $row['tableid'] . '</h3>
@@ -128,66 +133,70 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 									<div class="card-body">
 											<div class="row">
 												<div class="col-6">รายการอาหารที่สั่ง</div>';
-												if ($row['orderStatus'] == "take"){
-													echo '<div class="col-6"><button type="button" style="padding: 5px 25px;" class="btn btn-danger" disabled>รอดำเนิดการ</button></div>';
-												} else{
-													echo '<div class="col-6"><button type="button" style="padding: 5px 40px; color: white;" class="btn btn-warning" disabled>กำลังทำ</button></div>';
-												}
-										echo'</div><br>
+							if ($row['orderStatus'] == "take") {
+								echo '<div class="col-6"><button type="button" style="padding: 5px 25px;" class="btn btn-danger" disabled>รอดำเนิดการ</button></div>';
+							} else {
+								echo '<div class="col-6"><button type="button" style="padding: 5px 40px; color: white;" class="btn btn-warning" disabled>กำลังทำ</button></div>';
+							}
+							echo '</div><br>
 									<div class="row">
 										<div class="col-8">รายการอาหาร</div>
 										<div class="col-4">จำนวน</div>
 									</div><br>
 									<div class="menu">';
-						$orderid = $row['orderID'];
-						$select_sql = "SELECT orderMenu FROM OrderTable WHERE orderid = '$orderid'";
-						$resultorder = mysqli_query($conn->getDatabase(), $select_sql);
+							$orderid = $row['orderID'];
+							$tableid = $row['tableid'];
+							$orderTotal = $row['orderTotal'];
+							$orderStatus = $row['orderStatus'];
 
-						if ($resultorder->num_rows > 0) {
-							while ($row = $resultorder->fetch_assoc()) {
-								$order_menu_json = $row['orderMenu'];
+							$select_sql = "SELECT orderMenu FROM OrderTable WHERE orderid = '$orderid'";
+							$resultorder = mysqli_query($conn->getDatabase(), $select_sql);
 
-								// แปลง JSON เป็น associative array
-								$order_menu_data = json_decode($order_menu_json, true);
+							if ($resultorder->num_rows > 0) {
+								while ($row = $resultorder->fetch_assoc()) {
+									$order_menu_json = $row['orderMenu'];
 
-								if (isset($order_menu_data['order'])) {
-									$order_items = $order_menu_data['order'];
+									// แปลง JSON เป็น associative array
+									$order_menu_data = json_decode($order_menu_json, true);
 
-									foreach ($order_items as $order_item) {
-										$menu_id =  $order_item['menuId'];
-										$name = "SELECT * FROM Menu WHERE menuID = $menu_id;";
-										$resultmenu = mysqli_query($conn->getDatabase(), $name);
-										if (mysqli_num_rows($resultmenu) > 0) {
-											while ($row = mysqli_fetch_assoc($resultmenu)) {
-												echo '<div class="row">
+									if (isset($order_menu_data['order'])) {
+										$order_items = $order_menu_data['order'];
+
+										foreach ($order_items as $order_item) {
+											$menu_id =  $order_item['menuId'];
+											$name = "SELECT * FROM Menu WHERE menuID = $menu_id;";
+											$resultmenu = mysqli_query($conn->getDatabase(), $name);
+											if (mysqli_num_rows($resultmenu) > 0) {
+												while ($row = mysqli_fetch_assoc($resultmenu)) {
+													echo '<div class="row">
 																<div class="col-9">' . $row['menu_name'] . '</div>
 																<div class="col-3">' . $order_item['menuCount'] . '</div>
 															</div><br>';
+												}
 											}
 										}
 									}
 								}
 							}
-						}
-						echo '
+							echo '
 									</div>
 									<h6 class="card-subtitle mb-2 text-muted">
-										<div class="bottom-text">
-											<button class="btn btn-warning" style="padding: 8px 50px;" onclick="updateOrderStatus('.$orderid.',\'doing\')" role="button">กำลังทำ</button>
-											<button class="btn btn-primary" style="padding: 8px 50px;" onclick="updateOrderStatus('.$orderid.',\'finish\')" role="button">เสร็จสิ้น</button>
-									</div>
+										<div class="bottom-text">';
+										if ($orderStatus == "take"){
+											echo '<button class="btn btn-warning" style="padding: 8px 50px;" onclick="updateOrderStatus(' . $orderid . ',\'doing\',' . $tableid . ',' . $orderTotal. ')" role="button">กำลังทำ</button>';
+										}else {
+											echo'<button class="btn btn-primary" style="padding: 8px 50px;" onclick="updateOrderStatus (' . $orderid . ',\'finish\',' . $tableid . ',' . $orderTotal. ');" role="button">เสร็จสิ้น</button>';
+										}		
+									'</div>
 								</div>
 							</div>
 						</div>';
+						}
 					}
-				
 				}
-				
+			} else {
+				echo '<h1 style="color: #9C9C9C; margin-top: 25%; margin-left: 35%;">ไม่มีออเดอร์ในขณะนี้....</h1>';
 			}
-		}else{
-			echo '<h1 style="color: #9C9C9C; margin-top: 25%; margin-left: 35%;">ไม่มีออเดอร์ในขณะนี้....</h1>';
-					
-		}
 
 			?>
 		</div>

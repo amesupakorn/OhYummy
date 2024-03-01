@@ -1,8 +1,10 @@
-function updateOrderStatus(id, status) {
+function updateOrderStatus(id, status, tableid, orderTotal) {
     // ส่งค่า table_status และ tableID ไปยัง PHP script ด้วย Fetch API
     let formData = new URLSearchParams();
     formData.append('order_id', id);
     formData.append('order_status', status);
+    formData.append('table_id', tableid);
+    formData.append('order_Total', orderTotal);
 
     fetch('./index.php', {
         method: 'POST',
