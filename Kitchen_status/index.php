@@ -55,12 +55,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <body style="font-family: Noto Sans Thai, sans-serif;">
 
-	<nav class="nav">
-		<a href="../editTable/index.php" class="nav__link">
-			<i class="material-icons nav__icon">table_restaurant</i>
-			<span class="nav__text">จัดการโต๊ะ</span>
+<nav class="nav">
+        <a href="../editMenu/index.php" class="nav__link">
+			<i class="material-icons nav__icon">restaurant_menu</i>
+			<span class="nav__text">จัดการเมนู</span>
 		</a>
-		<a href="../editTable/index.php" class="nav__link">
+		
+		<a href="../status_menu/index.php" class="nav__link">
 			<i class="material-icons nav__icon">reorder</i>
 			<span class="nav__text">ดูสถานะออเดอร์</span>
 		</a>
@@ -72,10 +73,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 			<i class="material-icons nav__icon">dashboard</i>
 			<span class="nav__text">Dashboard</span>
 		</a>
-		<a href="../editMenu/index.php" class="nav__link">
-			<i class="material-icons nav__icon">restaurant_menu</i>
-			<span class="nav__text">จัดการเมนู</span>
+        <a href="../editTable/index.php" class="nav__link">
+			<i class="material-icons nav__icon">table_restaurant</i>
+			<span class="nav__text">จัดการโต๊ะ</span>
 		</a>
+	
 		<a href="#" class="nav__link">
 			<i class="material-icons nav__icon">payments</i>
 			<span class="nav__text">เช็คบิล</span>
@@ -124,15 +126,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 					while ($row = mysqli_fetch_assoc($result)) {
 
 						if ($row['orderStatus'] == "take" || $row['orderStatus'] == "doing") {
-							echo
-							'<div class="col-sm-4 py-2">
+						echo
+						'<div class="col-sm-4 py-2">
 							<div class="card" style="width: 370px;">
 								<div class="card-bg">
 									<h3 class="card-title text-center" style="line-height: 80px">โต็ะ หมายเลข ' . $row['tableid'] . '</h3>
 								</div>
 									<div class="card-body">
 											<div class="row">
-												<div class="col-6">รายการอาหารที่สั่ง</div>';
+												<div class="col-6 my-2"" >รายการอาหารที่สั่ง</div>';
 							if ($row['orderStatus'] == "take") {
 								echo '<div class="col-6"><button type="button" style="padding: 5px 25px;" class="btn btn-danger" disabled>รอดำเนิดการ</button></div>';
 							} else {
@@ -169,7 +171,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 											if (mysqli_num_rows($resultmenu) > 0) {
 												while ($row = mysqli_fetch_assoc($resultmenu)) {
 													echo '<div class="row">
-																<div class="col-9">' . $row['menu_name'] . '</div>
+																<div class="col-9" >' . $row['menu_name'] . '</div>
 																<div class="col-3">' . $order_item['menuCount'] . '</div>
 															</div><br>';
 												}
@@ -178,17 +180,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 									}
 								}
 							}
-							echo '
-									</div>
+							echo '			</div>
 									<h6 class="card-subtitle mb-2 text-muted">
 										<div class="bottom-text">';
 										if ($orderStatus == "take"){
-											echo '<button class="btn btn-warning" style="padding: 8px 50px;" onclick="updateOrderStatus(' . $orderid . ',\'doing\',' . $tableid . ',' . $orderTotal. ')" role="button">กำลังทำ</button>';
+											echo '<button class="btn btn-warning" style="padding: 8px 100px;" onclick="updateOrderStatus(' . $orderid . ',\'doing\',' . $tableid . ',' . $orderTotal. ')" role="button">กำลังทำ</button>';
 										}else {
-											echo'<button class="btn btn-primary" style="padding: 8px 50px;" onclick="updateOrderStatus (' . $orderid . ',\'finish\',' . $tableid . ',' . $orderTotal. ');" role="button">เสร็จสิ้น</button>';
-										}		
-									'</div>
-								</div>
+											echo'<button class="btn btn-primary" style="padding: 8px 100px;" onclick="updateOrderStatus (' . $orderid . ',\'finish\',' . $tableid . ',' . $orderTotal. ');" role="button">เสร็จสิ้น</button>';
+										}
+
+							echo 		'</div>
+									</div>
+								
 							</div>
 						</div>';
 						}

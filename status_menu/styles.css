@@ -33,13 +33,14 @@ html{
 }
 
 .nav__link:hover {
-  background-color: #eeeeee;
-  color: #d90000;
-}
-
-.nav__link--active {
-  color: #d90000;
-}
+	background-color: #eeeeee;
+	color:  #568af9;
+  }
+  
+  .nav__link--active {
+	
+	color: #0856ff;
+  }
 
 .nav__icon {
   font-size: 18px;
