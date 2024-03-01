@@ -254,7 +254,7 @@ body{
   #OurStory .video-img {
     max-width: 450px;
     height: 550px;
-    background: url("image_menu/20.jpeg") no-repeat center;
+    background: url("../image_menu/20.jpeg") no-repeat center;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;

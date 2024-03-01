@@ -16,7 +16,7 @@
 				<div class="col-12">
 					<nav class="navbar navbar-expand-md navbar-light">
 					
-						<a class="navbar-brand" ><img src="image_logo/logotab2.png" alt=""></a>	
+						<a class="navbar-brand" ><img src="../image_logo/logotab2.png" alt=""></a>	
 						
 						<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 							<span class="navbar-toggler-icon"></span>
@@ -34,7 +34,7 @@
 									<a class="nav-link" href="#">จองโต๊ะ</a>
 								</li>
                                 <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
-									<a class="nav-link" href="#">รีวิวจากลูกค้า</a>
+									<a class="nav-link" href="../review/index.php">รีวิวและรายงานปัญหา</a>
 								</li>
 							</ul>
 						</div>
@@ -76,7 +76,7 @@
 	  </div>
     
       <div class="head">
-        <img src="image_logo/logotab.png" alt="">
+        <img src="../image_logo/logotab.png" alt="">
         <h1>KOREAN RESTAURANT</h1>
         <button class="custom-btn btn-11">รายการอาหาร</button>
         <button class="custom-btn btn-11">จองโต๊ะ</button>
@@ -178,7 +178,7 @@
 		<div>
 			<p>หน้าหลัก | รายการอาหาร | จองโต๊ะ | รีวิวจากลูกค้า</p>
 		</div>
-		<img src="image_logo/logotab.png" alt="">
+		<img src="../image_logo/logotab.png" alt="">
 		<div style="height: 30px;"></div>
 		<div class="copyright">
 			&copy; OHYUMMY 2024

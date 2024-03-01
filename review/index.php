@@ -23,46 +23,40 @@
       font-family: Noto Sans Thai, sans-serif;
     "
   >
-    <div class="navigation-wrap start-header start-style">
-      <div class="container">
-        <div class="row">
-          <div class="col-12">
-            <nav class="navbar navbar-expand-md navbar-light">
-              <a class="navbar-brand"><img src="../image_logo/logotab2.png" alt="" /></a>
-
-              <button
-                class="navbar-toggler"
-                type="button"
-                data-toggle="collapse"
-                data-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent"
-                aria-expanded="false"
-                aria-label="Toggle navigation"
-              >
-                <span class="navbar-toggler-icon"></span>
-              </button>
-
-              <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav ml-auto py-4 py-md-0">
-                  <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4 active">
-                    <a class="nav-link" href="#">หน้าหลัก</a>
-                  </li>
-                  <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
-                    <a class="nav-link" href="#">รายการอาหาร</a>
-                  </li>
-                  <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
-                    <a class="nav-link" href="#">จองโต๊ะ</a>
-                  </li>
-                  <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
-                    <a class="nav-link" href="#">รีวิวจากลูกค้า</a>
-                  </li>
-                </ul>
-              </div>
-            </nav>
-          </div>
-        </div>
-      </div>
-    </div>
+  <div class="navigation-wrap start-header start-style">
+		<div class="container" >
+			<div class="row">
+				<div class="col-12">
+					<nav class="navbar navbar-expand-md navbar-light">
+					
+						<a class="navbar-brand" ><img src="../image_logo/logotab2.png" alt=""></a>	
+						
+						<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+							<span class="navbar-toggler-icon"></span>
+						</button>
+						
+						<div class="collapse navbar-collapse" id="navbarSupportedContent">
+							<ul class="navbar-nav ml-auto py-4 py-md-0">
+								<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+									<a class="nav-link" href="../home/index.php">หน้าหลัก</a>
+								</li>
+								<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+									<a class="nav-link" href="#">รายการอาหาร</a>
+								</li>
+								<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+									<a class="nav-link" href="#">จองโต๊ะ</a>
+								</li>
+                                <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4 active">
+									<a class="nav-link" href="../review/index.php">รีวิวและรายงานปัญหา</a>
+								</li>
+							</ul>
+						</div>
+						
+					</nav>		
+				</div>
+			</div>
+		</div>
+	</div>
 
     <div class="content" style="height: 110px"></div>
 
@@ -98,20 +92,21 @@
       <div class="form-row">
         <div class="col">
           <div class="form-floating mb-3">
-            <label for="name">ชื่อ(Name)</label><br />
-            <input type="text" id="name" name="name" placeholder="ชื่อ" />
+            <label for="name">ชื่อ (Name)</label><br />
+            <input style="width: 500px;"  type="text" id="name" name="name" placeholder="ชื่อ" />
           </div>
         </div>
         <div class="col">
           <div class="form-floating mb-3">
-            <label for="Tel">เบอร์โทรศัพท์(Tel.)</label><br />
-            <input type="text" id="Tel" name="Tel" placeholder="เบอร์โทรศัพท์"
+            <label for="Tel">เบอร์โทรศัพท์สำหรับติดต่อ (Tel.)</label><br />
+            <input style="width: 500px;" type="number" id="Tel" name="Tel" placeholder="เบอร์โทรศัพท์"
             />
           </div>
         </div>
       </div>
+      <div style="height: 20px;"></div>
       <div class="center-container"><br>
-        <button id="confirmButton" class="btn btn-danger" onclick="updateReview()" >ยืนยัน</button><br><br>
+        <button style="width: 300px;" id="confirmButton" class="btn btn-danger" onclick="updateReview()" >ยืนยัน</button><br><br>
       </div>
     </div>
 
@@ -145,7 +140,7 @@
                   });
                 setTimeout(function() {
                     location.reload();
-                }, 1000);
+                }, 2000);
                 return response.text();
             }
             throw new Error('Network response was not ok.');
