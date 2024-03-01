@@ -5,11 +5,25 @@
     <link rel="icon" type="png" sizes="96x96" href="image_logo/logo.png" />
     <link href="styles.css" rel="stylesheet" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css'><link rel="stylesheet" href="./style.css">
-    <title></title>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css'>
+	<link rel="stylesheet" href="./style.css">
+    <title>หน้าหลัก</title>
 </head>
-<body style="background-color: #1a1a1a; color: azure;">	
+<body style="background-color: #1a1a1a; color: azure; font-family: Noto Sans Thai, sans-serif;">	
 	
+
+<?php
+	 session_start();
+	 include('../connectDatabase/connectToDatabase.php');
+
+	 $conn = new database();  
+
+	 if(isset($_GET['tableId'])) {
+		$_SESSION['tableId'] = $_GET['tableId'];
+	}
+
+
+?>
 	<div class="navigation-wrap start-header start-style">
 		<div class="container" >
 			<div class="row">
@@ -23,20 +37,34 @@
 						</button>
 						
 						<div class="collapse navbar-collapse" id="navbarSupportedContent">
-							<ul class="navbar-nav ml-auto py-4 py-md-0">
+							<ul class="navbar-nav ml-auto py-4 py-md-0" style="text-align: center;" >
 								<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4 active">
 									<a class="nav-link" href="#">หน้าหลัก</a>
 								</li>
 								<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
 									<a class="nav-link" href="#">รายการอาหาร</a>
 								</li>
-								<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
-									<a class="nav-link" href="#">จองโต๊ะ</a>
-								</li>
+								<?php
+								if(!isset($_SESSION['tableId'])) {
+									echo '<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+											<a class="nav-link" href="#">จองโต๊ะ</a>
+										</li>';
+								}
+								?>
+								
+								
                                 <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
 									<a class="nav-link" href="../review/index.php">รีวิวและรายงานปัญหา</a>
 								</li>
-							</ul>
+							
+								<?php
+								if(isset($_SESSION['tableId'])) {
+									echo '<a class=" pl-4 pl-md-0 ml-0 ml-md-4 customnav">&nbsp;&nbsp;&nbsp;&nbsp;ลูกค้าโต๊ะที่ '.$_SESSION['tableId'].'</a>
+											';
+								}
+								?>
+								</ul>
+
 						</div>
 						
 					</nav>		

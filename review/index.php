@@ -23,44 +23,7 @@
       font-family: Noto Sans Thai, sans-serif;
     "
   >
-  <div class="navigation-wrap start-header start-style">
-		<div class="container" >
-			<div class="row">
-				<div class="col-12">
-					<nav class="navbar navbar-expand-md navbar-light">
-					
-						<a class="navbar-brand" ><img src="../image_logo/logotab2.png" alt=""></a>	
-						
-						<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-							<span class="navbar-toggler-icon"></span>
-						</button>
-						
-						<div class="collapse navbar-collapse" id="navbarSupportedContent">
-							<ul class="navbar-nav ml-auto py-4 py-md-0">
-								<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
-									<a class="nav-link" href="../home/index.php">หน้าหลัก</a>
-								</li>
-								<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
-									<a class="nav-link" href="#">รายการอาหาร</a>
-								</li>
-								<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
-									<a class="nav-link" href="#">จองโต๊ะ</a>
-								</li>
-                                <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4 active">
-									<a class="nav-link" href="../review/index.php">รีวิวและรายงานปัญหา</a>
-								</li>
-							</ul>
-						</div>
-						
-					</nav>		
-				</div>
-			</div>
-		</div>
-	</div>
-
-    <div class="content" style="height: 110px"></div>
-
-    <?php
+  <?php
           session_start();
           include('../connectDatabase/connectToDatabase.php');
 
@@ -80,11 +43,65 @@
           }
 
     ?>
+  <div class="navigation-wrap start-header start-style">
+		<div class="container" >
+			<div class="row">
+				<div class="col-12">
+					<nav class="navbar navbar-expand-md navbar-light">
+					
+						<a class="navbar-brand" ><img src="../image_logo/logotab2.png" alt=""></a>	
+						
+						<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+							<span class="navbar-toggler-icon"></span>
+						</button>
+
+						<div class="collapse navbar-collapse" id="navbarSupportedContent">
+							<ul class="navbar-nav ml-auto py-4 py-md-0" style="text-align: center;" >
+								<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4 active">
+									<a class="nav-link" href="../home/index.php">หน้าหลัก</a>
+								</li>
+								<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+									<a class="nav-link" href="#">รายการอาหาร</a>
+								</li>
+								<?php
+								if(!isset($_SESSION['tableId'])) {
+									echo '<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+											<a class="nav-link" href="#">จองโต๊ะ</a>
+										</li>';
+								}
+								?>
+							
+                <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+									<a class="nav-link" href="../review/index.php">รีวิวและรายงานปัญหา</a>
+								</li>
+							
+								<?php
+								if(isset($_SESSION['tableId'])) {
+									echo '<a class=" pl-4 pl-md-0 ml-0 ml-md-4 customnav">&nbsp;&nbsp;&nbsp;&nbsp;ลูกค้าโต๊ะที่ '.$_SESSION['tableId'].'</a>
+											';
+								}
+								?>
+								</ul>
+						</div>
+						
+					</nav>		
+				</div>
+			</div>
+		</div>
+	</div>
+
+    <div class="content" style="height: 110px"></div>
+
+
     <div class="container">
       
       <br />
-      <h4 style="text-align: center">เรายินดีรับความคิดเห็นจากคุณ</h4>
-      <hr /><br><br>
+      <div class="headtext" style="text-align: center">
+          <h3>เรายินดีรับความคิดเห็นจากคุณ</h3><br>
+          <h6>บอกเล่าถึงประสบการณ์ที่คุณได้รับเมื่อมาใช้บริการที่โอ้อร่อยของเรา กรุณาบอกกับเราว่าสิ่งใดที่คุณชื่นชอบ <br>
+    หรือสิ่งใดที่ควรปรับปรุง เราเรียนรู้จากคุณ เพื่อมอบความพึงพอใจสูงสุดจากการใช้บริการของเรา</h6><br>
+      </div>
+      <hr><br><br>
       <div class="form-group">
         <label for="review">ความคิดเห็น :)</label><br />
         <textarea type="text" id="review" name="review" class="col-12" rows="8" placeholder="แสดงความคิดเห็นของท่าน"></textarea>
@@ -104,7 +121,7 @@
           </div>
         </div>
       </div>
-      <div style="height: 20px;"></div>
+      <div style="height: 10px;"></div>
       <div class="center-container"><br>
         <button style="width: 300px;" id="confirmButton" class="btn btn-danger" onclick="updateReview()" >ยืนยัน</button><br><br>
       </div>

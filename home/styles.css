@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@100..900&family=Roboto+Mono&display=swap');
 
 
 html{
@@ -461,6 +462,13 @@ footer{
 footer img{
     height: 40px;
     width: auto;
+}
+
+.customnav{
+  background-color: #D31010;
+
+  padding: 5px 20px;
+  border-radius: 50px;
 }
 
 /* #Media

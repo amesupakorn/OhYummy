@@ -1,5 +1,4 @@
-/* Please ❤ this if you like it! */
-
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@100..900&family=Roboto+Mono&display=swap');
 
 html{
     background-color: #1a1a1a;
@@ -235,3 +234,10 @@ input[id="review"] {
 .center-container {
 	text-align: center;
 }
+
+.customnav{
+	background-color: #D31010;
+  
+	padding: 5px 20px;
+	border-radius: 50px;
+  }
