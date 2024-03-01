@@ -315,7 +315,7 @@ body{
     padding: 20px;
   }
   #SpecialMenu .box .box-img-one {
-    background: url("image_menu/08.jpeg") no-repeat center;
+    background: url("../image_menu/08.jpeg") no-repeat center;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -337,7 +337,7 @@ body{
     margin-bottom: 75px;
   }
   #SpecialMenu .box .box-img-three {
-    background: url("image_menu/04.jpeg") no-repeat center;
+    background: url("../image_menu/04.jpeg") no-repeat center;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -441,7 +441,7 @@ body{
 
   
 .fixed-image {
-    background: url("image_menu/01.jpeg") fixed center;
+    background: url("../image_menu/01.jpeg") fixed center;
     background-size: cover;
     height: 300px;
     text-align: center;
