@@ -1,26 +1,18 @@
 $(document).ready(function() {
-    $("#example").DataTable({
+  $("#example").DataTable({
       aaSorting: [],
       responsive: true,
-  
       columnDefs: [
-        {
-          responsivePriority: 1,
-          targets: 0
-        },
-        {
-          responsivePriority: 2,
-          targets: -1
-        }
+          { targets: [0, 6, 7], orderable: false }, // เลขคอลัมน์ที่ไม่ต้องการให้เรียง
       ]
-    });
-  
-    $(".dataTables_filter input")
-      .attr("placeholder", "ค้นหา...")
-      .css({
-        width: "300px",
-        display: "inline-block"
-      });
-  
-    $('[data-toggle="tooltip"]').tooltip();
   });
+
+  $(".dataTables_filter input")
+  .attr("placeholder", "ค้นหา...")
+  .css({
+    width: "300px",
+    display: "inline-block"
+  });
+});
+
+

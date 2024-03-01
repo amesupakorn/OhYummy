@@ -180,7 +180,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 									}
 								}
 							}
-							echo '			</div>
+							echo '</div>
 									<h6 class="card-subtitle mb-2 text-muted">
 										<div class="bottom-text">';
 										if ($orderStatus == "take"){

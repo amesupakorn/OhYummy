@@ -185,3 +185,13 @@ div.dataTables_wrapper div.dataTables_filter label {
 .table a {
   color: #212529;
 }
+
+.menu {
+  width: 300px;
+	max-height: 420px; /* Set the maximum height for the menu */
+	overflow-y: auto;
+}
+
+.menu .d-flex {
+	margin-bottom: 10px; /* Add margin between items */
+}

@@ -52,6 +52,14 @@
 			<span class="nav__text">ประวัติใบเสร็จ</span>
 		</a>
 	</nav>
+  <?php
+    session_start();
+    include('../connectDatabase/connectToDatabase.php');
+
+    $conn = new database();
+
+
+    ?>
 
     <div style="height: auto; background-color: white;">
       <div class="container">
@@ -75,41 +83,93 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td style="vertical-align: middle;">1</td>
-                      <td style="vertical-align: middle;">
-                        <button type="button" class="btn btn-success" style="padding: 2px 10px;">เสร็จแล้ว</button>
-                      </td>
-                      <td style="vertical-align: middle;">1</td>
-                      <td style="vertical-align: middle;">1</td>
-                      <td style="vertical-align: middle;">
-                        <div class="dropdown">
-                          <button class="btn btn-sm btn-icon" type="button" id="dropdownMenuButton2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="bx bx-dots-horizontal-rounded" data-toggle="tooltip" data-placement="top"
-                                  title="Actions"></i>
-                              </button>
-                          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
-                            <a class="dropdown-item">
-                              <table border="0" style="text-align: left;" class="col-12">
-                                <tr class="th">
-                                  <th class="menu" scope="col">รายการอาหาร</th>
-                                  <th scope="col">จำนวน</th>
-                                </tr>
-                                <tr>
-                                  <td class="menu">รามยอน</td>
-                                  <td>2</td>
-                                </tr>
-                                <tr>
-                                  <td class="menu">บิบิมบับ</td>
-                                  <td>1</td>
-                                </tr>
-                              </table>
-                            </a>
-                          </div>
-                        </div>
-                      </td>
-                    </tr>
+                   
+                      <?php
+                      $sqlMenu = "SELECT * FROM OrderTable;";
+                      $result = mysqli_query($conn->getDatabase(), $sqlMenu);
+                      if (mysqli_num_rows($result) > 0) {
+                          $num = 0;
+                          while($row = mysqli_fetch_assoc($result)) {
+                            $num++;
+                            echo '<tr>';
+                            echo '<td style="vertical-align: middle;">'.$num.'</td>';
+                            echo '<td style="vertical-align: middle;">';
+                            if($row['orderStatus'] == 'take'){
+                              echo '<button type="button" class="btn btn-danger" style="padding: 2px 10px;">รอดำเนินการ</button>';
+                            }
+                            elseif($row['orderStatus'] == 'doing'){
+                              echo '<button type="button" class="btn btn-warning" style="padding: 2px 20px;">กำลังทำ</button>';
+                            }
+                            elseif($row['orderStatus'] == 'finish'){
+                              echo '<button type="button" class="btn btn-primary" style="padding: 2px 26px;">เสร็จสิ้น</button>';
+                            }
             
+                                     
+                            echo '</td>';
+                            echo '<td style="vertical-align: middle;">'.$row['orderID'].'</td>
+                                  <td style="vertical-align: middle;">'.$row['tableid'].'</td>';
+
+            
+                            echo ' <td style="vertical-align: middle;">
+                                      <div class="dropdown">
+                                        <button class="btn btn-sm btn-icon" type="button" id="dropdownMenuButton2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                              <i class="bx bx-dots-horizontal-rounded" data-toggle="tooltip" data-placement="top"
+                                                title="Actions"></i>
+                                            </button>
+                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
+                                          <a class="dropdown-item">
+                                              <div class="row">
+                                                <div style="font-weight: bold;" class="col-8">รายการอาหาร</div>
+                                                  <div style="font-weight: bold;" class="col-4">จำนวน</div>
+                                                </div><br>
+                                                <div class="menu">';
+                                                  $orderid = $row['orderID'];
+                                                  $tableid = $row['tableid'];
+                                                  $orderTotal = $row['orderTotal'];
+                                                  $orderStatus = $row['orderStatus'];
+
+                                                  $select_sql = "SELECT orderMenu FROM OrderTable WHERE orderid = '$orderid'";
+                                                  $resultorder = mysqli_query($conn->getDatabase(), $select_sql);
+
+                                                  if ($resultorder->num_rows > 0) {
+                                                    while ($row = $resultorder->fetch_assoc()) {
+                                                      $order_menu_json = $row['orderMenu'];
+
+                                                      // แปลง JSON เป็น associative array
+                                                      $order_menu_data = json_decode($order_menu_json, true);
+
+                                                      if (isset($order_menu_data['order'])) {
+                                                        $order_items = $order_menu_data['order'];
+
+                                                        foreach ($order_items as $order_item) {
+                                                          $menu_id =  $order_item['menuId'];
+                                                          $name = "SELECT * FROM Menu WHERE menuID = $menu_id;";
+                                                          $resultmenu = mysqli_query($conn->getDatabase(), $name);
+                                                          if (mysqli_num_rows($resultmenu) > 0) {
+                                                            while ($row = mysqli_fetch_assoc($resultmenu)) {
+
+                                                              echo '<div class="row">
+                                                                      <div class="col-9" >' . $row['menu_name'] . '</div>
+                                                                      <div class="col-3">' . $order_item['menuCount'] . '</div>
+                                                                    </div><br>';
+                                                            }
+                                                          }
+                                                        }
+                                                      }
+                                                    }
+                                                  }
+                                                  echo       
+                                                                  
+                                                                '</div>
+                                                                </div>
+                                                              </div>
+                                                            </td>
+                                                          </tr>';
+                                                  }
+                                                }
+                      
+                      
+                      ?>
                   </tbody>
                 </table>
               </div>
