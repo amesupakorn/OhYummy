@@ -9,13 +9,21 @@
     <title></title>
 </head>
 <body>	
+
+<?php
+	 session_start();
+	 include('../connectDatabase/connectToDatabase.php');
+
+
+	 $conn = new database();  
+?>
 	<div class="navigation-wrap start-header start-style">
 		<div class="container">
 			<div class="row">
 				<div class="col-12">
 					<nav class="navbar navbar-expand-md navbar-light">
 					
-						<a class="navbar-brand" ><img src="image_logo/logotab2.png" alt=""></a>	
+						<a class="navbar-brand" ><img src="../image_logo/logotab2.png" alt=""></a>	
 						
 						<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 							<span class="navbar-toggler-icon"></span>
@@ -76,7 +84,7 @@
 	  </div>
     
       <div class="head">
-        <img src="image_logo/logotab.png" alt="">
+        <img src="../image_logo/logotab.png" alt="">
         <h1>KOREAN RESTAURANT</h1>
         <button class="custom-btn btn-11">รายการอาหาร</button>
         <button class="custom-btn btn-11">จองโต๊ะ</button>

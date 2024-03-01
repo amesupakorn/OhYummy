@@ -28,7 +28,7 @@
         <div class="row">
           <div class="col-12">
             <nav class="navbar navbar-expand-md navbar-light">
-              <a class="navbar-brand"><img src="logotab2.png" alt="" /></a>
+              <a class="navbar-brand"><img src="../image_logo/logotab2.png" alt="" /></a>
 
               <button
                 class="navbar-toggler"
@@ -68,7 +68,7 @@
 
     <?php
           session_start();
-          include('../connectToDatabase.php');
+          include('../connectDatabase/connectToDatabase.php');
 
           $conn = new database();  
 
