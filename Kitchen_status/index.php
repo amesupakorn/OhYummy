@@ -112,6 +112,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 			<?php
 			$sqlOrder = "SELECT * FROM OrderTable;";
 			$result = mysqli_query($conn->getDatabase(), $sqlOrder);
+			if($num > 0){
+
+		
 			if (mysqli_num_rows($result) > 0) {
 				while ($row = mysqli_fetch_assoc($result)) {
 
@@ -177,12 +180,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 							</div>
 						</div>';
 					}
-					else {
-						echo '<h1 style="color: #9C9C9C; margin-top: 25%; margin-left: 35%;">ไม่มีออเดอร์ในขณะนี้....</h1>';
-						break;
-					}
+				
 				}
+				
 			}
+		}else{
+			echo '<h1 style="color: #9C9C9C; margin-top: 25%; margin-left: 35%;">ไม่มีออเดอร์ในขณะนี้....</h1>';
+					
+		}
 
 			?>
 		</div>
