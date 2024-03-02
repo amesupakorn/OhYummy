@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="icon" type="png" sizes="96x96" href="logo.png" />
+    <link rel="icon" type="png" sizes="96x96" href="../image_logo/logo.png" />
     <link href="styles.css" rel="stylesheet" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
@@ -17,7 +17,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@100..900&display=swap" rel="stylesheet">
-    <title>status</title>
+    <title>เช็คสถานะออเดอร์</title>
 </head>
 <body style="background-color: #F0F0F0; font-family: Noto Sans Thai, sans-serif;">
 <nav class="nav">
@@ -79,32 +79,33 @@
       <div class="container">
         <div class="row py-5">
           <div class="headcenter"> 
-              <div class="headmenu">
                     <div class="row">
-                          <div class="col-md-3 my-1">
-                              <h4>ชนิดของอาหาร : </h4>
+                          <div class="col-md-5 my-1">
+                          <div class="headmenu">
+                            <div class="row">
+                              <div class="col-6 col-md-4 col-lg-3 my-3">
+                                  <button style="padding: 2px 10px;" id="filterAllButton" type="button" class="btn btn-dark">&nbsp;&nbsp;ทั้งหมด&nbsp;&nbsp;</button>
                               </div>
-                              <div class="col-md-6">
-                                  <div class="row">
-                                      <div class="col-6 col-md-4 col-lg-2 my-3">
-                                          <button style="padding: 2px 10px;"  id="filterAllButton" type="button" class="btn btn-dark">ทั้งหมด</button>
-                                      </div>
-                                      <div class="col-6 col-md-4 col-lg-2 my-3">
-                                          <button style="padding: 2px 10px;" id="filterMainButton" type="button" class="btn btn-primary">&nbsp;เมนูหลัก&nbsp;</button>
-                                      </div>
-                                      <div class="col-6 col-md-4 col-lg-2 my-3">
-                                          <button style="padding: 2px 10px;" id="filterPlayButton" type="button" class="btn btn-primary">&nbsp;&nbsp;กินเล่น&nbsp;&nbsp;</button>
-                                      </div>
-                                  </div>
+                              <div class="col-6 col-md-4 col-lg-3 my-3">
+                                  <button style="padding: 2px 10px;" id="filtertakeButton" type="button" class="btn btn-light">รอดำเนิดการ</button>
                               </div>
-                              <div class="col-md-3 my-3">
-                                  <button style="padding: 4px 10px;" type="button" onclick="openCard()" class="btn btn-success">เพิ่มรายการอาหาร</button>
+                              <div class="col-6 col-md-4 col-lg-3 my-3">
+                                  <button style="padding: 2px 10px;" id="filterdoingButton" type="button" class="btn btn-light">&nbsp;&nbsp;&nbsp;&nbsp;กำลังทำ&nbsp;&nbsp;&nbsp;</button>
                               </div>
-                          </div>
+                              <div class="col-6 col-md-4 col-lg-3 my-3">
+                                  <button style="padding: 2px 10px;" id="filterfinButton" type="button" class="btn btn-light">&nbsp;&nbsp;&nbsp;เสร็จสิ้น&nbsp;&nbsp;</button>
+                              </div>
+
+                                    </div>
+                                </div>
                         </div>
-                    </div>
+                      </div>
+                  </div>
             </div>
-            <div class="row py-5">
+
+
+
+            <div class="row">
               <div class="col-12">
                 <table id="example" class="table table-hover responsive nowrap" style="width:100%">
                   <thead>
@@ -148,7 +149,7 @@
                                       <div class="dropdown">
                                         <button class="btn btn-sm btn-icon" type="button" id="dropdownMenuButton2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                               <i class="bx bx-dots-horizontal-rounded" data-toggle="tooltip" data-placement="top"
-                                                title="Actions"></i>
+                                                title="Actiosns"></i>
                                             </button>
                                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
                                           <a class="dropdown-item">
@@ -211,7 +212,7 @@
           </div>
           
           <!-- partial -->
-            <script src='https://code.jquery.com/jquery-3.3.1.slim.min.js'></script>
+          <script src='https://code.jquery.com/jquery-3.3.1.slim.min.js'></script>
           <script src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js'></script>
           <script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js'></script>
           <script src='https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.19/js/jquery.dataTables.min.js'></script>

@@ -13,6 +13,29 @@ $(document).ready(function() {
     width: "300px",
     display: "inline-block"
   });
+
+  
+  $('[data-toggle="tooltip"]').tooltip();
+
+
+
+// เปลี่ยน jQuery selector เป็นการใช้ id ของปุ่มโดยตรง
+$('#filterAllButton').click(function() {
+  $('#example').DataTable().column(1).search('').draw();
+});
+
+$('#filtertakeButton').click(function() {
+  $('#example').DataTable().column(1).search('รอดำเนินการ').draw();
+});
+
+$('#filterdoingButton').click(function() {
+  $('#example').DataTable().column(1).search('กำลังทำ').draw();
+});
+
+$('#filterfinButton').click(function() {
+  $('#example').DataTable().column(1).search('เสร็จสิ้น').draw();
+});
+
 });
 
 

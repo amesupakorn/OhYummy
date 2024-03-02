@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="icon" type="png" sizes="96x96" href="image_logo/logo.png" />
+    <link rel="icon" type="png" sizes="96x96" href="../image_logo/logo.png" />
     <link href="styles.css" rel="stylesheet" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
@@ -12,7 +12,7 @@
     <link rel='stylesheet' href='https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css'>
     <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/boxicons@2.0.0/css/boxicons.min.css'><link rel="stylesheet" href="./style.css">
 
-    <title></title>
+    <title>จัดการเมนู</title>
 </head>
 <body style="background-color: #F0F0F0; color: black; font-family: Noto Sans Thai, sans-serif;">
     <nav class="nav">
@@ -161,20 +161,20 @@
                                     <button style="padding: 2px 10px;"  id="filterAllButton" type="button" class="btn btn-dark">ทั้งหมด</button>
                                 </div>
                                 <div class="col-6 col-md-4 col-lg-2 my-3">
-                                    <button style="padding: 2px 10px;" id="filterMainButton" type="button" class="btn btn-primary">&nbsp;เมนูหลัก&nbsp;</button>
+                                    <button style="padding: 2px 10px;" id="filterMainButton" type="button" class="btn btn-light">&nbsp;เมนูหลัก&nbsp;</button>
                                 </div>
                                 <div class="col-6 col-md-4 col-lg-2 my-3">
-                                    <button style="padding: 2px 10px;" id="filterPlayButton" type="button" class="btn btn-primary">&nbsp;&nbsp;กินเล่น&nbsp;&nbsp;</button>
+                                    <button style="padding: 2px 10px;" id="filterPlayButton" type="button" class="btn btn-light">&nbsp;&nbsp;กินเล่น&nbsp;&nbsp;</button>
                                 </div>
                     
                                 <div class="col-6 col-md-4 col-lg-2 my-3">
-                                    <button  style="padding: 2px 10px;" id="filterSweetButton" type="button" class="btn btn-primary">ของหวาน</button>
+                                    <button  style="padding: 2px 10px;" id="filterSweetButton" type="button" class="btn btn-light">ของหวาน</button>
                                 </div>
                                 <div class="col-6 col-md-4 col-lg-2 my-3">
-                                    <button style="padding: 2px 10px;" id="filterDrinkButton" type="button" class="btn btn-primary">เครื่องดื่ม</button>
+                                    <button style="padding: 2px 10px;" id="filterDrinkButton" type="button" class="btn btn-light">เครื่องดื่ม</button>
                                 </div>
                                 <div class="col-6 col-md-4 col-lg-2 my-3">
-                                    <button style="padding: 2px 10px;" id="filterSoupButton" type="button" class="btn btn-primary">&nbsp;&nbsp;&nbsp;&nbsp;ซุป&nbsp;&nbsp;&nbsp;&nbsp;</button>
+                                    <button style="padding: 2px 10px;" id="filterSoupButton" type="button" class="btn btn-light">&nbsp;&nbsp;&nbsp;&nbsp;ซุป&nbsp;&nbsp;&nbsp;&nbsp;</button>
                                 </div>
                             </div>
                         </div>

@@ -4,6 +4,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="png" sizes="96x96" href="../image_logo/logo.png" />
 
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -21,7 +22,7 @@
 	<link rel="stylesheet" href="button.css">
 	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 	<!-- <link href="styles.css" rel="stylesheet" /> -->
-	<title>Document</title>
+	<title>จัดการออเดอร์</title>
 </head>
 <?php
 session_start();
