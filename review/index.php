@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="png" sizes="96x96" href="logo.png" />
+    <link rel="icon" type="png" sizes="96x96" href="../image_logo/logo.png" />
     <link href="style.css" rel="stylesheet" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
