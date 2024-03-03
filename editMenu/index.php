@@ -158,7 +158,7 @@
                         <div class="col-md-6">
                             <div class="row">
                                 <div class="col-6 col-md-4 col-lg-2 my-3">
-                                    <button style="padding: 2px 10px;"  id="filterAllButton" type="button" class="btn btn-dark">ทั้งหมด</button>
+                                    <button style="padding: 2px 15px;"  id="filterAllButton" type="button" class="btn btn-dark">ทั้งหมด</button>
                                 </div>
                                 <div class="col-6 col-md-4 col-lg-2 my-3">
                                     <button style="padding: 2px 10px;" id="filterMainButton" type="button" class="btn btn-light">&nbsp;เมนูหลัก&nbsp;</button>
