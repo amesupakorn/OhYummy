@@ -14,7 +14,7 @@
 
     <title>จัดการเมนู</title>
 </head>
-<body style="background-color: #F0F0F0; color: black; font-family: Noto Sans Thai, sans-serif;">
+<body style="background-color: #f6f9fc; color: black; font-family: Noto Sans Thai, sans-serif;">
     <nav class="nav">
         <a href="../editMenu/index.php" class="nav__link nav__link--active">
 			<i class="material-icons nav__icon">restaurant_menu</i>
@@ -29,9 +29,9 @@
 			<i class="material-icons nav__icon">soup_kitchen</i>
 			<span class="nav__text">จัดการออเดอร์ (ครัว)</span>
 		</a>
-		<a href="#" class="nav__link">
+		<a href="../dashboard/index.php" class="nav__link">
 			<i class="material-icons nav__icon">dashboard</i>
-			<span class="nav__text">Dashboard</span>
+			<span class="nav__text">หน้าหลัก</span>
 		</a>
         <a href="../editTable/index.php" class="nav__link">
 			<i class="material-icons nav__icon">table_restaurant</i>
@@ -326,15 +326,12 @@
                                         </div>
                                     </div>
 
-
-
-                                 </form>
                                  <img id="previewImage" src="#" alt="Preview" style="display: none; max-width: 50%; max-height: 50%;">
 
                                  <div style="height: 50px;"></div>
                                  <button id="confirmButton" name="save" class="btn btn-primary">เพิ่มรายการอาหาร</button>
 
-            
+                                </form>
 
                             </div>
                          </div>

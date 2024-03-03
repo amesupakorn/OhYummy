@@ -50,10 +50,10 @@ html{
 .tableshow{
   height: auto;
   background-color: #ffffff;
-  border-radius: 5px;
+  border-radius: 20px;
   box-shadow: 1px 1px 8px 0 #686868;
   margin-bottom: 20px;
-  padding: 10px 10px 0px;
+  padding: 10px 5px 0px;
   text-align: center;
   color: #000;
 
@@ -65,7 +65,7 @@ html{
   border-radius: 20px;
   box-shadow: 1px 1px 8px 0 #686868;
   margin-bottom: 20px;
-  padding: 10px 10px 0px;
+  padding: 10px 20px 0px;
   font-size: 16px;
   color: #000;
 
@@ -226,7 +226,8 @@ html{
   padding: 20px;
   width: 50%;
   height: auto;
-  border-radius: 10px;
+  border-radius: 20px;
+
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
 }
 

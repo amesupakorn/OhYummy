@@ -10,7 +10,7 @@
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css'><link rel="stylesheet" href="./style.css">
     <title>จัดการโต๊ะ</title>
 </head>
-<body style="background-color: #F0F0F0; color: black; font-family: Noto Sans Thai, sans-serif;">
+<body style="background-color: #f6f9fc; color: black; font-family: Noto Sans Thai, sans-serif;">
     <nav class="nav">
         <a href="../editMenu/index.php" class="nav__link">
 			<i class="material-icons nav__icon">restaurant_menu</i>
@@ -25,9 +25,9 @@
 			<i class="material-icons nav__icon">soup_kitchen</i>
 			<span class="nav__text">จัดการออเดอร์ (ครัว)</span>
 		</a>
-		<a href="#" class="nav__link">
+        <a href="../dashboard/index.php" class="nav__link">
 			<i class="material-icons nav__icon">dashboard</i>
-			<span class="nav__text">Dashboard</span>
+			<span class="nav__text">หน้าหลัก</span>
 		</a>
         <a href="../editTable/index.php" class="nav__link">
 			<i class="material-icons nav__icon">table_restaurant</i>
@@ -198,11 +198,13 @@
                     echo    '</div>
                            </div>
                             </div> 
+                            <div class="container">
                             <div style="text-align: right;">
                             <label>วิธีการจ่าย:&nbsp;&nbsp;&nbsp;&nbsp;</label>
                             <button type="button" class="btn1 btn btn-success" onclick="toggleHiddenDiv(\'sol1-bill'.$tableid.'\', \'sol2-bill'.$tableid.'\', '.$tableid.')" id="btn1">เงินสด</button>
                             <button type="button" class="btn2 btn btn-success" onclick="toggleHiddenDiv(\'sol2-bill'.$tableid.'\', \'sol1-bill'.$tableid.'\', '.$tableid.')" id="btn2">คิวอาร์โค้ด</button>
                             <div style="height: 20px;"></div>
+                            </div>
                         </div>
                     </div>';
 

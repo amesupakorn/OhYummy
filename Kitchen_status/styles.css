@@ -5,7 +5,7 @@ html {
 body {
 
 	transition: background-color .5s;
-	background-color: #F0F0F0;
+	background-color: #f6f9fc;
 	color: #000000;
 }
 
@@ -40,7 +40,10 @@ hr.hr1 {
 }
 
 .card-body {
+	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+
 	height: 600px;
+	border-radius: 10px;
 	/* height: auto; */
 }
 

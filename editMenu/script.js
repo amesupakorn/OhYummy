@@ -142,50 +142,54 @@ function updateMenu(id){
 }
 
 
-function deleteMenu(id){
-
+function deleteMenu(id) {
   let formData = new URLSearchParams();
-    formData.append('menuDelete', id);
-      
-          Swal.fire({
-            title: "คุณต้องการลบใช่ไหม?",
-            text: "รายการอาหารนี้จะถูกลบ",
-            icon: "warning",
-            showCancelButton: true,
-            confirmButtonColor: "#137BFF",
-            cancelButtonColor: "#d33",
-            confirmButtonText: "ยืนยัน",
-            cancelButtonText: "ยกเลิก"
+  formData.append('menuDelete', id);
 
-          }).then((result) => {
-                  fetch('./index.php', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/x-www-form-urlencoded',
-                    },
-                    body: formData.toString()
-                })
-                .then(response => {
+  Swal.fire({
+      title: "คุณต้องการลบใช่ไหม?",
+      text: "รายการอาหารนี้จะถูกลบ",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#137BFF",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "ยืนยัน",
+      cancelButtonText: "ยกเลิก"
+
+  }).then((result) => {
+
+      if (result.isConfirmed) {
+        
+          fetch('./index.php', {
+                  method: 'POST',
+                  headers: {
+                      'Content-Type': 'application/x-www-form-urlencoded',
+                  },
+                  body: formData.toString()
+              })
+              .then(response => {
                   if (response.ok) {
-                        Swal.fire({
+                      Swal.fire({
                           title: "ลบข้อมูลสำเร็จ",
                           icon: "success",
                           showConfirmButton: false,
                           timer: 1000
 
-                        });
-                        setTimeout(function() {
+                      });
+                      setTimeout(function() {
                           location.reload();
                       }, 1000);
                       return response.text();
-                    }
-                    throw new Error('Network response was not ok.');
-                })
-                .catch(error => {
-                    alert('There was a problem with the fetch operation: ' + error.message);
-                });
-          })
-        }
+                  }
+                  throw new Error('Network response was not ok.');
+              })
+              .catch(error => {
+                  alert('There was a problem with the fetch operation: ' + error.message);
+              });
+      }
+  })
+}
+
              
         
     

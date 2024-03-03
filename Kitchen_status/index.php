@@ -53,7 +53,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 ?>
 
-<body style="font-family: Noto Sans Thai, sans-serif;">
+<body style="font-family: Noto Sans Thai, sans-serif; background-color: #f6f9fc;">
 
 <nav class="nav">
         <a href="../editMenu/index.php" class="nav__link">
@@ -69,9 +69,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 			<i class="material-icons nav__icon">soup_kitchen</i>
 			<span class="nav__text">จัดการออเดอร์ (ครัว)</span>
 		</a>
-		<a href="#" class="nav__link">
+		<a href="../dashboard/index.php" class="nav__link">
 			<i class="material-icons nav__icon">dashboard</i>
-			<span class="nav__text">Dashboard</span>
+			<span class="nav__text">หน้าหลัก</span>
 		</a>
         <a href="../editTable/index.php" class="nav__link">
 			<i class="material-icons nav__icon">table_restaurant</i>

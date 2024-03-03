@@ -68,6 +68,7 @@ html{
     vertical-align: middle;
     margin-bottom: 10px;
     border: none;
+    
   }
   
   .table thead tr,
@@ -77,10 +78,12 @@ html{
     letter-spacing: 1px;
     text-transform: uppercase;
     background: transparent;
+    
   }
   
   .table td {
     background: #fff;
+    
     
   }
   
@@ -222,7 +225,8 @@ html{
     padding: 20px;
     width: 50%;
     height: auto;
-    border-radius: 10px;
+    transition: 0.3s ease;
+    border-radius: 20px;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
   }
   

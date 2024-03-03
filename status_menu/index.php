@@ -19,7 +19,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@100..900&display=swap" rel="stylesheet">
     <title>เช็คสถานะออเดอร์</title>
 </head>
-<body style="background-color: #F0F0F0; font-family: Noto Sans Thai, sans-serif;">
+<body style="background-color: #f6f9fc; font-family: Noto Sans Thai, sans-serif;">
 <nav class="nav">
         <a href="../editMenu/index.php" class="nav__link">
 			<i class="material-icons nav__icon">restaurant_menu</i>
@@ -34,9 +34,9 @@
 			<i class="material-icons nav__icon">soup_kitchen</i>
 			<span class="nav__text">จัดการออเดอร์ (ครัว)</span>
 		</a>
-		<a href="#" class="nav__link">
+    <a href="../dashboard/index.php" class="nav__link">
 			<i class="material-icons nav__icon">dashboard</i>
-			<span class="nav__text">Dashboard</span>
+			<span class="nav__text">หน้าหลัก</span>
 		</a>
         <a href="../editTable/index.php" class="nav__link">
 			<i class="material-icons nav__icon">table_restaurant</i>

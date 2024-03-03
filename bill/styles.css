@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@100..900&family=Roboto+Mono&display=swap');
 
+
+/* Bootstrap Icons */
+@import url("https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.4.0/font/bootstrap-icons.min.css");
+
 html{
   background-color: #1a1a1a;;
 }
@@ -50,26 +54,16 @@ html{
 .tableshow{
   height: auto;
   background-color: #ffffff;
-  border-radius: 5px;
+  border-radius: 20px;
   box-shadow: 1px 1px 8px 0 #686868;
   margin-bottom: 20px;
-  padding: 10px 10px 0px;
+  padding: 10px 5px 0px;
   text-align: center;
   color: #000;
 
 }
 
-.tableedit{
-  height: auto;
-  background-color: #ffffff;
-  border-radius: 20px;
-  box-shadow: 1px 1px 8px 0 #686868;
-  margin-bottom: 20px;
-  padding: 10px 10px 0px;
-  font-size: 16px;
-  color: #000;
 
-}
 
 .grid-container {
   display: grid;
@@ -222,12 +216,12 @@ html{
 
 .card-add {
   color: #000;
-  background-color: rgb(246, 246, 246);
+  background-color: rgb(249, 249, 249);
   margin: 5% auto;
   padding: 20px;
-  width: 90%;
+  width: 85%;
   height: auto;
-  border-radius: 10px;
+  border-radius: 20px;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
 }
 
@@ -301,6 +295,8 @@ html{
 	border-radius: 20px;
 	color: #000;
 	margin-bottom: 20px;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+
 }
 .th{
 	border-bottom: 1px solid #8e8e8e;
