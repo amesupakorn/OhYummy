@@ -78,7 +78,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 			<span class="nav__text">จัดการโต๊ะ</span>
 		</a>
 	
-		<a href="#" class="nav__link">
+		<a href="../bill/index.php"  class="nav__link">
 			<i class="material-icons nav__icon">payments</i>
 			<span class="nav__text">เช็คบิล</span>
 		</a>

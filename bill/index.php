@@ -34,7 +34,7 @@
 			<span class="nav__text">จัดการโต๊ะ</span>
 		</a>
 	
-		<a href="#" class="nav__link nav__link--active">
+		<a href="../bill/index.php" class="nav__link nav__link--active">
 			<i class="material-icons nav__icon ">payments</i>
 			<span class="nav__text">เช็คบิล</span>
 		</a>
@@ -46,7 +46,7 @@
 
       <?php
             session_start();
-            include('../connectToDatabase.php');
+            include('../connectDatabase/connectToDatabase.php');
 
             $conn = new database();
             if ($_SERVER["REQUEST_METHOD"] == "POST") {

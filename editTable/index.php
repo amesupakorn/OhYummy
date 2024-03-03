@@ -34,7 +34,7 @@
 			<span class="nav__text">จัดการโต๊ะ</span>
 		</a>
 	
-		<a href="#" class="nav__link">
+		<a href="../bill/index.php"  class="nav__link">
 			<i class="material-icons nav__icon">payments</i>
 			<span class="nav__text">เช็คบิล</span>
 		</a>
@@ -93,7 +93,7 @@
                 $num = mysqli_num_rows($conn->executeQuery("Tables"));
                 $seat = $_POST['seat'];
                 $num = $num+1;
-                $conn->addRow("Tables", "($num, $seat, 'emply', NULL)"); 
+                $conn->addRow("Tables", "($num, $seat, 'empty', NULL)"); 
 
             }
       
@@ -128,7 +128,7 @@
                             if (mysqli_num_rows($result) > 0) {
                                 while($row = mysqli_fetch_assoc($result)) {
                                         echo '<div class="number-image">';
-                                        if($row['table_status'] == 'emply'){
+                                        if($row['table_status'] == 'empty'){
                                             echo '<img src="table_image/tablefree.png" onclick="openCardQr('.$row['tableID'].')" alt="1"></a>';
                                          }
                                         elseif ($row['table_status'] == 'full'){
@@ -181,7 +181,7 @@
                                 $result = mysqli_query($conn->getDatabase(), $sql);
                                 if (mysqli_num_rows($result) > 0) {
                                     while($row = mysqli_fetch_assoc($result)) {
-                                        if($row['table_status'] == 'emply'){
+                                        if($row['table_status'] == 'empty'){
                                             echo '<th><button type="button" style="padding: 3px 10px;" class="btn btn-secondary">ว่าง</button></th>';
                                         }
                                         elseif($row['table_status'] == 'full'){
@@ -199,7 +199,7 @@
                                                 <a href="#" class="circle-button2" onclick="openCardWindow2('.$row['tableID'].')"><i class="material-icons nav__icon" style="margin-top: 8%; color: #DB2700;">edit_note</i></a>
                                             </td>
                                             <td>
-                                                <button id="button_empty" style="padding: 3px 10px; type="button" onclick="updateTableStatus('.$row['tableID'].',\'emply\');" class="btn btn-secondary">ว่าง</button>
+                                                <button id="button_empty" style="padding: 3px 10px; type="button" onclick="updateTableStatus('.$row['tableID'].',\'empty\');" class="btn btn-secondary">ว่าง</button>
                                                 <button id="button_full" style="padding: 3px 10px; type="button" onclick="updateTableStatus('.$row['tableID'].',\'full\');" class="btn btn-primary">เต็ม</button>                    
                                             </td>
                                               
