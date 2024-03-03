@@ -148,11 +148,11 @@
 
 <div class="container">
     
-  <div class="row py-5">
+  <div class="row py-4">
     <div class="headcenter"> 
         <div class="headmenu">
                 <div class="row">
-                    <div class="col-md-3 my-1">
+                    <div class="col-md-3 my-2">
                         <h4>ชนิดของอาหาร : </h4>
                         </div>
                         <div class="col-md-6">
