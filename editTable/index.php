@@ -307,7 +307,7 @@
                                  <h3>QR CODE สำหรับลูกค้าโต๊ะ '.$row['tableID'].'</h3>
                                  <hr color=black size=30>
                                  <div class="number-image">
-                                    <img src="https://chart.googleapis.com/chart?chs=300x300&cht=qr&chl=https://amesupakorn.github.io/webyummy/?tabled='.$row['tableID'].'" title="Link to my Website" /> </div>
+                                    <img src="https://chart.googleapis.com/chart?chs=300x300&cht=qr&chl=https://amesupakorn.github.io/webyummy?tableId='.$row['tableID'].'" title="Link to my Website" /> </div>
                                
                              </div>
                              <button id="confirmButton"  class="btn btn-primary" onclick="printQRCode('.$row['tableID'].')">พิมพ์ QR Code</button>
