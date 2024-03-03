@@ -85,13 +85,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-  function calculateChange() {
+  function calculateChange(id) {
   // รับค่าที่ผู้ใช้ป้อน
-  var moneyInput = document.getElementById("moneyInput").value;
+  var moneyInput = document.getElementById("moneyInput"+id).value;
   var money = parseFloat(moneyInput);
   console.log(money)
 
-  var billTotal = document.getElementById("billTotal").innerText;
+  var billTotal = document.getElementById("billTotal"+id).innerText;
   var bill = parseFloat(billTotal);
   console.log(bill)
 
@@ -99,7 +99,7 @@ document.addEventListener("DOMContentLoaded", function () {
   var change = money - bill;
 
   // แสดงจำนวนเงินทอน
-  document.getElementById("changeAmount").innerHTML = change+".00";
+  document.getElementById("changeAmount"+id).innerHTML = change+".00";
   }
 
 

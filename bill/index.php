@@ -246,26 +246,26 @@
                                 <p>ราคารวมอาหาร (บาท)</p>
                             </div>
                             <div class="col-4 col-md-4" style="text-align: right;">
-                                <input type="text" class="form-control" id="moneyInput" style="height: 30px;">
+                                <input type="text" class="form-control" id="moneyInput'.$tableid.'" style="height: 30px;">
                                 <div style="height: 13px;"></div>';
 
                                 $sqlBill3 = "SELECT * FROM Bill WHERE tableID = $tableid;";
                                 $objectBill3 = mysqli_query($conn->getDatabase(), $sqlBill3);
                                 while ($rowobject3 = mysqli_fetch_assoc($objectBill3)) {
-                                    echo '<p id="billTotal">'.$rowobject3['billTotal'].'.00</p>';
+                                    echo '<p id="billTotal'.$tableid.'">'.$rowobject3['billTotal'].'.00</p>';
                                 }
                 echo '  </div>
                             </div>
                             <div class="row">
                             <div class="col-md-8"></div>
-                            <div class="col-md-4" style="text-align: right;"><button type="button" class="btn btn-primary" onclick="calculateChange()">คำนวณ</button></div>
+                            <div class="col-md-4" style="text-align: right;"><button type="button" class="btn btn-primary" onclick="calculateChange('.$tableid.')">คำนวณ</button></div>
                             </div>
                             <hr>
                             <div class="row">
                             <div class="col-8 col-md-8">
                                 <p>เงินทอน (บาท)</p>
                             </div>
-                            <div class="col-4 col-md-4" style="text-align: right;" id="changeAmount"> 
+                            <div class="col-4 col-md-4" style="text-align: right;" id="changeAmount'.$tableid.'"> 
                                 
                             </div>
                             </div>
