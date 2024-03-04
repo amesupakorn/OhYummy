@@ -28,6 +28,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $orderStatus = $_POST['order_status'];
     }
 }
+$order_status = "";
+
 ?>
 
 <body style="background-color: #1a1a1a; font-family: Noto Sans Thai, sans-serif;">
@@ -67,7 +69,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </div>
     </div>
     <?php
-    $sql = "SELECT * FROM OrderTable WHERE orderid = 1";
+    $sql = "SELECT * FROM OrderTable WHERE orderid = 2";
     $result = mysqli_query($conn->getDatabase(), $sql);
 
     if ($result) {
@@ -75,14 +77,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         echo "การดึงข้อมูลผิดพลาด: " . mysqli_error($conn->getDatabase());
     }
+
+
     if ($row = mysqli_fetch_assoc($result)) {
+        $order_status = $row['orderStatus'];
         echo '<div style="height: 130px;"></div>
                     <div class="container">
                         <h1 class="text-center">โต๊ะ' . $row['tableid'] . '</h1>
                      </div>
                         <div class="container">
                              <div class="row justify-content-center">
-                                <div class="col-md-auto">
+                             <div class="col-md-1"></div>
+                                <div class="col-12 col-md-10">
                                     <div class="progress-wrapper">
                                         <div id="progress-bar-container">
                         <ul>
@@ -100,7 +106,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     </li>';
         } elseif ($row['orderStatus'] == "doing") {
             echo '
-                    <li class="step step01">
+                    <li class="step step01 active">
                         <div class="step-inner">กำลังรับออเดอร์</div>
                     </li>
                     <li class="step step02 active">
@@ -109,12 +115,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <li class="step step03">
                         <div class="step-inner">เสร็จสิ้น</div>
                     </li>';
-        } else {
+        } else if ($row['orderStatus'] == "finish") {
             echo '
-                        <li class="step step01">
+                        <li class="step step01 active">
                             <div class="step-inner">กำลังรับออเดอร์</div>
                         </li>
-                        <li class="step step02">
+                        <li class="step step02 active">
                             <div class="step-inner">กำลังทำอาหาร</div>
                         </li>
                         <li class="step step03 active">
@@ -164,21 +170,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         $menu_id =  $order_item['menuId'];
                         $name = "SELECT * FROM Menu WHERE menuID = $menu_id;";
                         $resultmenu = mysqli_query($conn->getDatabase(), $name);
+
                         if (mysqli_num_rows($resultmenu) > 0) {
                             while ($row = mysqli_fetch_assoc($resultmenu)) {
-                                    echo '<div class="row">
-                                            <div class="col-sm">
-                                                <div class="box"><img src="/Final_project/food/Kimchi.jpg" width="120%">
-                                                </div>
-                                            </div>
-                                            <div class="col-sm">
+                                echo '<div class="row">
+                                        <div class="col-5 col-md-6">
+                                            <img src="../image_menu/' . $row['image_menu'] . '" class="img"> 
+                                        </div>
+                                        <div class="menu col-4 col-md-4">
                                             ' . $row['menu_name'] . '
                                         </div>
-                                            <div class="col-sm">
-                                                <p class="text-right">x ' . $order_item['menuCount'] . '</p>
-                                            </div>
-                                        </div>';
-                               
+                                        <div class="count col-3 col-md-2" style="text-align: center;">
+                                            x ' . $order_item['menuCount'] . '
+                                        </div>
+                                    </div><hr>';
                             }
                         }
                     }
@@ -189,7 +194,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }
     ?>
-    <!-- progress-bar-container -->
 
     </div>
     </div>
@@ -208,6 +212,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
     <script src='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js'></script>
     <script src="./scripts.js"></script>
+    <script>
+        if ('<?php echo $order_status ?>' === "take") {
+            $("#line-progress").css("width", "8%");
+            $(".step1").addClass("active").siblings().removeClass("active");
+
+        } else if ('<?php echo $order_status ?>' === "doing") {
+            $("#line-progress").css("width", "50%");
+            $(".step2").addClass("active").siblings().removeClass("active");
+
+        } else if ('<?php echo $order_status ?>' === "finish") {
+            $("#line-progress").css("width", "100%");
+            $(".step3").addClass("active").siblings().removeClass("active");
+        }
+        console.log('  ?>')
+    </script>
 
 </body>
 
