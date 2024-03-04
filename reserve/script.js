@@ -40,7 +40,7 @@
 	
   })(jQuery);
 
-  //booktime
+//   //booktime
 
 //   let bookedTimes = [];
 
@@ -72,4 +72,35 @@
 //             // เพิ่มคลาส 'selected' ในเวลาที่ถูกเลือก
 //             selectedTimeSlot.classList.add('selected');
 //         }
+
+function check(){
+		// ดึงค่าวันที่จาก input
+		var dateValue = document.getElementById('date').value;
+	
+		// ตรวจสอบว่ามีค่าวันที่หรือไม่
+		let formData = new URLSearchParams();
+        
+        formData.append('datecheck', dateValue);
+	
+
+        fetch('./index.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: formData.toString()
+        })
+        .then(response => {
+            if (response.ok) {
+				alert('done')
+         
+                return response.text();
+            }
+            throw new Error('Network response was not ok.');
+        })
+        .catch(error => {
+            alert('There was a problem with the fetch operation: ' + error.message);
+        });
+	
+}
 

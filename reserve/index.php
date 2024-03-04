@@ -9,6 +9,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@100..900&display=swap" rel="stylesheet"
     />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css"
@@ -74,14 +76,14 @@
           $conn = new database();
           if ($_SERVER["REQUEST_METHOD"] == "POST") {
             if(isset($_POST['name']) && isset($_POST['tel']) && isset($_POST['seat']) && isset($_POST['email']) && isset($_POST['date'])){
-        
+              
               $name = $_POST['name'];
               $tel = $_POST['tel'];
               $email = $_POST['email'];
               $seat = $_POST['seat'];
               $date = $_POST['date'];
-    
-              $sql = "INSERT INTO Reserve('cust_Name', 'cust_Tel', 'Email') VALUES ('$name', '$tel', '$email')";
+              echo 'dd';
+              $sql = "INSERT INTO Reserve(cust_Name, cust_Tel, email) VALUES ('$name', '$tel', '$email')";
               mysqli_query($conn->getDatabase(), $sql);
             }
           
@@ -131,14 +133,23 @@
       </div><br>
       
       <div style="text-align: center;">
-      <button type="button" class="btn btn-danger" onclick="check()">เช็คเวลา</button>
+      <button type="button" class="btn btn-danger" onclick="chcek()" >เช็คเวลา</button>
     </div>
     </div>
-    <!-- <?php
+    <?php
+       if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        if(isset($_POST['datecheck'])){
+          $formattedDate = date('Y-m-d', strtotime($_POST['datecheck']));
+          $sqltime = "SELECT Reserve_time FROM Reserve WHERE DATE(Reserve_time) = '$formattedDate'";
+          $result = $conn->query($sqltime);
+        }
+
       
+        
+       }
       
 
-      ?> -->
+      ?>
 
     <div class="container">
 
@@ -166,16 +177,17 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
     <script src="./script.js"></script>
     <script>
-      function check(){
-	let name = document.getElementById("name").value;
-      let tel = document.getElementById("tel").value;
+      function bookTime(){
+	  let name = document.getElementById("name").value;
+    let tel = document.getElementById("tel").value;
 	  let email = document.getElementById("email").value;
 	  let seat = document.getElementById("seat").value;
 	  let date = document.getElementById("date").value;
-        let formData = new URLSearchParams();
+
+    let formData = new URLSearchParams();
         
         formData.append('name', name);
-		formData.append('email', email);
+		    formData.append('email', email);
         formData.append('tel', tel);
         formData.append('seat', seat);
         formData.append('date', date);
@@ -189,9 +201,13 @@
         })
         .then(response => {
             if (response.ok) {
-                setTimeout(function() {
-                    location.reload();
-                }, 1000);
+              Swal.fire({
+                    icon: "success",
+                    title: "ข้อมูลการจองของคุณบันทึกเรียบร้อย",
+                    showConfirmButton: false,
+                    timer: 3500
+                  });
+         
                 return response.text();
             }
             throw new Error('Network response was not ok.');
