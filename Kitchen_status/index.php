@@ -131,7 +131,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 						if ($row['orderStatus'] == "take" || $row['orderStatus'] == "doing") {
 						echo
-						'<div class= "col-4 py-20">
+						'<div class= "col-3 py-20">
 							<div class="card" style="width: 370px;">
 								<div class="card-bg">
 									<h3 class="card-title text-center" style="line-height: 80px; color: white;">โต็ะ หมายเลข ' . $row['tableid'] . '</h3>
@@ -192,10 +192,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 										}else {
 											echo'<button class="btn btn-primary" style="padding: 8px 100px;" onclick="updateOrderStatus (' . $orderid . ',\'finish\',' . $tableid . ',' . $orderTotal. ');" role="button">เสร็จสิ้น</button>';
 										}
-
-							echo 		'</div>
-									</div>
-								
+							echo '</div>
+								</div>
 							</div>
 						</div>';
 						}
