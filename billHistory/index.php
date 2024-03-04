@@ -64,7 +64,7 @@
         <div style="height: 20px;"></div>
         <?php 
                 $num = mysqli_num_rows($conn->executeQuery("Bill"));
-                echo  "  <h3>&nbsp;&nbsp;&nbsp;ประวัติใบเสร็จ $num/ <span id='clock'></span></h3>";
+                echo  "  <h3>&nbsp;&nbsp;&nbsp;ประวัติใบเสร็จ $num | <span id='clock'></span></h3>";
             ?>
         <div style="height: 10px;"></div>
       </div>
