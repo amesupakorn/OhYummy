@@ -67,7 +67,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </div>
     </div>
     <?php
-    $sql = "SELECT * FROM OrderTable";
+    $sql = "SELECT * FROM OrderTable WHERE orderid = 1";
     $result = mysqli_query($conn->getDatabase(), $sql);
 
     if ($result) {
@@ -75,7 +75,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         echo "การดึงข้อมูลผิดพลาด: " . mysqli_error($conn->getDatabase());
     }
-    while ($row = mysqli_fetch_assoc($result)) {
+    if ($row = mysqli_fetch_assoc($result)) {
         echo '<div style="height: 130px;"></div>
                     <div class="container">
                         <h1 class="text-center">โต๊ะ' . $row['tableid'] . '</h1>
