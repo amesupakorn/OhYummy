@@ -25,8 +25,7 @@
 				},1);
 			}
 	});	
-	
-	//Switch light/dark
-	
+
+
 
   })(jQuery);
