@@ -109,6 +109,47 @@ function updateTable(id, seat) {
 }
 
 
+function insertTable() {
+    let seat = document.getElementById('seatTable');
+    if(seat != "เลือกจำนวนที่นั่ง"){
+        let formData = new URLSearchParams();
+        formData.append('insertSeat', seat)
+        
+        fetch('./index.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: formData.toString()
+        })
+        .then(response => {
+            if (response.ok) {
+                Swal.fire({
+                    icon: "success",
+                    title: "เพ่ิมโต๊ะเรียบร้อย",
+                    showConfirmButton: false,
+                    timer: 3500
+                  });
+                setTimeout(function() {
+                    location.reload();
+                }, 1000);
+                return response.text();
+            }
+            throw new Error('Network response was not ok.');
+        })
+        .catch(error => {
+            alert('There was a problem with the fetch operation: ' + error.message);
+        });
+    }
+    else{
+        Swal.fire({
+            icon: "error",
+            title: "โปรดใส่ข้อมูล",
+          });
+    }
+    
+}
+
 function printQRCode(id) {
     // สร้างตัวแปรใหม่สำหรับ QR Code
     
@@ -148,6 +189,8 @@ function updateClock() {
 function pad(num) {
     return (num < 10 ? "0" : "") + num;
 }
+
+
 
 setInterval(updateClock, 1000);
 updateClock();

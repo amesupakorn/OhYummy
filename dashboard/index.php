@@ -172,12 +172,18 @@
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col">
-                                        <span class="h6 font-semibold text-muted text-lg d-block mb-2">จำนวนบิลทั้งหมด</span>
+                                        <span class="h6 font-semibold text-muted text-lg d-block mb-2">จำนวนเงินทั้งหมด</span>
                                         <?php
-                                        $sql = "SELECT * FROM Bill";
-                                        $num = mysqli_num_rows(mysqli_query($conn->getDatabase(), $sql));
-        
-                                        echo '<span class="h3 font-bold mb-0">'.$num.'</span>';
+                                        $total = 0;
+                                        $sql = "SELECT * FROM Bill WHERE billStatus = 'yes'";
+                                        $num = mysqli_query($conn->getDatabase(), $sql);
+                                    
+                                        if (mysqli_num_rows($num) > 0) {
+                                            while($row = mysqli_fetch_assoc($num)) {
+                                                $total += $row['billTotal'];
+                                            }
+                                        }
+                                        echo '<span class="h3 font-bold mb-0">'.$total.'.00</span>';
                                     ?>
                                     </div>
                                     <div class="col-auto">

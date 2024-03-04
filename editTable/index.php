@@ -75,27 +75,17 @@
                     $query = "UPDATE Tables SET seat = $seat WHERE tableID = $tableID";
                     mysqli_query($conn->getDatabase(), $query);
                 }
-            }
+                if(isset($_POST['insertSeat'])){
+               
+                    $seat = $_POST['insertSeat'];
+                    
+                    $insert = "INSERT INTO Tables(seat, tablestatus) VALUES ($seat, 'empty')";
+                    mysqli_query($conn->getDatabase(), $insert);
 
-            if(isset($_POST['seat'])){
-                echo "<script>";
-                echo 'if (response.ok) {
-                    Swal.fire({
-                        icon: "success",
-                        title: "เพิ่มจำนวนโต๊ะเสร็จสิ้น",
-                        showConfirmButton: false,
-                        timer: 3500
-                      });
-                    setTimeout(function() {
-                        location.reload();
-                    }, 1000);';
-                echo "</script>";
-                $num = mysqli_num_rows($conn->executeQuery("Tables"));
-                $seat = $_POST['seat'];
-                $num = $num+1;
-                $conn->addRow("Tables", "($num, $seat, 'empty', NULL)"); 
 
+                }
             }
+           
       
       
       ?>
@@ -228,7 +218,6 @@
             <!-- เนื้อหาของการ์ด -->
             <div class="card-content">
                 <div class="container">
-                    <form action="index.php" method="post">
                         <div style="height: 50px;"></div>
                         <h3>เพิ่มจำนวนโต๊ะ</h3>
                         <hr color=black size=30>
@@ -236,7 +225,7 @@
                         <form me>
                             <div class="form-row">
                                 <label class="mr-sm-2" for="inlineFormCustomSelect">จำนวนที่นั่ง</label>
-                                <select class="custom-select mr-sm-2" name="seat">
+                                <select class="custom-select mr-sm-2" name="seatTable" id="seats">
                                     <option selected>เลือกจำนวนที่นั่ง</option>
                                     <option value="2">2</option>
                                     <option value="4">4</option>
@@ -244,8 +233,7 @@
                                     <option value="8">8</option>
                                 </select>
                             </div>
-                            <button type="submit" class="btn btn-primary">เพิ่ม</button>
-                     </form>
+                            <button type="submit" class="btn btn-primary" onclick="insertTable()">เพิ่ม</button>
                 </div>
             </div>
         </div>

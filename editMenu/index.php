@@ -80,8 +80,8 @@
                     $fileDestination = '../image_menu/'.$fileNameNew;
                     move_uploaded_file($fileTmpName, $fileDestination);            
                     
-                    $num = mysqli_num_rows($conn->executeQuery("Menu"))+1;
-                    $conn->addRow("Menu", "('$num', '$menu_name', '$menu_price', 'on', '$fileNameNew', '$menu_type')");
+                    $sql = "INSERT INTO Menu(menu_name, menu_price, menu_status, image_menu, menu_type) VALUES ('$menu_name', '$menu_price', 'on', '$fileNameNew', '$menu_type')";                        
+                    mysqli_query($conn->getDatabase(), $sql);
                         
                     } else {
                         echo "error upload";
