@@ -42,73 +42,6 @@
   })(jQuery);
 
 
-//   document.addEventListener("DOMContentLoaded", function () {
-// 	document.querySelectorAll('.minus').forEach(function (button) {
-// 		button.addEventListener('click', function () {
-// 			const inputField = button.nextElementSibling;
-// 			let quantity = parseInt(inputField.value);
-// 			if (quantity > 1) {
-// 				quantity--;
-// 				inputField.value = quantity;
-// 				updateTotalPrice(button);
-// 			}
-
-
-
-// 		});
-// 	});
-
-// 	document.querySelectorAll('.plus').forEach(function (button) {
-// 		button.addEventListener('click', function updatedata(id) {
-// 			const inputField = button.previousElementSibling;
-			
-// 			let quantity = parseInt(inputField.value);
-
-// 			quantity++;
-// 			inputField.value = quantity;
-// 			updateTotalPrice(button);
-
-// 			let formData = new URLSearchParams();
-// 			countfood = document.getElementById(id).value;
-// 			alert(countfood)
-// 			formData.append('foodid', id);
-// 			formData.append('count', countfood);
-			
-// 			fetch('./menu.php', {
-// 				method: 'POST',
-// 				headers: {
-// 					'Content-Type': 'application/x-www-form-urlencoded',
-// 				},
-// 				body: formData.toString()
-// 			})
-			
-// 				});
-
-// 	});
-
-// 	function updateTotalPrice(button) {
-// 		const menuCard = button.closest('.menu-card');
-		
-// 		const priceElement = menuCard.querySelector('.menu-price');
-// 		const qtyElement = menuCard.querySelector('.qty');
-// 		const totalElement = menuCard.querySelector('.each-total');
-
-// 		const price = parseFloat(priceElement.innerText);
-// 		const quantity = parseInt(qtyElement.value);
-
-// 		const totalPrice = price * quantity;
-// 		totalElement.innerHTML= '<br>'+ totalPrice.toFixed(2) + ' ฿';
-
-// 	}
-
-
-
-	
-// 	});
-
-
-	
-// });
 
 function plus(foodid){
 	let elemf = document.getElementById(foodid); 
@@ -200,3 +133,28 @@ function updatedatabase(foodid){
 	fetchdata(foodid);
 }
   
+
+function submitorder(){
+	let formData = new URLSearchParams();
+	fetch('./basket.php', {
+		method: 'POST',
+		headers: {
+			'Content-Type': 'application/x-www-form-urlencoded',
+		},
+		body: formData.toString()
+	})
+
+	.then(response => {
+		if (response.ok) {
+			
+			setTimeout(function() {
+				location.reload();
+			}, 500);
+			return response.text();
+		}
+		throw new Error('Network response was not ok.');
+	})
+	.catch(error => {
+		alert('There was a problem with the fetch operation: ' + error.message);
+	});
+}

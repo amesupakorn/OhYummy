@@ -30,46 +30,51 @@
 		<div class="container" >
 			<div class="row">
 				<div class="col-12">
-					<nav class="navbar navbar-expand-md navbar-light">
+				<nav class="navbar navbar-expand-md navbar-light">
 					
-						<a class="navbar-brand" ><img src="../image_logo/logotab2.png" alt=""></a>	
-						
-						<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-							<span class="navbar-toggler-icon"></span>
-						</button>
-						
-						<div class="collapse navbar-collapse" id="navbarSupportedContent">
-							<ul class="navbar-nav ml-auto py-4 py-md-0" style="text-align: center;" >
-								<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4 active">
-									<a class="nav-link" href="#">หน้าหลัก</a>
-								</li>
-								<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
-									<a class="nav-link" href="#">รายการอาหาร</a>
-								</li>
-								<?php
-								if(!isset($_COOKIE['tableId'])) {
-									echo '<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
-											<a class="nav-link" href="#">จองโต๊ะ</a>
-										</li>';
-								}
-								?>
-								
-								
-                                <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
-									<a class="nav-link" href="../review/index.php">รีวิวและรายงานปัญหา</a>
-								</li>
+					<a class="navbar-brand" ><img src="../image_logo/logotab2.png" alt=""></a>	
+					
+					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+						<span class="navbar-toggler-icon"></span>
+					</button>
+					
+					<div class="collapse navbar-collapse" id="navbarSupportedContent">
+						<ul class="navbar-nav ml-auto py-4 py-md-0" style="text-align: center;" >
+							<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4 active">
+								<a class="nav-link" href="../home/index.php">หน้าหลัก</a>
+							</li>
+							<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+								<a class="nav-link" href="../menuorder/menu.php">รายการอาหาร</a>
+							</li>
+							<?php
+							if(!isset($_COOKIE['tableId'])) {
+								echo '<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+										<a class="nav-link" href="#">จองโต๊ะ</a>
+									</li>';
+							}else{
+								echo '<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+								<a class="nav-link" href="">สถานะออเดอร์ของฉัน</a>
+							</li>';
+							}
+							?>
 							
-								<?php
-								if(isset($_COOKIE['tableId'])) {
-									echo '<a class=" pl-4 pl-md-0 ml-0 ml-md-4 customnav">&nbsp;&nbsp;&nbsp;&nbsp;ลูกค้าโต๊ะที่ '.$_COOKIE['tableId'].'</a>
-											';
-								}
-								?>
-								</ul>
-
-						</div>
+							
+							<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+								<a class="nav-link" href="../review/index.php">รีวิวและรายงานปัญหา</a>
+							</li>
+							
 						
-					</nav>		
+							<?php
+							if(isset($_COOKIE['tableId'])) {
+								echo '<a class=" pl-4 pl-md-0 ml-0 ml-md-4 customnav">&nbsp;&nbsp;&nbsp;&nbsp;ลูกค้าโต๊ะที่ '.$_COOKIE['tableId'].'</a>
+										';
+							}
+							?>
+							</ul>
+
+					</div>
+					
+				</nav>	
 				</div>
 			</div>
 		</div>
@@ -108,8 +113,8 @@
       <div class="head">
         <img src="../image_logo/logotab.png" alt="">
         <h1>KOREAN RESTAURANT</h1>
-        <button class="custom-btn btn-11">รายการอาหาร</button>
-        <button class="custom-btn btn-11">จองโต๊ะ</button>
+        <a href="../menuorder/menu.php"><button class="custom-btn btn-11">รายการอาหาร</button></a>
+		<a href="../reserve/index.php"><button class="custom-btn btn-11">จองโต๊ะ</button></a>
 
       </div>
 
@@ -183,7 +188,7 @@
 		  <div style="height: 30px;"></div>
 
 		  <div class="btncenter">
-			<button class="custom-btn2 btn-2">ดูรายการอาหาร</button>
+			<a href="../menuorder/menu.php"><button class="custom-btn2 btn-2">ดูรายการอาหาร</button></a>
 		  </div>
 
 		</div>

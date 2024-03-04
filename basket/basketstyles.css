@@ -364,3 +364,15 @@ table, td, th {
 		height: 130px;
 	}
 }
+
+.textmenucard h3{
+	margin-top: 7%;
+	text-align: center;
+}
+
+.customnav{
+	background-color: #D31010;
+  
+	padding: 5px 20px;
+	border-radius: 50px;
+  }

@@ -18,34 +18,51 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-12">
-					<nav class="navbar navbar-expand-md navbar-light">
+				<nav class="navbar navbar-expand-md navbar-light">
 					
-						<a class="navbar-brand" 	>
-							<img src="image_logo/logotab2.png" alt="">
-						</a>	
+					<a class="navbar-brand" ><img src="../image_logo/logotab2.png" alt=""></a>	
+					
+					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+						<span class="navbar-toggler-icon"></span>
+					</button>
+					
+					<div class="collapse navbar-collapse" id="navbarSupportedContent">
+						<ul class="navbar-nav ml-auto py-4 py-md-0" style="text-align: center;" >
+							<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+								<a class="nav-link" href="../home/index.php">หน้าหลัก</a>
+							</li>
+							<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4 active">
+								<a class="nav-link" href="../menuorder/menu.php">รายการอาหาร</a>
+							</li>
+							<?php
+							if(!isset($_COOKIE['tableId'])) {
+								echo '<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+										<a class="nav-link" href="#">จองโต๊ะ</a>
+									</li>';
+							}else{
+								echo '<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+								<a class="nav-link" href="">สถานะออเดอร์ของฉัน</a>
+							</li>';
+							}
+							?>
+							
+							
+							<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+								<a class="nav-link" href="../review/index.php">รีวิวและรายงานปัญหา</a>
+							</li>
+							
 						
-						<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-							<span class="navbar-toggler-icon"></span>
-						</button>
-						
-						<div class="collapse navbar-collapse" id="navbarSupportedContent">
-							<ul class="navbar-nav ml-auto py-4 py-md-0">
-								<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4 active">
-									<a class="nav-link" href="#">หน้าหลัก</a>
-								</li>
-								<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
-									<a class="nav-link" href="#">รายการอาหาร</a>
-								</li>
-								<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
-									<a class="nav-link" href="#">จองโต๊ะ</a>
-								</li>
-                                <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
-									<a class="nav-link" href="#">รีวิวจากลูกค้า</a>
-								</li>
+							<?php
+							if(isset($_COOKIE['tableId'])) {
+								echo '<a class=" pl-4 pl-md-0 ml-0 ml-md-4 customnav">&nbsp;&nbsp;&nbsp;&nbsp;ลูกค้าโต๊ะที่ '.$_COOKIE['tableId'].'</a>
+										';
+							}
+							?>
 							</ul>
-						</div>
-						
-					</nav>		
+
+					</div>
+					
+				</nav>		
 				</div>
 			</div>
 		</div>
@@ -56,10 +73,11 @@
 
 	<div class="container">
 			<h1 class="h-menu">
-				
+				<a href="../menuorder/menu.php">
 					<button type="button" class="btn btn-danger" onclick="location.href = 'menu.php';">
 						<i class="fa-solid fa-left-long"></i>
 					</button> 
+				</a>
 				
 				รายการสั่งอาหาร
 				
@@ -74,10 +92,14 @@
 		
 						<?php
 						session_start();
-						include("../ject_webpro/connect.php");
+						include('../connectDatabase/connectToDatabase.php');
 						$conn = new database();
+						if(isset($_COOKIE['tableId'])){
+							$tableID = $_COOKIE['tableId'];
+						}
+						
 
-						$sql = "SELECT * FROM BasketOrder Right JOIN Menu ON BasketOrder.menuId = Menu.menuID WHERE basketId IS NOT NULL";
+						$sql = "SELECT * FROM BasketOrder Right JOIN Menu ON BasketOrder.menuId = Menu.menuID WHERE basketId IS NOT NULL AND tableId = $tableID";
 						$result =  mysqli_query($conn->getDatabase(), $sql);
 						
 						
@@ -90,7 +112,7 @@
 													<div class=\"menu-card\" id=\"$foodid-card\">
 														<div class=\"row\">
 															<div class=\"img col-5 col-sm-4 col-lg-4\">
-																<img  src=\"image_menu/".$row["image_menu"] . "\" class=\"img-menu\">".
+																<img  src=\"../image_menu/".$row["image_menu"] . "\" class=\"img-menu\">".
 															"</div>
 															<div class=\"col-3 col-sm-5 col-lg-5\">
 																<div class=\"head\"></div>
@@ -119,6 +141,13 @@
 														</div>
 													</div>";
 							}
+						}else{
+						  echo '<div class="menu-card">
+									<div class="textmenucard">
+											<h3>ยังไม่มีรายการอาหารที่สั่ง</h3>
+									</div>
+								</div>';
+
 						}
 						
 						if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -127,11 +156,15 @@
 								$foodid = $_POST['foodid'];
 								$count = $_POST['count'];
 								// อัพเดตคอลัมน์ countMenu ในตาราง BasketOrder
-								$sqlup = "UPDATE BasketOrder SET countMenu = $count WHERE menuId = $foodid";
+								$sqlup = "UPDATE BasketOrder SET countMenu = $count WHERE menuId = $foodid AND tableId = $tableID";
 								mysqli_query($conn->getDatabase(), $sqlup);
-								// อัพเดตคอลัมน์ menuTotal ในตาราง Menu
-								$sqlp = "UPDATE Menu SET menuTotal = ($count * menu_price) WHERE menuId = $foodid";
-								mysqli_query($conn->getDatabase(), $sqlp);
+								// อัพเดตคอลัมน์ menuTotal ในตาราง BasketOrder
+								$sqlp = "UPDATE BasketOrder 
+								JOIN Menu ON BasketOrder.menuId = Menu.menuId
+								SET BasketOrder.menuTotal = ($count * Menu.menu_price) 
+								WHERE BasketOrder.menuId = $foodid 
+								AND BasketOrder.tableId = $tableID";
+							    mysqli_query($conn->getDatabase(), $sqlp);
 								// $sqlx = "UPDATE BasketOrder SET menuTotal = Total + menuTotal";
 								// mysqli_query($conn->getDatabase(), $sqlx);
 								
@@ -139,7 +172,7 @@
 							}
 							if(isset($_POST['delete'])){
 								$foodid = $_POST['foodid'];
-								$deletee = "DELETE FROM BasketOrder WHERE menuId = $foodid";
+								$deletee = "DELETE FROM BasketOrder WHERE menuId = $foodid AND tableId = $tableID";
 								mysqli_query($conn->getDatabase(), $deletee);
 							}
 									
@@ -160,7 +193,7 @@
 														<td>ราคารวม(฿)</td>
 													</tr>
 							<?php
-							$sql = "SELECT * FROM BasketOrder Right JOIN Menu ON BasketOrder.menuId = Menu.menuID WHERE basketId IS NOT NULL";
+							$sql = "SELECT * FROM BasketOrder Right JOIN Menu ON BasketOrder.menuId = Menu.menuID WHERE basketId IS NOT NULL  AND tableId = $tableID";
 							$result =  mysqli_query($conn->getDatabase(), $sql);
 								if ($result->num_rows > 0) {
 									while($row = $result->fetch_assoc()) {
@@ -181,18 +214,26 @@
 												</div>
 							<?php
 							
-								$sqlr = "SELECT SUM(menuTotal) as `Total` FROM BasketOrder";
-								//WHERE tableId = 1
-								$resulty =  mysqli_query($conn->getDatabase(), $sqlr);
-								if ($result->num_rows > 0) {
-									while($row = $resulty->fetch_assoc()) {
-											echo	"<div class=\"col-6 col-md-6\" style=\"text-align: right;\">";
-											echo	"<p>" . $row['Total'] . ".00 ฿</p>";
-											echo	"</div>";
-									}};
+							$sqlr = "SELECT SUM(menuTotal) as Total FROM BasketOrder WHERE tableId = $tableID";
+							$resulty =  mysqli_query($conn->getDatabase(), $sqlr);
+							if ($resulty->num_rows > 0) {
+								while($row = $resulty->fetch_assoc()) {
+									if($row['Total'] == ' '){
+										echo "<div class=\"col-6 col-md-6\" style=\"text-align: right;\">";
+										echo "<p>" . $row['Total'] . ".00 ฿</p>";
+										echo "</div>";
+									}
+									else{
+										echo "<div class=\"col-6 col-md-6\" style=\"text-align: right;\">";
+										echo "<p>0.00 ฿</p>";
+										echo "</div>";
+									}
+								}
+							}
+
 							?>
 								</div>
-								<button type="button" class="btn btn-success btn-block">ยืนยันการสั่งอาหาร</button>
+								<button type="button" class="btn btn-success btn-block" onclick="submitorder()">ยืนยันการสั่งอาหาร</button>
 								<div style="height: 20px;"></div>
 								</div>
 						</div>
