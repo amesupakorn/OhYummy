@@ -162,10 +162,6 @@ body{
 	justify-content: center;
 }
 
-.card{
-	margin: 2rem;
-}
-
 .boxfood{
 	width: auto;
 	height: auto;
@@ -356,3 +352,6 @@ input:disabled{
 	padding: 5px 20px;
 	border-radius: 50px;
   }
+
+
+  

@@ -69,7 +69,7 @@
 									</li>';
 							}else{
 								echo '<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
-								<a class="nav-link" href="./Check_status/index.php">สถานะออเดอร์ของฉัน</a>
+								<a class="nav-link" href="../Check_status/index.php">สถานะออเดอร์ของฉัน</a>
 							</li>';
 							}
 							?>

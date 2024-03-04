@@ -41,7 +41,7 @@
 									</li>';
 							}else{
 								echo '<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
-								<a class="nav-link" href="./Check_status/index.php">สถานะออเดอร์ของฉัน</a>
+								<a class="nav-link" href="../Check_status/index.php">สถานะออเดอร์ของฉัน</a>
 							</li>';
 							}
 							?>
@@ -159,7 +159,8 @@
 				
 				$typefood = $row["menu_type"];
 				$foodid = $row["menuID"];
-			echo "<div class=\"card $typefood \" style=\"width: 18rem; border-radius:15px; overflow: hidden;\">". 
+				echo "<div class=\"card $typefood\" style=\"width: 18rem; border-radius: 15px; overflow: hidden; border: none; box-shadow: none;\">".
+
 					"<img class=\"card-img-top\" src=\"../image_menu/".$row["image_menu"] . "\"> " .
 					"<div class=\"card-body\">".
 						"<h5 class=\"card-title\" style=\"margin-left:2%;\"> <strong>" . $row["menu_name"]. " </strong> </h5>". 
