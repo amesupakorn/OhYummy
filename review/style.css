@@ -205,24 +205,23 @@ hr{
 }
 
 input[id="review"] {
-	width: 850px;
-	height: 250px; /* ปรับขนาดตามที่ต้องการ */
+	/* width: 850px;
+	height: 250px; ปรับขนาดตามที่ต้องการ */
 	padding: 10px;
 	margin: 5px 0;
 	border-radius: 10px;
 }
 
 #name {
-	width: 500px;
-	height: 50px; /* ปรับขนาดตามที่ต้องการ */
+	/* width: 500px;
+	height: 50px; ปรับขนาดตามที่ต้องการ */
 	padding: 10px;
 	margin: 5px 0;
 	border-radius: 10px;
 }
 
 #Tel {
-	width: 500px;
-	height: 50px; /* ปรับขนาดตามที่ต้องการ */
+	
 	padding: 10px;
 	margin: 5px 0;
 	border-radius: 10px;
