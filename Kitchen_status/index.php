@@ -14,6 +14,8 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css'>
+	<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/boxicons@2.0.0/css/boxicons.min.css'><link rel="stylesheet" href="./style.css">
+
 	<link rel="stylesheet">
 	<script src="https://kit.fontawesome.com/c1134aa968.js" crossorigin="anonymous"></script>
 	<link rel="stylesheet" href=".css">
@@ -82,7 +84,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 			<i class="material-icons nav__icon">payments</i>
 			<span class="nav__text">เช็คบิล</span>
 		</a>
-		<a href="#" class="nav__link">
+		<a href="../billHistory/index.php" class="nav__link">
 			<i class="material-icons nav__icon">receipt_long</i>
 			<span class="nav__text">ประวัติใบเสร็จ</span>
 		</a>
@@ -102,18 +104,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	}
 
 	echo
-	'<div class="">
-				<div style="height: auto; background-color: white;">
-					<div class="container">
-						<div style="height: 30px;"></div>
+	'
+    <div style="height: 20px;"></div>
+		<div class="container-fluid mx-3">
+			<div class="texthead">
+						<div style="height: 20px;"></div>
 						<h3>
-						มีรายการอาหารทั้งหมด ' . $num . ' รายการ | <span id=\'clock\'></span></h3> 
+						&nbsp;&nbsp;&nbsp;มีรายการอาหารทั้งหมด ' . $num . ' รายการ | <span id=\'clock\'></span></h3> 
 					<div style="height: 10px;"></div>
 				</div>
 			</div>';
 	?>
+	    <div style="height: 10px;"></div>
 
-	<div class="container">
+
+	<div class="container-fluid mx-3">
 		<div class="row">
 
 			<?php
@@ -130,7 +135,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 						'<div class="col-sm-4 py-2">
 							<div class="card" style="width: 370px;">
 								<div class="card-bg">
-									<h3 class="card-title text-center" style="line-height: 80px">โต็ะ หมายเลข ' . $row['tableid'] . '</h3>
+									<h3 class="card-title text-center" style="line-height: 80px; color: white;">โต็ะ หมายเลข ' . $row['tableid'] . '</h3>
 								</div>
 									<div class="card-body">
 											<div class="row">

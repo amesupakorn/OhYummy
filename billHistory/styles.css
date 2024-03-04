@@ -1,14 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@100..900&family=Roboto+Mono&display=swap');
 
 html{
-  background-color: #F0F0F0;
+  background-color: #f6f9fc;
 }
 
 #clock{
   height: auto;
   color: rgb(247, 247, 247);
   text-align: center;
-  background-color: #006aff;
+	background-color: #5d60ec;
   padding: 0px 20px;
   border-radius: 50px;
   font-size: 22px;
@@ -44,13 +44,15 @@ html{
 }
 
 .nav__link:hover {
-  background-color: #eeeeee;
-  color: #d90000;
+  background-color: #e0e0e082;
+  color:  #4447ff;
 }
 
 .nav__link--active {
-  color: #d90000;
+  
+  color: #5d60ec;
 }
+
 
 .nav__icon {
   font-size: 18px;
@@ -195,3 +197,14 @@ div.dataTables_wrapper div.dataTables_filter label {
 .table a {
   color: #212529;
 }
+
+.texthead h3{
+	font-weight: 600;
+  }
+  
+  .texthead{
+	
+	border-radius: 20px;
+	width: 97.5%;
+	height: auto; background-color: white; box-shadow: 0 2px 1px 0 rgba(0, 0, 0, 0.115); font-weight: 500;
+  }

@@ -38,7 +38,7 @@
 			<i class="material-icons nav__icon ">payments</i>
 			<span class="nav__text">เช็คบิล</span>
 		</a>
-		<a href="#" class="nav__link">
+		<a href="../billHistory/index.php" class="nav__link">
 			<i class="material-icons nav__icon">receipt_long</i>
 			<span class="nav__text">ประวัติใบเสร็จ</span>
 		</a>
@@ -65,23 +65,24 @@
                 }
             }
       ?>
+    <div style="height: 20px;"></div>
 
 
-    <div style="height: auto; background-color: white;">
-      <div class="container">
-        <div style="height: 30px;"></div>
+    <div class="container-fluid mx-3">
+     <div class="texthead">
+        <div style="height: 20px;"></div>
         <?php 
                 $num = mysqli_num_rows($conn->executeQuery("Tables"));
-                echo  "<h3>เช็คบิล | <span id='clock'></span></h3>";
+                echo  "<h3>&nbsp;&nbsp;&nbsp;&nbsp;เช็คบิล | <span id='clock'></span></h3>";
             ?>
         <div style="height: 10px;"></div>
       </div>
     </div>
-    <div style="height: 30px;"></div>
+    <div style="height: 20px;"></div>
 
-    <div class="container">
+    <div class="container-fluid">
        <div style="height: 5px;"></div>
-        <div class="row" id="main">
+        <div class="row g-6 mb-6 mx-1" id="main">
             <div class="col-12 col-lg-12">
                 <div class="tableshow">
                     <img class="imgtab" src="table_image/tabtable.png" alt="">

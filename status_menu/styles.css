@@ -33,14 +33,15 @@ html{
 }
 
 .nav__link:hover {
-	background-color: #eeeeee;
-	color:  #568af9;
-  }
+  background-color: #e0e0e082;
+  color:  #4447ff;
+}
+
+.nav__link--active {
   
-  .nav__link--active {
-	
-	color: #0856ff;
-  }
+  color: #5d60ec;
+}
+
 
 .nav__icon {
   font-size: 18px;
@@ -200,7 +201,7 @@ div.dataTables_wrapper div.dataTables_filter label {
 	color: rgb(247, 247, 247);
 	text-align: center;
 	font-size: 20px;
-	background-color: #006aff;
+	background-color: #5d60ec;
 	padding: 2px 20px;
 	border-radius: 50px;
 	font-size: 22px;
@@ -211,7 +212,8 @@ div.dataTables_wrapper div.dataTables_filter label {
     text-align: center;
     padding: 0 20px;
     background-color: #ffffff;
-    border-radius: 50px;
+    box-shadow: 0 2px 1px 0 rgba(0, 0, 0, 0.115);
+    border-radius: 20px;
 
 }
 
@@ -222,4 +224,15 @@ div.dataTables_wrapper div.dataTables_filter label {
 .headcenter{
     text-align: center;
     width: 100%;
+}
+
+.texthead h3{
+  font-weight: 600;
+}
+
+.texthead{
+  
+  border-radius: 20px;
+  width: 97.5%;
+  height: auto; background-color: white; box-shadow: 0 2px 1px 0 rgba(0, 0, 0, 0.115); font-weight: 500;
 }

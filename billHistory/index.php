@@ -9,52 +9,68 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet"><script src="https://kit.fontawesome.com/c1134aa968.js" crossorigin="anonymous"></script>
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css'><link rel="stylesheet" href="./style.css">
-
     <link rel='stylesheet' href='https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css'>
     <link rel='stylesheet' href='https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css'>
     <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/boxicons@2.0.0/css/boxicons.min.css'><link rel="stylesheet" href="./style.css">
     <title></title>
 </head>
-<body style="background-color: #F0F0F0; color: black; font-family: Noto Sans Thai, sans-serif;">
-    <nav class="nav">
-        <a href="#" class="nav__link">
-          <i class="material-icons nav__icon">dashboard</i>
-          <span class="nav__text">Dashboard</span>
-        </a>
-        <a href="#" class="nav__link">
-            <i class="material-icons nav__icon">table_restaurant</i>
-            <span class="nav__text">จัดการโต๊ะ</span>
-          </a>
-        <a href="#" class="nav__link">
-          <i class="material-icons nav__icon">restaurant_menu</i>
-          <span class="nav__text">จัดการเมนู</span>
-        </a>
-        <a href="#" class="nav__link">
-            <i class="material-icons nav__icon">payments</i>
-            <span class="nav__text">เช็คบิล</span>
-          </a>
-          <a href="#" class="nav__link nav__link--active">
-            <i class="material-icons nav__icon">receipt_long</i>
-            <span class="nav__text">ประวัติใบเสร็จ</span>
-          </a>
-        </nav>
+<body style="background-color: #f6f9fc; font-family: Noto Sans Thai, sans-serif;">
 
-    <div style="height: auto; background-color: white;">
-      <div class="container">
-        <div style="height: 30px;"></div>
-        <h3>ประวัติใบเสร็จ / <span id='clock'></span></h3>
-        <div style="height: 10px;"></div>
-      </div>
-    </div>
-
-    <?php
+<nav class="nav">
+        <a href="../editMenu/index.php" class="nav__link">
+			<i class="material-icons nav__icon">restaurant_menu</i>
+			<span class="nav__text">จัดการเมนู</span>
+		</a>
+		
+		<a href="../status_menu/index.php" class="nav__link">
+			<i class="material-icons nav__icon">reorder</i>
+			<span class="nav__text">ดูสถานะออเดอร์</span>
+		</a>
+		<a href="../kitchen_status/index.php" class="nav__link">
+			<i class="material-icons nav__icon">soup_kitchen</i>
+			<span class="nav__text">จัดการออเดอร์ (ครัว)</span>
+		</a>
+		<a href="../dashboard/index.php" class="nav__link">
+			<i class="material-icons nav__icon">dashboard</i>
+			<span class="nav__text">หน้าหลัก</span>
+		</a>
+        <a href="../editTable/index.php" class="nav__link">
+			<i class="material-icons nav__icon">table_restaurant</i>
+			<span class="nav__text">จัดการโต๊ะ</span>
+		</a>
+	
+		<a href="../bill/index.php"  class="nav__link">
+			<i class="material-icons nav__icon">payments</i>
+			<span class="nav__text">เช็คบิล</span>
+		</a>
+		<a href="../billHistory/index.php" class="nav__link nav__link--active">
+			<i class="material-icons nav__icon">receipt_long</i>
+			<span class="nav__text">ประวัติใบเสร็จ</span>
+		</a>
+	</nav>
+  <?php
           session_start();
-          include('../connectToDatabase.php');
+          include('../connectDatabase/connectToDatabase.php');
 
           $conn = new database();
             
 
       ?>
+
+  <div style="height: 20px;"></div>
+    <div class="container-fluid mx-3">
+     <div class="texthead">
+        <div style="height: 20px;"></div>
+        <?php 
+                $sql = "SELECT * FROM Bill WHERE billStatus = 'yes'";
+                $num = mysqli_num_rows(mysqli_query($conn->getDatabase(), $sql));
+                echo  "  <h3>&nbsp;&nbsp;&nbsp;ประวัติใบเสร็จ $num/ <span id='clock'></span></h3>";
+            ?>
+        <div style="height: 10px;"></div>
+      </div>
+    </div>
+
+   
 
           <div class="container">
             <div class="row py-5">
@@ -83,10 +99,10 @@
                         if (mysqli_num_rows($resultBill) > 0) {
                           while ($row = mysqli_fetch_assoc($resultBill)) {
                             echo '<tr>
-                                    <td>'.$orderid.'</td>
-                                    <td>'.$row['tableID'].'</td>
-                                    <td>'.$row['billTime'].'</td>
-                                    <td>'.$row['billTotal'].'</td>
+                                    <td style="vertical-align: middle;">'.$orderid.'</td>
+                                    <td style="vertical-align: middle;">'.$row['tableID'].'</td>
+                                    <td style="vertical-align: middle;">'.$row['billTime'].'</td>
+                                    <td style="vertical-align: middle;">'.$row['billTotal'].'</td>
               
                                     <td>
                                       <div class="dropdown">

@@ -42,7 +42,7 @@
 			<i class="material-icons nav__icon">payments</i>
 			<span class="nav__text">เช็คบิล</span>
 		</a>
-		<a href="#" class="nav__link">
+		<a href="../billHistory/index.php"class="nav__link">
 			<i class="material-icons nav__icon">receipt_long</i>
 			<span class="nav__text">ประวัติใบเสร็จ</span>
 		</a>
@@ -66,9 +66,9 @@
             <div class="container-fluid">
                 <div class="mb-npx">
                     <div class="row align-items-center">
-                        <div class="col-sm-6 col-12 mb-4 mb-sm-0">
-                            <!-- Title -->
-                            <h1 class="h2 mb-0 ls-tight">สรุปผลร้านอาหาร</h1>
+                    <div class="col-sm-6 col-12 mb-4 mb-sm-0 d-flex align-items-center">                            <!-- Title -->
+                            <img alt="..." src="../image_logo/logo.png" class="avatar avatar-lg rounded-circle me-2">
+                            <h1 class="h2 mb-0 ls-tight">&nbsp;&nbsp;โอ้อร่อย</h1>
                         </div>
                         <div style="height: 20px;"></div>
                         
@@ -153,8 +153,8 @@
                                     </div>
                                     <div class="col-auto">
                                         <div class="icon icon-shape bg-warning text-white text-lg rounded-circle">
-                                            <i class="bi bi-minecart-loaded"></i>
-                                        </div>
+                                        <i class="bi bi-bag-check"></i>
+                                      </div>
                                     </div>
                                 </div>
                                 <div class="mt-2 mb-0 text-sm">
@@ -189,7 +189,7 @@
                                 <div class="mt-2 mb-0 text-sm">
                                  
                                     <span class="text-nowrap text-sm text-muted">จำนวนบิลที่สำเร็จ</span>
-                                    <a href="../Bill/index.php"><button type="button" style="padding: 2px 2px; background-color: #f6f9fc; color: black;" class="avatar avatar-xs rounded-circle ">></button></a>
+                                    <a href="../billHistory/index.php"><button type="button" style="padding: 2px 2px; background-color: #f6f9fc; color: black;" class="avatar avatar-xs rounded-circle ">></button></a>
 
                                 </div>
                             </div>

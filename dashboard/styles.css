@@ -34,13 +34,13 @@ html{
   }
   
   .nav__link:hover {
-    background-color: #eeeeee;
-    color:  #568af9;
+    background-color: #e0e0e082;
+    color:  #4447ff;
   }
   
   .nav__link--active {
     
-    color: #0856ff;
+    color: #5d60ec;
   }
   
   .nav__icon {
