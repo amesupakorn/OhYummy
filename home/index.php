@@ -13,14 +13,15 @@
 	
 
 <?php
-	 session_set_cookie_params(0);
+     session_set_cookie_params(0);
 	 session_start();
 	 include('../connectDatabase/connectToDatabase.php');
 
 	 $conn = new database();  
 
 	 if(isset($_GET['tableId'])) {
-		$_SESSION['tableId'] = $_GET['tableId'];
+		// กำหนดค่าใน $_COOKIE โดยตรง
+		setcookie('tableId', $_GET['tableId'], 0, '/'); // 0 คือ session cookie จะหมดอายุเมื่อเบราว์เซอร์ปิด
 	}
 
 
@@ -46,7 +47,7 @@
 									<a class="nav-link" href="#">รายการอาหาร</a>
 								</li>
 								<?php
-								if(!isset($_SESSION['tableId'])) {
+								if(!isset($_COOKIE['tableId'])) {
 									echo '<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
 											<a class="nav-link" href="#">จองโต๊ะ</a>
 										</li>';
@@ -59,8 +60,8 @@
 								</li>
 							
 								<?php
-								if(isset($_SESSION['tableId'])) {
-									echo '<a class=" pl-4 pl-md-0 ml-0 ml-md-4 customnav">&nbsp;&nbsp;&nbsp;&nbsp;ลูกค้าโต๊ะที่ '.$_SESSION['tableId'].'</a>
+								if(isset($_COOKIE['tableId'])) {
+									echo '<a class=" pl-4 pl-md-0 ml-0 ml-md-4 customnav">&nbsp;&nbsp;&nbsp;&nbsp;ลูกค้าโต๊ะที่ '.$_COOKIE['tableId'].'</a>
 											';
 								}
 								?>
@@ -201,14 +202,15 @@
 	<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d248057.87072785952!2d100.63532668762527!3d13.724247679480877!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x311d6032280d61f3%3A0x10100b25de24820!2z4LiB4Lij4Li44LiH4LmA4LiX4Lie4Lih4Lir4Liy4LiZ4LiE4Lij!5e0!3m2!1sth!2sth!4v1708336044760!5m2!1sth!2sth" width="1500" height="500" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 
 	
-	<div style="height: 30px;"></div>
 
 	<footer>
+	<div style="height: 30px;"></div>
+
 		<div>
 			<p>หน้าหลัก | รายการอาหาร | จองโต๊ะ | รีวิวจากลูกค้า</p>
 		</div>
-		<img src="../image_logo/logotab.png" alt="">
-		<div style="height: 30px;"></div>
+			<img src="../image_logo/logotab.png" alt="">
+			<div style="height: 30px;"></div>
 		<div class="copyright">
 			&copy; OHYUMMY 2024
 		</div>

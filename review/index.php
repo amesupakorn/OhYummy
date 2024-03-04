@@ -57,27 +57,27 @@
 
 						<div class="collapse navbar-collapse" id="navbarSupportedContent">
 							<ul class="navbar-nav ml-auto py-4 py-md-0" style="text-align: center;" >
-								<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4 active">
+								<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
 									<a class="nav-link" href="../home/index.php">หน้าหลัก</a>
 								</li>
 								<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
 									<a class="nav-link" href="#">รายการอาหาร</a>
 								</li>
 								<?php
-								if(!isset($_SESSION['tableId'])) {
+								if(!isset($_COOKIE['tableId'])) {
 									echo '<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
 											<a class="nav-link" href="#">จองโต๊ะ</a>
 										</li>';
 								}
 								?>
 							
-                <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+                <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4 active">
 									<a class="nav-link" href="../review/index.php">รีวิวและรายงานปัญหา</a>
 								</li>
 							
 								<?php
-								if(isset($_SESSION['tableId'])) {
-									echo '<a class=" pl-4 pl-md-0 ml-0 ml-md-4 customnav">&nbsp;&nbsp;&nbsp;&nbsp;ลูกค้าโต๊ะที่ '.$_SESSION['tableId'].'</a>
+								if(isset($_COOKIE['tableId'])) {
+									echo '<a class=" pl-4 pl-md-0 ml-0 ml-md-4 customnav">&nbsp;&nbsp;&nbsp;&nbsp;ลูกค้าโต๊ะที่ '.$_COOKIE['tableId'].'</a>
 											';
 								}
 								?>
@@ -110,13 +110,13 @@
         <div class="col">
           <div class="form-floating mb-3">
             <label for="name">ชื่อ (Name)</label><br />
-            <input style="width: 500px;"  type="text" id="name" name="name" placeholder="ชื่อ" />
+            <input  type="text" id="name" name="name" class="col-12"  placeholder="ชื่อ" />
           </div>
         </div>
         <div class="col">
           <div class="form-floating mb-3">
             <label for="Tel">เบอร์โทรศัพท์สำหรับติดต่อ (Tel.)</label><br />
-            <input style="width: 500px;" type="number" id="Tel" name="Tel" placeholder="เบอร์โทรศัพท์"
+            <input    type="number" id="Tel" name="Tel" class="col-12"  placeholder="เบอร์โทรศัพท์"
             />
           </div>
         </div>
@@ -126,7 +126,22 @@
         <button style="width: 300px;" id="confirmButton" class="btn btn-danger" onclick="updateReview()" >ยืนยัน</button><br><br>
       </div>
     </div>
+    <div style="height: 50px;"></div>
 
+    <footer>
+    <div style="height: 30px;"></div>
+
+      <div>
+        <p>หน้าหลัก | รายการอาหาร | จองโต๊ะ | รีวิวจากลูกค้า</p>
+      </div>
+      <img src="../image_logo/logotab.png" alt="">
+      <div style="height: 30px;"></div>
+      <div class="copyright">
+        &copy; OHYUMMY 2024
+      </div>
+      <div style="height: 30px;"></div>
+
+	</footer>
     <!-- --------------------------------------------------------------------------------- -->
     <script>
 
