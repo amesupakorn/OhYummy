@@ -25,6 +25,38 @@ class OrderController {
         mysqli_query($this->conn->getDatabase(), $sql);
     }
 
+    public function addOrderJson(){
+        $orderData = array();
+
+        // คิวรีเพื่อเลือกรายละเอียดการสั่งซื้อจากตาราง BasketOrder
+        $sqlOrder = "SELECT * FROM BasketOrder WHERE tableId = $tableID";
+        $resultOrder = mysqli_query($conn->getDatabase(), $sqlOrder);
+
+        // ตรวจสอบว่ามีแถวที่ถูกส่งกลับจากคิวรีหรือไม่
+        if ($resultOrder->num_rows > 0) {
+            // วนลูปผ่านทุกแถวของผลลัพธ์
+            while($row = $resultOrder->fetch_assoc()) {
+                // นำ menuId และ menuCount เข้าไปในอาร์เรย์ $orderData
+                $orderData[] = array(
+                    "menuId" => $row['menuId'],
+                    "menuCount" => $row['countMenu']
+                );
+            }
+        }
+
+        // สร้างสตริง JSON
+        $json_data = array(
+            "order" => $orderData // เพิ่มอาร์เรย์ $orderData เข้าไปใน key "order"
+        );
+
+
+        $order_menu_json = json_encode($json_data); // แปลง array เป็น JSON
+        $num = mysqli_num_rows($conn->executeQuery("OrderTable"))+1;
+        $sql = "INSERT INTO OrderTable(orderID, orderMenu, tableid, orderTime, orderStatus, orderTotal) VALUES ($num, '$order_menu_json', $tableID, CONVERT_TZ(NOW(),@@session.time_zone,'+07:00'), 'take', $total)";
+    }
+
+
+    
     public function getOrder($orderid) {
         $select_sql = "SELECT order_menu FROM OrderTable WHERE orderid = '$orderid'";
         $result = mysqli_query($this->conn->getDatabase(), $select_sql);

@@ -11,6 +11,8 @@
 	<!-- <script src="https://kit.fontawesome.com/c1134aa968.js" crossorigin="anonymous"></script> -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 	<link rel="stylesheet" href="./basketstyles.css">
+	<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/boxicons@2.0.0/css/boxicons.min.css'>
+
 
 </head>
 <body style="background-color: #1a1a1a; color: #ffffff; font-family: Noto Sans Thai, sans-serif;">
@@ -41,9 +43,11 @@
 									</li>';
 							}else{
 								echo '<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
-								<a class="nav-link" href="">สถานะออเดอร์ของฉัน</a>
+								<a class="nav-link" href="../Check_status/index.php">สถานะออเดอร์ของฉัน</a>
 							</li>';
 							}
+
+
 							?>
 							
 							
@@ -175,6 +179,48 @@
 								$deletee = "DELETE FROM BasketOrder WHERE menuId = $foodid AND tableId = $tableID";
 								mysqli_query($conn->getDatabase(), $deletee);
 							}
+
+							if(isset($_POST['submitOrder'])){
+								
+
+								$sqlr = "SELECT SUM(menuTotal) as Total FROM BasketOrder WHERE tableId = $tableID";
+								$resultTotal =  mysqli_fetch_assoc(mysqli_query($conn->getDatabase(), $sqlr));
+								$total = $resultTotal['Total'];
+								
+								// สร้างอาร์เรย์เพื่อเก็บรายละเอียดการสั่งซื้อ
+								$orderData = array();
+
+								// คิวรีเพื่อเลือกรายละเอียดการสั่งซื้อจากตาราง BasketOrder
+								$sqlOrder = "SELECT * FROM BasketOrder WHERE tableId = $tableID";
+								$resultOrder = mysqli_query($conn->getDatabase(), $sqlOrder);
+
+								// ตรวจสอบว่ามีแถวที่ถูกส่งกลับจากคิวรีหรือไม่
+								if ($resultOrder->num_rows > 0) {
+									// วนลูปผ่านทุกแถวของผลลัพธ์
+									while($row = $resultOrder->fetch_assoc()) {
+										// นำ menuId และ menuCount เข้าไปในอาร์เรย์ $orderData
+										$orderData[] = array(
+											"menuId" => $row['menuId'],
+											"menuCount" => $row['countMenu']
+										);
+									}
+								}
+
+								// สร้างสตริง JSON
+								$json_data = array(
+									"order" => $orderData // เพิ่มอาร์เรย์ $orderData เข้าไปใน key "order"
+								);
+
+						
+								$order_menu_json = json_encode($json_data); // แปลง array เป็น JSON
+								$num = mysqli_num_rows($conn->executeQuery("OrderTable"))+1;
+								$sql = $sql = "INSERT INTO OrderTable(orderMenu, tableid, orderTime, orderStatus, orderTotal) 
+								VALUES ('$order_menu_json', $tableID, CONVERT_TZ(NOW(),@@session.time_zone,'+07:00'), 'take', $total)";
+						
+														mysqli_query($conn->getDatabase(), $sql);
+								$sqldel = "DELETE FROM BasketOrder WHERE tableId = $tableID";
+								mysqli_query($conn->getDatabase(), $sqldel);
+							}
 									
 
 						};
@@ -218,7 +264,7 @@
 							$resulty =  mysqli_query($conn->getDatabase(), $sqlr);
 							if ($resulty->num_rows > 0) {
 								while($row = $resulty->fetch_assoc()) {
-									if($row['Total'] == ' '){
+									if(!($row['Total'] == '')){
 										echo "<div class=\"col-6 col-md-6\" style=\"text-align: right;\">";
 										echo "<p>" . $row['Total'] . ".00 ฿</p>";
 										echo "</div>";
@@ -233,8 +279,8 @@
 
 							?>
 								</div>
-								<button type="button" class="btn btn-success btn-block" onclick="submitorder()">ยืนยันการสั่งอาหาร</button>
-								<div style="height: 20px;"></div>
+									<button type="button" class="btn btn-success btn-block" onclick="submitorder()">ยืนยันการสั่งอาหาร</button>
+									<div style="height: 20px;"></div>
 								</div>
 						</div>
 					
@@ -247,6 +293,7 @@
 
 
 <!-- partial -->
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 	<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
 	<script src='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js'></script>
 	<script src="./basket.js"></script>

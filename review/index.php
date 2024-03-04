@@ -36,8 +36,7 @@
               $review = $_POST['review'];
               $name = $_POST['name'];
               $tel = $_POST['Tel'];
-              $num = mysqli_num_rows($conn->executeQuery("Review"))+1;
-              $sql = "INSERT INTO Review VALUE ($num, '$review', '$name', '$tel',  DATE_ADD(NOW(), INTERVAL 7 HOUR))";
+              $sql = "INSERT INTO Review(descrip, username, tel, ReviewTime) VALUES ('$review', '$name', '$tel', DATE_ADD(NOW(), INTERVAL 7 HOUR))";
               mysqli_query($conn->getDatabase(), $sql);
             }
           }
@@ -47,44 +46,51 @@
 		<div class="container" >
 			<div class="row">
 				<div class="col-12">
-					<nav class="navbar navbar-expand-md navbar-light">
+        <nav class="navbar navbar-expand-md navbar-light">
 					
-						<a class="navbar-brand" ><img src="../image_logo/logotab2.png" alt=""></a>	
+					<a class="navbar-brand" ><img src="../image_logo/logotab2.png" alt=""></a>	
+					
+					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+						<span class="navbar-toggler-icon"></span>
+					</button>
+					
+					<div class="collapse navbar-collapse" id="navbarSupportedContent">
+						<ul class="navbar-nav ml-auto py-4 py-md-0" style="text-align: center;" >
+							<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+								<a class="nav-link" href="../home/index.php">หน้าหลัก</a>
+							</li>
+							<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+								<a class="nav-link" href="../menuorder/menu.php">รายการอาหาร</a>
+							</li>
+							<?php
+							if(!isset($_COOKIE['tableId'])) {
+								echo '<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+										<a class="nav-link" href="#">จองโต๊ะ</a>
+									</li>';
+							}else{
+								echo '<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+								<a class="nav-link" href="./Check_status/index.php">สถานะออเดอร์ของฉัน</a>
+							</li>';
+							}
+							?>
+							
+							
+							<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4 active">
+								<a class="nav-link" href="../review/index.php">รีวิวและรายงานปัญหา</a>
+							</li>
+							
 						
-						<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-							<span class="navbar-toggler-icon"></span>
-						</button>
+							<?php
+							if(isset($_COOKIE['tableId'])) {
+								echo '<a class=" pl-4 pl-md-0 ml-0 ml-md-4 customnav">&nbsp;&nbsp;&nbsp;&nbsp;ลูกค้าโต๊ะที่ '.$_COOKIE['tableId'].'</a>
+										';
+							}
+							?>
+							</ul>
 
-						<div class="collapse navbar-collapse" id="navbarSupportedContent">
-							<ul class="navbar-nav ml-auto py-4 py-md-0" style="text-align: center;" >
-								<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
-									<a class="nav-link" href="../home/index.php">หน้าหลัก</a>
-								</li>
-								<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
-									<a class="nav-link" href="#">รายการอาหาร</a>
-								</li>
-								<?php
-								if(!isset($_COOKIE['tableId'])) {
-									echo '<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
-											<a class="nav-link" href="#">จองโต๊ะ</a>
-										</li>';
-								}
-								?>
-							
-                <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4 active">
-									<a class="nav-link" href="../review/index.php">รีวิวและรายงานปัญหา</a>
-								</li>
-							
-								<?php
-								if(isset($_COOKIE['tableId'])) {
-									echo '<a class=" pl-4 pl-md-0 ml-0 ml-md-4 customnav">&nbsp;&nbsp;&nbsp;&nbsp;ลูกค้าโต๊ะที่ '.$_COOKIE['tableId'].'</a>
-											';
-								}
-								?>
-								</ul>
-						</div>
-						
-					</nav>		
+					</div>
+					
+				</nav>	
 				</div>
 			</div>
 		</div>
