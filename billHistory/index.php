@@ -9,6 +9,7 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet"><script src="https://kit.fontawesome.com/c1134aa968.js" crossorigin="anonymous"></script>
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css'><link rel="stylesheet" href="./style.css">
+
     <link rel='stylesheet' href='https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css'>
     <link rel='stylesheet' href='https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css'>
     <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/boxicons@2.0.0/css/boxicons.min.css'><link rel="stylesheet" href="./style.css">
@@ -48,7 +49,7 @@
 			<span class="nav__text">ประวัติใบเสร็จ</span>
 		</a>
 	</nav>
-  <?php
+     <?php
           session_start();
           include('../connectDatabase/connectToDatabase.php');
 
@@ -62,8 +63,7 @@
      <div class="texthead">
         <div style="height: 20px;"></div>
         <?php 
-                $sql = "SELECT * FROM Bill WHERE billStatus = 'yes'";
-                $num = mysqli_num_rows(mysqli_query($conn->getDatabase(), $sql));
+                $num = mysqli_num_rows($conn->executeQuery("Bill"));
                 echo  "  <h3>&nbsp;&nbsp;&nbsp;ประวัติใบเสร็จ $num/ <span id='clock'></span></h3>";
             ?>
         <div style="height: 10px;"></div>
@@ -91,18 +91,19 @@
                       $resultBill = (mysqli_query($conn->getDatabase(), $sqlB));
                       $object = mysqli_fetch_assoc(mysqli_query($conn->getDatabase(), $sqlB));
                   
-                      $orderid = $object['orderid'];
+                      $orderidbill = $object['orderid'];
 
-                      $select_sql = "SELECT orderMenu FROM OrderTable WHERE orderid = '$orderid'";
+                      $select_sql = "SELECT orderMenu FROM OrderTable WHERE orderid = '$orderidbill'";
                       $resultorder = mysqli_query($conn->getDatabase(), $select_sql);
                       
                         if (mysqli_num_rows($resultBill) > 0) {
                           while ($row = mysqli_fetch_assoc($resultBill)) {
+                            $orderid = $row['orderid'];
                             echo '<tr>
                                     <td style="vertical-align: middle;">'.$orderid.'</td>
                                     <td style="vertical-align: middle;">'.$row['tableID'].'</td>
                                     <td style="vertical-align: middle;">'.$row['billTime'].'</td>
-                                    <td style="vertical-align: middle;">'.$row['billTotal'].'</td>
+                                    <td style="vertical-align: middle;">'.$row['billTotal'].'</td> 
               
                                     <td>
                                       <div class="dropdown">
@@ -119,6 +120,8 @@
                                                 <th scope="col">จำนวน</th>
                                                 <th scope="col">ราคารวม(฿)</th>
                                               </tr>';
+                        $select_sql = "SELECT orderMenu FROM OrderTable WHERE orderid = '$orderid'";
+                        $resultorder = mysqli_query($conn->getDatabase(), $select_sql);
 
                       if ($resultorder->num_rows > 0) {
                         while ($row = $resultorder->fetch_assoc()) {

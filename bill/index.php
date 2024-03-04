@@ -59,7 +59,7 @@
                     $billStatus = "yes";
                     
                     $query1 = "UPDATE Tables SET table_status = '$tableStatus' WHERE tableID = $tableID";
-                    $query2 = "UPDATE Bill SET billStatus = '$billStatus', billTime = DATE_ADD(NOW(), INTERVAL 7 HOUR) WHERE billID = $billID";
+                    $query2 = "UPDATE Bill SET billStatus = '$billStatus', billTime = CONVERT_TZ(NOW(),@@session.time_zone,'+07:00') WHERE billID = $billID";
                     mysqli_query($conn->getDatabase(), $query1);
                     mysqli_query($conn->getDatabase(), $query2);   
                 }
@@ -143,6 +143,7 @@
                                     <td>ราคารวม(฿)</td>
                                 </tr>';
                                 $sqlB = "SELECT * FROM Bill  WHERE tableID = $tableid";
+                                $resultBill = mysqli_query($conn->getDatabase(), $sqlB);
                                 $object = mysqli_fetch_assoc(mysqli_query($conn->getDatabase(), $sqlB));
                                 $billId = $object['billID'];
                                 $orderid = $object['orderid'];
@@ -190,9 +191,8 @@
                             </div>
                             <div class="col-6 col-md-6" style="text-align: right;">';
 
-                        $sqlBill = "SELECT * FROM Bill WHERE tableID = $tableid;";
-                        $objectBill = mysqli_query($conn->getDatabase(), $sqlBill);
-                                while ($rowobject = mysqli_fetch_assoc($objectBill)) {
+                   
+                                while ($rowobject = mysqli_fetch_assoc($resultBill)) {
                                 echo '<p>'.$rowobject['billTotal'].'.00</p>';
                                 }
 

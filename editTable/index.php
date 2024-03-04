@@ -59,7 +59,7 @@
                     $tableStatus = $_POST['table_status'];
                     
                     if($tableStatus == 'full'){
-                        $query = "UPDATE Tables SET table_status = '$tableStatus', checkIn = DATE_ADD(NOW(), INTERVAL 7 HOUR) WHERE tableID = $tableID";
+                        $query = "UPDATE Tables SET table_status = '$tableStatus', checkIn = CONVERT_TZ(NOW(),@@session.time_zone,'+07:00') WHERE tableID = $tableID";
                         mysqli_query($conn->getDatabase(), $query);
                     }
                     else{
