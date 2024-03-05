@@ -2,14 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="icon" type="png" sizes="96x96" href="image_logo/logo.png" />
+    <link rel="icon" type="png" sizes="96x96" href="../image_logo/logo.png" />
     <link href="menus.css" rel="stylesheet" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css'><link rel="stylesheet" href="./menus.css">
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 	<!-- <link rel="stylesheet"><script src="https://kit.fontawesome.com/c1134aa968.js" crossorigin="anonymous"></script> -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-	<title>Basket</title>
+	<title>เมนู</title>
 	
 
 </head>
@@ -116,34 +116,37 @@
 
 	<div style="height: 100px;"></div>
 
-	<div class="containerr">
-		<div style="display: flex;">
-		<h1 style="color: #fff; margin-top: 3%; margin-left: 15%;"> เมนูรายการอาหาร </h1>
-		<button class="custom-btn3 btn-2" style="width: 100px; margin-top: 3%; margin-left: 35%" id="basket" onclick="location.href = '../basket/basket.php';"> 
-							<img src="../image_logo/shopping-cart.png">
-							ตระกร้า 
-		</button> 
-		
-						
-			
-		</div>
-		<hr>
-		<div class="boxfood">
-			<div style="display: flex;">
-				<div class="btncenter" style="background-color: #1a1a1a; margin-left: 15%;">
-					<div>
-						<button class="custom-btn3 btn-2" onclick="filter('card')">ทั้งหมด</button>
-						<button class="custom-btn3 btn-2" onclick="filter('main')" >จานหลัก</button>
-						<button class="custom-btn3 btn-2" onclick="filter('soup')">ซุป</button>
-						<button class="custom-btn3 btn-2" onclick="filter('snack')">ทานเล่น</button>
-						<button class="custom-btn3 btn-2" onclick="filter('dessert')">ของหวาน</button>
-						<button class="custom-btn3 btn-2" onclick="filter('drink')">เครื่องดื่ม</button>
-						
-					</div>
-
-				</div>
-				
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-4">
+				<h1 style="color: #fff; margin-top: 3%; margin-left: 15%;">หมวดหมู่</h1>
 			</div>
+			<div class="col-8">
+				<div class="boxfood">
+					<div style="display: flex; justify-content: center;">
+						<div class="btnhead">
+							<div>
+								<button class="custom-btn3 btn-2" onclick="filter('card')">ทั้งหมด</button>
+								<button class="custom-btn3 btn-2" onclick="filter('main')" >จานหลัก</button>
+								<button class="custom-btn3 btn-2" onclick="filter('soup')">ซุป</button>
+								<button class="custom-btn3 btn-2" onclick="filter('snack')">ทานเล่น</button>
+								<button class="custom-btn3 btn-2" onclick="filter('dessert')">ของหวาน</button>
+								<button class="custom-btn3 btn-2" onclick="filter('drink')">เครื่องดื่ม</button>
+								<button class="custom-btn4 btn-2" id="basket"
+									 onclick="location.href = '../basket/basket.php';"><img src="../image_logo/shopping-cart.png">
+									ตระกร้า 
+								</button> 
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+<hr style="border-top: 1px solid azure; width: 90%;">
+
+
 			<div class="mainboxx">
 
 			<?php
@@ -159,13 +162,13 @@
 				
 				$typefood = $row["menu_type"];
 				$foodid = $row["menuID"];
-				echo "<div class=\"card $typefood\" style=\"width: 18rem; border-radius: 15px; overflow: hidden; border: none; box-shadow: none;\">".
-
+			echo "<div class=\"card $typefood \" style=\"width: 18rem; height: 20rem; border-radius:15px; border: none; overflow: hidden;\">". 
 					"<img class=\"card-img-top\" src=\"../image_menu/".$row["image_menu"] . "\"> " .
 					"<div class=\"card-body\">".
-						"<h5 class=\"card-title\" style=\"margin-left:2%;\"> <strong>" . $row["menu_name"]. " </strong> </h5>". 
-						"<p class=\"card-text\" style=\"font-size:25px; color: red; margin-bottom: 0 ;text-align: right;
-						margin-right: 12%; \">".$row["menu_price"]. " ฿ <br>" . "</p> ". 
+					"<div class=\"title-price-container\">".
+						"<h5 class=\"card-title\"> <strong>" . $row["menu_name"]. " </strong> </h5>". 
+						"<p class=\"card-text\">".$row["menu_price"]. " ฿ </p>". 
+					"</div>".
 						"<div style=\"display: flex\">
 							<div class=\"qty mt-5\" style=\"margin-top: 1rem!important; margin-left: 3%\">
 								<span class=\"minus bg-dark \" onclick=\"minus('$foodid')\">-</span>
@@ -198,6 +201,7 @@
 			</div>
 		</div>
    </div>
+
 
 
 	
