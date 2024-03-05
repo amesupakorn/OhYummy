@@ -284,10 +284,10 @@ hr{
 
   .custom-btn4{
 	margin-top: 1%;
-    width:100px;
+    width:50px;
     height: 35px;
     padding: 5px 3px;
-    border-radius: 20px;
+    border-radius: 30px;
 	border: none;
     font-family: Noto Sans Thai, sans-serif;
     font-weight: 500;
@@ -299,7 +299,7 @@ hr{
     display: inline-block;
     text-align: center;
     color: #fffdfd;
-    background-color: #d53a3a;
+    background-color: #ff0000;
   }
 
   .btnhead{

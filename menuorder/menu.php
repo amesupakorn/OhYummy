@@ -9,6 +9,8 @@
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 	<!-- <link rel="stylesheet"><script src="https://kit.fontawesome.com/c1134aa968.js" crossorigin="anonymous"></script> -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+	<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/boxicons@2.0.0/css/boxicons.min.css'><link rel="stylesheet" href="./style.css">
+
 	<title>เมนู</title>
 	
 
@@ -114,12 +116,12 @@
 
 	?>
 
-	<div style="height: 100px;"></div>
+	<div style="height: 120px;"></div>
 
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-4">
-				<h1 style="color: #fff; margin-top: 3%; margin-left: 15%;">หมวดหมู่</h1>
+				<h2 style="color: #fff; margin-top: 5%; margin-left: 20%;">หมวดหมู่</h2>
 			</div>
 			<div class="col-8">
 				<div class="boxfood">
@@ -133,8 +135,10 @@
 								<button class="custom-btn3 btn-2" onclick="filter('dessert')">ของหวาน</button>
 								<button class="custom-btn3 btn-2" onclick="filter('drink')">เครื่องดื่ม</button>
 								<button class="custom-btn4 btn-2" id="basket"
-									 onclick="location.href = '../basket/basket.php';"><img src="../image_logo/shopping-cart.png">
-									ตระกร้า 
+									 onclick="location.href = '../basket/basket.php';"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">
+  <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l1.313 7h8.17l1.313-7zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2"/>
+</svg>
+									
 								</button> 
 							</div>
 						</div>
