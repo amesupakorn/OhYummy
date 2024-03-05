@@ -1,106 +1,76 @@
-/* Please ❤ this if you like it! */
-(function($) { "use strict";
+const header = document.querySelector(".calendar h3");
+const dates = document.querySelector(".dates");
+const navs = document.querySelectorAll("#prev, #next");
 
-	$(function() {
-		var header = $(".start-style");
-		$(window).scroll(function() {    
-			var scroll = $(window).scrollTop();
-		
-			if (scroll >= 10) {
-				header.removeClass('start-style').addClass("scroll-on");
-			} else {
-				header.removeClass("scroll-on").addClass('start-style');
-			}
-		});
-	});		
-		
-	//Menu On Hover
-		
-	$('body').on('mouseenter mouseleave','.nav-item',function(e){
-			if ($(window).width() > 1000) {
-				var _d=$(e.target).closest('.nav-item');_d.addClass('show');
-				setTimeout(function(){
-				_d[_d.is(':hover')?'addClass':'removeClass']('show');
-				},1);
-			}
-	});	
-	
-	//Switch light/dark
-	
-	$("#switch").on('click', function () {
-		if ($("body").hasClass("dark")) {
-			$("body").removeClass("dark");
-			$("#switch").removeClass("switched");
-		}
-		else {
-			$("body").addClass("dark");
-			$("#switch").addClass("switched");
-		}
-	});  
-	
-  })(jQuery);
+const months = [
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
+];
 
-//   //booktime
+let date = new Date();
+let month = date.getMonth();
+let year = date.getFullYear();
 
-//   let bookedTimes = [];
+function renderCalendar() {
+  const start = new Date(year, month, 1).getDay();
+  const endDate = new Date(year, month + 1, 0).getDate();
+  const end = new Date(year, month, endDate).getDay();
+  const endDatePrev = new Date(year, month, 0).getDate();
 
-// function bookTime() {
-//     const selectedDate = document.getElementById('date').value;
-//     const selectedTime = document.getElementById('time').value;
-//     const dateTime = `${selectedDate} ${selectedTime}`;
+  let datesHtml = "";
 
-//     if (bookedTimes.includes(dateTime)) {
-//         alert('This time slot is already booked. Please choose another time.');
-//     } else {
-//         bookedTimes.push(dateTime);
-//         alert('คุณจองโต๊ะเรียบร้อย!');
-//     }
-// }
+  for (let i = start; i > 0; i--) {
+    datesHtml += `<li class="inactive">${endDatePrev - i + 1}</li>`;
+  }
 
-// //จองเวลา
-// let selectedTimeSlot = null;
+  for (let i = 1; i <= endDate; i++) {
+    let className =
+      i === date.getDate() &&
+      month === new Date().getMonth() &&
+      year === new Date().getFullYear()
+        ? ' class="today"'
+        : "";
+    datesHtml += `<li${className}>${i}</li>`;
+  }
 
-//         function selectTime(element) {
-//             if (selectedTimeSlot) {
-//                 // ถ้ามีเวลาที่ถูกเลือกอยู่แล้ว
-//                 // ให้ลบคลาส 'selected' ออกจากเวลาที่ถูกเลือก
-//                 selectedTimeSlot.classList.remove('selected');
-//             }
+  for (let i = end; i < 6; i++) {
+    datesHtml += `<li class="inactive">${i - end + 1}</li>`;
+  }
 
-//             // เลือกเวลาใหม่
-//             selectedTimeSlot = element;
-//             // เพิ่มคลาส 'selected' ในเวลาที่ถูกเลือก
-//             selectedTimeSlot.classList.add('selected');
-//         }
-
-function check(){
-		// ดึงค่าวันที่จาก input
-		var dateValue = document.getElementById('date').value;
-	
-		// ตรวจสอบว่ามีค่าวันที่หรือไม่
-		let formData = new URLSearchParams();
-        
-        formData.append('datecheck', dateValue);
-	
-
-        fetch('./index.php', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded',
-            },
-            body: formData.toString()
-        })
-        .then(response => {
-            if (response.ok) {
-				alert('done')
-         
-                return response.text();
-            }
-            throw new Error('Network response was not ok.');
-        })
-        .catch(error => {
-            alert('There was a problem with the fetch operation: ' + error.message);
-        });
-	
+  dates.innerHTML = datesHtml;
+  header.textContent = `${months[month]} ${year}`;
 }
 
+navs.forEach((nav) => {
+  nav.addEventListener("click", (e) => {
+    const btnId = e.target.id;
+
+    if (btnId === "prev" && month === 0) {
+      year--;
+      month = 11;
+    } else if (btnId === "next" && month === 11) {
+      year++;
+      month = 0;
+    } else {
+      month = btnId === "next" ? month + 1 : month - 1;
+    }
+
+    date = new Date(year, month, new Date().getDate());
+    year = date.getFullYear();
+    month = date.getMonth();
+
+    renderCalendar();
+  });
+});
+
+renderCalendar();
