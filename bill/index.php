@@ -86,6 +86,7 @@
             <div class="col-12 col-lg-12">
                 <div class="tableshow">
                     <img class="imgtab" src="table_image/tabtable.png" alt="">
+                    <div class="container">
                     <div class="grid-container">
                         <div class="grid-item"> 
                         <?php
@@ -108,6 +109,7 @@
                               }
                             ?>
 
+                        </div>
                         </div>
                     </div>
                     <div style="height: 100px;">
