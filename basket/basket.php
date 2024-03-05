@@ -278,20 +278,25 @@
 										echo "<div class=\"col-6 col-md-6\" style=\"text-align: right;\">";
 										echo "<p>" . $row['Total'] . ".00 ฿</p>";
 										echo "</div>";
+										echo '</div>
+												<button type="button" class="btn btn-success btn-block" onclick="submitorder()">ยืนยันการสั่งอาหาร</button>
+												<div style="height: 20px;"></div>
+											 </div>';
 									}
 									else{
 										echo "<div class=\"col-6 col-md-6\" style=\"text-align: right;\">";
 										echo "<p>0.00 ฿</p>";
 										echo "</div>";
+										echo '</div>
+												<button type="button" class="btn btn-success btn-block" onclick="submitnone()">ยืนยันการสั่งอาหาร</button>
+												<div style="height: 20px;"></div>
+											 </div>';
 									}
 								}
 							}
 
 							?>
-								</div>
-									<button type="button" class="btn btn-success btn-block" onclick="submitorder()">ยืนยันการสั่งอาหาร</button>
-									<div style="height: 20px;"></div>
-								</div>
+								
 						</div>
 					
 				
