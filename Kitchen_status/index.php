@@ -45,9 +45,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		} else {
 			$query = "UPDATE OrderTable SET orderStatus = '$orderStatus'  WHERE orderID = $orderID";
 			mysqli_query($conn->getDatabase(), $query);
-
-			$insert_sql = "INSERT INTO Bill(tableId, billTotal, orderid, billStatus) VALUES  ($tableID, $orderTotal, $orderID, 'no')";
-			mysqli_query($conn->getDatabase(), $insert_sql);
 		}
 	}
 }
@@ -117,7 +114,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	    <div style="height: 10px;"></div>
 
 
-	<div class="container-fluid mx-5">
+	<div class="container mx-5">
 		<div class="row">
 
 			<?php
@@ -131,7 +128,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 						if ($row['orderStatus'] == "take" || $row['orderStatus'] == "doing") {
 						echo
-						'<div class= "col-3 py-20">
+						'<div class= "col-4 py-20">
 							<div class="card" style="width: 370px;">
 								<div class="card-bg">
 									<h3 class="card-title text-center" style="line-height: 80px; color: white;">โต็ะ หมายเลข ' . $row['tableid'] . '</h3>
