@@ -154,7 +154,7 @@ function printQRCode(id) {
     // สร้างตัวแปรใหม่สำหรับ QR Code
     
     const qrCodeImg = document.createElement('img');
-    qrCodeImg.src = 'https://chart.googleapis.com/chart?chs=300x300&cht=qr&chl=https://amesupakorn.github.io/webyummy/?tabled='+ id +'\'';
+    qrCodeImg.src = 'https://chart.googleapis.com/chart?chs=300x300&cht=qr&chl=https://amesupakorn.github.io/webyummy/?tabled='+ id;
 
     // สร้างตัวพิมพ์ใหม่
     const printWindow = window.open('', '_blank');
