@@ -166,11 +166,11 @@ body{
 	margin: 2rem;
 }
 
-.boxfood{
-	width: auto;
-	height: auto;
-	background-color: #1a1a1a;
+hr{
+    border-top: 1px solid azure;
 }
+
+
 
 
 
@@ -229,13 +229,12 @@ body{
 /* -------------------------------------------------------------- */
 
 .custom-btn2 {
-    margin-top: 1%;
+    margin-top: 3%;
     width: 120px;
-    height: 50px;
+    height: 45px;
     /* padding: 10px 20px; */
-    border: 2px solid #ffffff;
-    border-radius: 20px;
-    font-family: Noto Sans Thai, sans-serif;
+    border: none;
+    border-radius: 25px;
     font-weight: 500;
     background: transparent;
     cursor: pointer;
@@ -244,7 +243,7 @@ body{
     display: inline-block;
     text-align: center;
     color: #fffdfd;
-    background-color: #d53a3a;
+    background-color: #D31010;
   }
 
 
@@ -254,27 +253,23 @@ body{
   }
   .btn-2:hover {
     background: #000000;
-    color: #ffffff;
-    border: 2px solid #fff;
+    color: hwb(0 100% 0%);
 
   }
   .btn-2:before {
       position: absolute;
       content: '';
       display: inline-block;
-      top: -180px;
       left: 0;
-      width: 30px;
-      height: 100%;
       background-color: #e51a1a;
   }
   .custom-btn3 {
     margin-top: 1%;
-    width: 70px;
-    height: 50px;
-    padding: 10px 3px;
+    width: 90px;
+    height: 35px;
+    padding: 3px 1px;
     border-radius: 20px;
-	border: 2px solid #d53a3a;
+	border: none;
     font-family: Noto Sans Thai, sans-serif;
     font-weight: 500;
 	font-size: 15px;
@@ -285,7 +280,31 @@ body{
     display: inline-block;
     text-align: center;
     color: #fffdfd;
-    background-color: #d53a3a;
+    background-color: #D31010;
+  }
+
+  .custom-btn4{
+	margin-top: 1%;
+    width:50px;
+    height: 35px;
+    padding: 5px 3px;
+    border-radius: 30px;
+	border: none;
+    font-family: Noto Sans Thai, sans-serif;
+    font-weight: 500;
+	font-size: 15px;
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    display: inline-block;
+    text-align: center;
+    color: #fffdfd;
+    background-color: #ff0000;
+  }
+
+  .btnhead{
+	margin-top: 2%;
   }
 
   .qty .count {
@@ -355,4 +374,213 @@ input:disabled{
   
 	padding: 5px 20px;
 	border-radius: 50px;
+  }
+
+  /* คอนเทนเนอร์ flex ใหม่สำหรับชื่อและราคา */
+.title-price-container {
+    display: flex;
+    justify-content: space-between; /* จัดชิดกับด้านข้าง */
+    align-items: center; /* จัดกึ่งกลางแนวตั้ง */
+    width: 100%; /* ให้ระยะขอบของคอนเทนเนอร์เต็ม */
+}
+
+.card-title {
+	margin-top: 5%;
+    margin-left: 2%; /* ปรับให้เหมาะสมตามที่ต้องการ */
+    margin-bottom: 0; /* ลบขอบเขตระยะของด้านล่าง */
+    font-size: 1rem; /* ปรับขนาดตัวอักษรตามที่ต้องการ */
+    /* ลบสไตล์อินไลน์ margin-left:2%; */
+}
+
+.card-text {
+	margin-right: 8%;
+    font-size: 25px; /* คงไว้เป็นขนาดตัวอักษรเดิม */
+    color: red; /* คงไว้เป็นสีของข้อความเดิม */
+    margin-bottom: 0; /* ลบช่องว่างด้านล่าง */
+    text-align: right; /* จัดให้ราคาอยู่ทางขวา */
+    /* ลบสไตล์อินไลน์สำหรับ text-align */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+.cart {
+
+	margin-top: 1%;
+    width: 80px;
+    height: 35px;
+    padding: 5px 3px;
+    border-radius: 25px;
+	border: none;
+    font-weight: 500;
+	font-size: 15px;
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    display: inline-block;
+    text-align: center;
+    color: #fffdfd;
+    background-color: #e50d0d;
+	align-items: center;
+  }
+  .cart:before {
+	
+	box-sizing: border-box;
+	content: attr(data-totalitems);
+	font-size: 12px;
+	font-weight: 600;
+	position: absolute;
+	top: -12px;
+	right: -12px;
+	background: #2bd156;
+	line-height: 24px;
+	padding: 0 5px;
+	height: 24px;
+	min-width: 24px;
+	color: white;
+	text-align: center;
+	border-radius: 24px;
+  }
+
+
+.btnbas{
+	margin-top: 30%;
+}
+
+footer{
+	color: #fff;
+	background-color: hsl(0, 0%, 9%);
+    text-align: center;
+
+}
+
+footer img{
+    height: 40px;
+    width: auto;
+}
+
+.carousel{
+	width: 100%;
+}
+
+
+/* Tablet and up */
+
+@media screen and (min-width: 768px) {
+	.carousel-inner .active,
+	.carousel-inner .active+.carousel-item {
+	  display: block;
+	}
+	.carousel-inner .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left),
+	.carousel-inner .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left)+.carousel-item {
+	  transition: none;
+	}
+	.carousel-inner .carousel-item-next,
+	.carousel-inner .carousel-item-prev {
+	  position: relative;
+	  transform: translate3d(0, 0, 0);
+	}
+	.carousel-inner .active.carousel-item+.carousel-item+.carousel-item+.carousel-item {
+		position: absolute;
+		top: 0;
+		right: -33.3333%;
+		z-index: -1;
+		display: block;
+		visibility: visible;
+		transition: top 1s ease; /* เพิ่ม transition ให้กับ top property */
+	}
+	/* left or forward direction */
+	.active.carousel-item-left+.carousel-item-next.carousel-item-left,
+	.carousel-item-next.carousel-item-left+.carousel-item {
+	  position: relative;
+	  transform: translate3d(-100%, 0, 0);
+	  visibility: visible;
+	}
+	/* farthest right hidden item must be abso position for animations */
+	.carousel-inner .carousel-item-prev.carousel-item-right {
+	  position: absolute;
+	  top: 0;
+	  left: 0;
+	  z-index: -1;
+	  display: block;
+	  visibility: visible;
+	}
+	/* right or prev direction */
+	.active.carousel-item-right+.carousel-item-prev.carousel-item-right,
+	.carousel-item-prev.carousel-item-right+.carousel-item {
+	  position: relative;
+	  transform: translate3d(100%, 0, 0);
+	  visibility: visible;
+	  display: block;
+	  visibility: visible;
+	}
+  }
+  
+  /* Desktop and up */
+  
+  @media screen and (min-width: 992px) {
+	.carousel-inner .active,
+	.carousel-inner .active+.carousel-item,
+	.carousel-inner .active+.carousel-item+.carousel-item {
+	  display: block;
+	}
+	.carousel-inner .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left),
+	.carousel-inner .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left)+.carousel-item,
+	.carousel-inner .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left)+.carousel-item+.carousel-item {
+	  transition: none;
+	}
+	.carousel-inner .carousel-item-next,
+	.carousel-inner .carousel-item-prev {
+	  position: relative;
+	  transform: translate3d(0, 0, 0);
+	}
+	.carousel-inner .active.carousel-item+.carousel-item+.carousel-item+.carousel-item {
+		position: absolute;
+		top: 0;
+		right: -33.3333%;
+		z-index: -1;
+		display: block;
+		visibility: visible;
+		transition: top 2s ease; /* เพิ่ม transition ให้กับ top property */
+	}
+	/* left or forward direction */
+	.active.carousel-item-left+.carousel-item-next.carousel-item-left,
+	.carousel-item-next.carousel-item-left+.carousel-item,
+	.carousel-item-next.carousel-item-left+.carousel-item+.carousel-item,
+	.carousel-item-next.carousel-item-left+.carousel-item+.carousel-item+.carousel-item {
+	  position: relative;
+	  transform: translate3d(-100%, 0, 0);
+	  visibility: visible;
+	}
+	/* farthest right hidden item must be abso position for animations */
+	.carousel-inner .carousel-item-prev.carousel-item-right {
+	  position: absolute;
+	  top: 0;
+	  left: 0;
+	  z-index: -1;
+	  display: block;
+	  visibility: visible;
+	  transition: top 2s ease; /* เพิ่ม transition ให้กับ top property */
+
+	}
+	/* right or prev direction */
+	.active.carousel-item-right+.carousel-item-prev.carousel-item-right,
+	.carousel-item-prev.carousel-item-right+.carousel-item,
+	.carousel-item-prev.carousel-item-right+.carousel-item+.carousel-item,
+	.carousel-item-prev.carousel-item-right+.carousel-item+.carousel-item+.carousel-item {
+	  position: relative;
+	  transform: translate3d(100%, 0, 0);
+	  visibility: visible;
+	  display: block;
+	  visibility: visible;
+	}
   }

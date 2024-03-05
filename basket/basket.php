@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>cart</title>
+	<title>ตะกร้าของฉัน</title>
 	<meta charset="UTF-8">
-    <link rel="icon" type="png" sizes="96x96" href="image_logo/logo.png" />
+    <link rel="icon" type="png" sizes="96x96" href="../image_logo/logo.png" />
     <link href="./basketstyles.css" rel="stylesheet" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css'>
@@ -11,6 +11,8 @@
 	<!-- <script src="https://kit.fontawesome.com/c1134aa968.js" crossorigin="anonymous"></script> -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 	<link rel="stylesheet" href="./basketstyles.css">
+	<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/boxicons@2.0.0/css/boxicons.min.css'>
+
 
 </head>
 <body style="background-color: #1a1a1a; color: #ffffff; font-family: Noto Sans Thai, sans-serif;">
@@ -41,9 +43,11 @@
 									</li>';
 							}else{
 								echo '<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
-								<a class="nav-link" href="">สถานะออเดอร์ของฉัน</a>
+								<a class="nav-link" href="../Check_status/index.php">สถานะออเดอร์ของฉัน</a>
 							</li>';
 							}
+
+
 							?>
 							
 							
@@ -144,7 +148,10 @@
 						}else{
 						  echo '<div class="menu-card">
 									<div class="textmenucard">
-											<h3>ยังไม่มีรายการอาหารที่สั่ง</h3>
+											<h3><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-bag-x" viewBox="0 0 16 20">
+											<path fill-rule="evenodd" d="M6.146 8.146a.5.5 0 0 1 .708 0L8 9.293l1.146-1.147a.5.5 0 1 1 .708.708L8.707 10l1.147 1.146a.5.5 0 0 1-.708.708L8 10.707l-1.146 1.147a.5.5 0 0 1-.708-.708L7.293 10 6.146 8.854a.5.5 0 0 1 0-.708"/>
+											<path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1m3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1z"/>
+										  </svg>ยังไม่มีรายการอาหารที่สั่ง</h3>
 									</div>
 								</div>';
 
@@ -174,6 +181,55 @@
 								$foodid = $_POST['foodid'];
 								$deletee = "DELETE FROM BasketOrder WHERE menuId = $foodid AND tableId = $tableID";
 								mysqli_query($conn->getDatabase(), $deletee);
+							}
+
+							if(isset($_POST['submitOrder'])){
+								
+
+								$sqlr = "SELECT SUM(menuTotal) as Total FROM BasketOrder WHERE tableId = $tableID";
+								$resultTotal =  mysqli_fetch_assoc(mysqli_query($conn->getDatabase(), $sqlr));
+								$total = $resultTotal['Total'];
+								
+								// สร้างอาร์เรย์เพื่อเก็บรายละเอียดการสั่งซื้อ
+								$orderData = array();
+
+								// คิวรีเพื่อเลือกรายละเอียดการสั่งซื้อจากตาราง BasketOrder
+								$sqlOrder = "SELECT * FROM BasketOrder WHERE tableId = $tableID";
+								$resultOrder = mysqli_query($conn->getDatabase(), $sqlOrder);
+
+								// ตรวจสอบว่ามีแถวที่ถูกส่งกลับจากคิวรีหรือไม่
+								if ($resultOrder->num_rows > 0) {
+									// วนลูปผ่านทุกแถวของผลลัพธ์
+									while($row = $resultOrder->fetch_assoc()) {
+										// นำ menuId และ menuCount เข้าไปในอาร์เรย์ $orderData
+										$orderData[] = array(
+											"menuId" => $row['menuId'],
+											"menuCount" => $row['countMenu']
+										);
+									}
+								}
+
+								// สร้างสตริง JSON
+								$json_data = array(
+									"order" => $orderData // เพิ่มอาร์เรย์ $orderData เข้าไปใน key "order"
+								);
+
+						
+								$order_menu_json = json_encode($json_data); // แปลง array เป็น JSON
+								$num = mysqli_num_rows($conn->executeQuery("OrderTable"))+1;
+								$sql = $sql = "INSERT INTO OrderTable(orderMenu, tableid, orderTime, orderStatus, orderTotal) 
+								VALUES ('$order_menu_json', $tableID, CONVERT_TZ(NOW(),@@session.time_zone,'+07:00'), 'take', $total)";
+								mysqli_query($conn->getDatabase(), $sql);
+
+								$orderid = mysqli_insert_id($conn->getDatabase());
+
+								$insert_sql = "INSERT INTO Bill(tableId, billTotal, orderid, billStatus) VALUES  ($tableID, $total, $orderid, 'no')";
+								mysqli_query($conn->getDatabase(), $insert_sql);
+								$sqldel = "DELETE FROM BasketOrder WHERE tableId = $tableID";
+								mysqli_query($conn->getDatabase(), $sqldel);
+								$sqltel = "UPDATE Tables SET table_status = 'full' WHERE tableID = $tableID";
+								mysqli_query($conn->getDatabase(), $sqltel);
+								
 							}
 									
 
@@ -218,35 +274,55 @@
 							$resulty =  mysqli_query($conn->getDatabase(), $sqlr);
 							if ($resulty->num_rows > 0) {
 								while($row = $resulty->fetch_assoc()) {
-									if($row['Total'] == ' '){
+									if(!($row['Total'] == '')){
 										echo "<div class=\"col-6 col-md-6\" style=\"text-align: right;\">";
 										echo "<p>" . $row['Total'] . ".00 ฿</p>";
 										echo "</div>";
+										echo '</div>
+												<button type="button" class="btn btn-success btn-block" onclick="submitorder()">ยืนยันการสั่งอาหาร</button>
+												<div style="height: 20px;"></div>
+											 </div>';
 									}
 									else{
 										echo "<div class=\"col-6 col-md-6\" style=\"text-align: right;\">";
 										echo "<p>0.00 ฿</p>";
 										echo "</div>";
+										echo '</div>
+												<button type="button" class="btn btn-success btn-block" onclick="submitnone()">ยืนยันการสั่งอาหาร</button>
+												<div style="height: 20px;"></div>
+											 </div>';
 									}
 								}
 							}
 
 							?>
-								</div>
-								<button type="button" class="btn btn-success btn-block" onclick="submitorder()">ยืนยันการสั่งอาหาร</button>
-								<div style="height: 20px;"></div>
-								</div>
+								
 						</div>
 					
 				
 				</div>
 			</div>
-			
+			<div style="height: 320px;"></div>
+	<footer>
+    <div style="height: 30px;"></div>
+
+      <div>
+        <p>หน้าหลัก | รายการอาหาร | จองโต๊ะ | รีวิวจากลูกค้า</p>
+      </div>
+      <img src="../image_logo/logotab.png" alt="">
+      <div style="height: 30px;"></div>
+      <div class="copyright">
+        &copy; OHYUMMY 2024
+      </div>
+      <div style="height: 30px;"></div>
+
+	</footer>
 
     <!-- --------------------------------------------------------------------------------- -->
 
 
 <!-- partial -->
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 	<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
 	<script src='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js'></script>
 	<script src="./basket.js"></script>

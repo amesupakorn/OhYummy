@@ -25,10 +25,52 @@
 				},1);
 			}
 	});	
+
+
+	
 	
 	
   })(jQuery);
 
+  (function ($) {
+	"use strict";
+	// Auto-scroll
+	$('#myCarousel').carousel({
+	  interval: 5000
+	});
+  
+	// Control buttons
+	$('.next').click(function () {
+	  $('.carousel').carousel('next');
+	  return false;
+	});
+	$('.prev').click(function () {
+	  $('.carousel').carousel('prev');
+	  return false;
+	});
+  
+	// On carousel scroll
+	$("#myCarousel").on("slide.bs.carousel", function (e) {
+	  var $e = $(e.relatedTarget);
+	  var idx = $e.index();
+	  var itemsPerSlide = 3;
+	  var totalItems = $(".carousel-item").length;
+	  if (idx >= totalItems - (itemsPerSlide - 1)) {
+		var it = itemsPerSlide -
+			(totalItems - idx);
+		for (var i = 0; i < it; i++) {
+		  // append slides to end 
+		  if (e.direction == "left") {
+			$(
+			  ".carousel-item").eq(i).appendTo(".carousel-inner");
+		  } else {
+			$(".carousel-item").eq(0).appendTo(".carousel-inner");
+		  }
+		}
+	  }
+	});
+  })
+  (jQuery);
 
 function filter(elem){
 	let m = document.querySelectorAll('.card');
@@ -42,23 +84,10 @@ function filter(elem){
 			b.appendChild(item)
 		}
 	});
-}
 
-// $(document).ready(function check(num){
-// 	$('.count').prop('disabled', true);
-// 	$(document).on('click','.plus',function(){
-// 	$('.count').val(parseInt($('.count').val()) + 1 );
-// 		if ($('.count').val() >= 100) {
-// 			$('.count').val(100); 
-// 		}
-// 	});
-// 	$(document).on('click','.minus',function(){
-// 		$('.count').val(parseInt($('.count').val()) - 1 );
-// 		if ($('.count').val() <= 1) {
-// 			$('.count').val(1);
-// 		}
-// 	});
-//  });
+
+
+}
 
 
 
@@ -89,14 +118,49 @@ function updateBasket(id) {
 	countfood = document.getElementById(id).value;
     formData.append('foodid', id);
     formData.append('count', countfood);
-	
-    fetch('./menu.php', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/x-www-form-urlencoded',
-        },
-        body: formData.toString()
-    })
-    
 
+	fetch('./menu.php', {
+		method: 'POST',
+		headers: {
+			'Content-Type': 'application/x-www-form-urlencoded',
+		},
+		body: formData.toString()	
+	})
+	.then(response => {
+		setTimeout(function() {
+			location.reload();
+		}, 1000);
+		return response.text();
+	})
+	.catch(error => {
+		alert('There was a problem with the fetch operation: ' + error.message);
+	});
+}
+	
+
+
+var counter = 10;
+
+// When we click "Add to Basket"...
+$('.custom-btn3').click(function(){
+  // Add the animation class
+  // Increase the counter
+  counter++;
+  // Add the new counter to the basket after 1s
+  var buttonCount = setTimeout(function(){
+    $('.basket').attr('data-count', counter);
+  }, 1000);
+  // Remove the animation classes after 1.5s
+  var wait = setTimeout(function(){
+    $('.item--helper, .basket').removeClass('added');
+  }, 1500);
+});
+
+function alertlogin(){
+	Swal.fire({
+		title: "โปรดติดต่อหน้าร้าน",
+		icon: "warning",
+		confirmButtonColor: "#3085d6",
+		confirmButtonText: "โอเค"
+	  })
 }

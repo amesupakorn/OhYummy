@@ -71,7 +71,7 @@ function fetchdata(foodid){
 			
 			setTimeout(function() {
 				location.reload();
-			}, 500);
+			}, 10);
 			return response.text();
 		}
 		throw new Error('Network response was not ok.');
@@ -114,7 +114,7 @@ function deleteCard(foodid){
 			if (response.ok) {
 				setTimeout(function() {
 					location.reload();
-				}, 500);
+				}, 10);
 				return response.text();
 			}
 			throw new Error('Network response was not ok.');
@@ -136,25 +136,57 @@ function updatedatabase(foodid){
 
 function submitorder(){
 	let formData = new URLSearchParams();
-	fetch('./basket.php', {
-		method: 'POST',
-		headers: {
-			'Content-Type': 'application/x-www-form-urlencoded',
-		},
-		body: formData.toString()
-	})
-
-	.then(response => {
-		if (response.ok) {
-			
-			setTimeout(function() {
-				location.reload();
-			}, 500);
-			return response.text();
+	formData.append('submitOrder', '1');
+	 
+	Swal.fire({
+		title: "ยืนยันการสั่งอาหาร",
+		text: "รายการอาหารจะไม่สามารถยกเลิกได้",
+		icon: "warning",
+		showCancelButton: true,
+		confirmButtonColor: "#137BFF",
+		cancelButtonColor: "#d33",
+		confirmButtonText: "ยืนยัน",
+		cancelButtonText: "ยกเลิก"
+  
+	}).then((result) => {
+  
+		if (result.isConfirmed) {
+		  
+			fetch('./basket.php', {
+					method: 'POST',
+					headers: {
+						'Content-Type': 'application/x-www-form-urlencoded',
+					},
+					body: formData.toString()
+				})
+				.then(response => {
+					if (response.ok) {
+						Swal.fire({
+							title: "ยืนยันออเดอร์",
+							icon: "success",
+							showConfirmButton: false,
+							timer: 3000
+  
+						});
+						setTimeout(function() {
+							window.location.href = "../Check_status/index.php";
+						}, 1000);
+						return response.text();
+					}
+					throw new Error('Network response was not ok.');
+				})
+				.catch(error => {
+					alert('There was a problem with the fetch operation: ' + error.message);
+				});
 		}
-		throw new Error('Network response was not ok.');
 	})
-	.catch(error => {
-		alert('There was a problem with the fetch operation: ' + error.message);
-	});
-}
+  }
+
+  function submitnone(){
+	Swal.fire({
+		title: "คุณยังไม่ได้สั่งสินค้า",
+		icon: "error",
+		confirmButtonColor: "#3085d6",
+		confirmButtonText: "โอเค"
+	  })
+  }
