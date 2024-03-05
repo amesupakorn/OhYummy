@@ -185,7 +185,7 @@ function submitorder(){
   function submitnone(){
 	Swal.fire({
 		title: "คุณยังไม่ได้สั่งสินค้า",
-		icon: "warning",
+		icon: "error",
 		confirmButtonColor: "#3085d6",
 		confirmButtonText: "โอเค"
 	  })
