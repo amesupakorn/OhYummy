@@ -142,7 +142,7 @@
                                     <td>จำนวน</td>
                                     <td>ราคารวม(฿)</td>
                                 </tr>';
-                                $sqlB = "SELECT * FROM Bill  WHERE tableID = $tableid";
+                                $sqlB = "SELECT * FROM Bill  WHERE tableID = $tableid AND billStatus = 'no'";
                                 $resultBill = mysqli_query($conn->getDatabase(), $sqlB);
                                 $object = mysqli_fetch_assoc(mysqli_query($conn->getDatabase(), $sqlB));
                                 $billId = $object['billID'];
@@ -215,7 +215,7 @@
                             <div class="bill-card container">
                             <h6><br>คิวอาร์โค้ด</h6>
                             <img src="Qr.jpg" alt="" class="col-12">';
-                    $sqlBill2 = "SELECT * FROM Bill WHERE tableID = $tableid;";
+                    $sqlBill2 = "SELECT * FROM Bill WHERE tableID = $tableid AND billStatus = 'no';";
                     $objectBill2 = mysqli_query($conn->getDatabase(), $sqlBill2);
                     while ($rowobject2 = mysqli_fetch_assoc($objectBill2)) {
                         echo '<div style="text-align: center;"><img src="http://promptpay.io/0900803496/'.$rowobject2['billTotal'].'.png"></div>
@@ -252,7 +252,7 @@
                                 <input type="text" class="form-control" id="moneyInput'.$tableid.'" style="height: 30px;">
                                 <div style="height: 13px;"></div>';
 
-                                $sqlBill3 = "SELECT * FROM Bill WHERE tableID = $tableid;";
+                                $sqlBill3 = "SELECT * FROM Bill WHERE tableID = $tableid AND billStatus = 'no';";
                                 $objectBill3 = mysqli_query($conn->getDatabase(), $sqlBill3);
                                 while ($rowobject3 = mysqli_fetch_assoc($objectBill3)) {
                                     echo '<p id="billTotal'.$tableid.'">'.$rowobject3['billTotal'].'.00</p>';
