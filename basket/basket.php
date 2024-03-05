@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>cart</title>
+	<title>ตะกร้าของฉัน</title>
 	<meta charset="UTF-8">
-    <link rel="icon" type="png" sizes="96x96" href="image_logo/logo.png" />
+    <link rel="icon" type="png" sizes="96x96" href="../image_logo/logo.png" />
     <link href="./basketstyles.css" rel="stylesheet" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css'>
@@ -227,6 +227,9 @@
 								mysqli_query($conn->getDatabase(), $insert_sql);
 								$sqldel = "DELETE FROM BasketOrder WHERE tableId = $tableID";
 								mysqli_query($conn->getDatabase(), $sqldel);
+								$sqltel = "UPDATE Tables SET table_status = 'full' WHERE tableID = $tableID";
+								mysqli_query($conn->getDatabase(), $sqltel);
+								
 							}
 									
 

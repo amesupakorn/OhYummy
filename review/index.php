@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css"
     />
     <link rel="stylesheet" href="./style.css" />
-    <title>Review</title>
+    <title>รีวิวและรายงาน</title>
   </head>
   <body
     style="
@@ -109,19 +109,19 @@
       </div>
       <hr><br><br>
       <div class="form-group">
-        <label for="review">ความคิดเห็น :)</label><br />
+        <label for="review">ความคิดเห็น :) <strong style="color: #DC0000;">*</strong></label><br />
         <textarea type="text" id="review" name="review" class="col-12" rows="8" placeholder="แสดงความคิดเห็นของท่าน"></textarea>
       </div>
       <div class="form-row">
         <div class="col">
           <div class="form-floating mb-3">
-            <label for="name">ชื่อ (Name)</label><br />
+            <label for="name">ชื่อ (Name) <strong style="color: #DC0000;">*</strong></label><br />
             <input  type="text" id="name" name="name" class="col-12"  placeholder="ชื่อ" />
           </div>
         </div>
         <div class="col">
           <div class="form-floating mb-3">
-            <label for="Tel">เบอร์โทรศัพท์สำหรับติดต่อ (Tel.)</label><br />
+            <label for="Tel">เบอร์โทรศัพท์สำหรับติดต่อ (Tel.) <strong style="color: #DC0000;">*</strong></label><br />
             <input    type="number" id="Tel" name="Tel" class="col-12"  placeholder="เบอร์โทรศัพท์"
             />
           </div>
@@ -156,37 +156,63 @@
       let name = document.getElementById("name").value;
       let tel = document.getElementById("Tel").value;
 
-        let formData = new URLSearchParams();
+      if(review == "" && name == "" && tel == ""){
+        Swal.fire({
+          icon: "error",
+          title: "โปรดกรอกข้อมูลให้ครบ"
+    });
+
+  } else{
+    
+    let formData = new URLSearchParams();
         formData.append('review', review);
         formData.append('name', name);
         formData.append('Tel', tel);
         
-        fetch('./index.php', {
-            method: 'POST',
-            headers: {
+        Swal.fire({
+        title: "ยืนยันการส่งรีวิว",
+        text: "การรีวิวนี้จะเป็นส่วนหนึ่งในหารปรับปรุงของเรา",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#137BFF",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "ยืนยัน",
+        cancelButtonText: "ยกเลิก"
+      
+      }).then((result) => {
+      
+        if (result.isConfirmed) {
+          
+          fetch('./review.php', {
+              method: 'POST',
+              headers: {
                 'Content-Type': 'application/x-www-form-urlencoded',
-            },
-            body: formData.toString()
-        })
-        .then(response => {
-            if (response.ok) {
+              },
+              body: formData.toString()
+            })
+            .then(response => {
+              if (response.ok) {
                 Swal.fire({
-                    icon: "success",
-                    title: "ข้อมูลการรีวิวของคุณบันทึกเรียบร้อย",
-                    showConfirmButton: false,
-                    timer: 3500
-                  });
+                  title: "ขอบคุณสำหรับรีวิวของคุณ",
+                  icon: "success",
+                  showConfirmButton: false,
+                  timer: 3000
+      
+                });
                 setTimeout(function() {
-                    location.reload();
-                }, 2000);
+                  location.reload();
+                }, 1000);
                 return response.text();
-            }
-            throw new Error('Network response was not ok.');
-        })
-        .catch(error => {
-            alert('There was a problem with the fetch operation: ' + error.message);
-        });
-      }
+              }
+              throw new Error('Network response was not ok.');
+            })
+            .catch(error => {
+              alert('There was a problem with the fetch operation: ' + error.message);
+            });
+
+		}
+    })
+  }}
     </script>
     <!-- partial -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>

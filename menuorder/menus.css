@@ -173,6 +173,7 @@ hr{
 
 
 
+
 /* #Media
 ================================================== */
 
@@ -242,7 +243,7 @@ hr{
     display: inline-block;
     text-align: center;
     color: #fffdfd;
-    background-color: #d53a3a;
+    background-color: #D31010;
   }
 
 
@@ -279,7 +280,7 @@ hr{
     display: inline-block;
     text-align: center;
     color: #fffdfd;
-    background-color: #d53a3a;
+    background-color: #D31010;
   }
 
   .custom-btn4{
@@ -409,6 +410,8 @@ input:disabled{
 
 
 
+
+
 .cart {
 
 	margin-top: 1%;
@@ -426,7 +429,7 @@ input:disabled{
     display: inline-block;
     text-align: center;
     color: #fffdfd;
-    background-color: #ff0000;
+    background-color: #e50d0d;
 	align-items: center;
   }
   .cart:before {
@@ -450,7 +453,7 @@ input:disabled{
 
 
 .btnbas{
-	margin-top: 8%;
+	margin-top: 30%;
 }
 
 footer{
@@ -464,3 +467,120 @@ footer img{
     height: 40px;
     width: auto;
 }
+
+.carousel{
+	width: 100%;
+}
+
+
+/* Tablet and up */
+
+@media screen and (min-width: 768px) {
+	.carousel-inner .active,
+	.carousel-inner .active+.carousel-item {
+	  display: block;
+	}
+	.carousel-inner .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left),
+	.carousel-inner .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left)+.carousel-item {
+	  transition: none;
+	}
+	.carousel-inner .carousel-item-next,
+	.carousel-inner .carousel-item-prev {
+	  position: relative;
+	  transform: translate3d(0, 0, 0);
+	}
+	.carousel-inner .active.carousel-item+.carousel-item+.carousel-item+.carousel-item {
+		position: absolute;
+		top: 0;
+		right: -33.3333%;
+		z-index: -1;
+		display: block;
+		visibility: visible;
+		transition: top 1s ease; /* เพิ่ม transition ให้กับ top property */
+	}
+	/* left or forward direction */
+	.active.carousel-item-left+.carousel-item-next.carousel-item-left,
+	.carousel-item-next.carousel-item-left+.carousel-item {
+	  position: relative;
+	  transform: translate3d(-100%, 0, 0);
+	  visibility: visible;
+	}
+	/* farthest right hidden item must be abso position for animations */
+	.carousel-inner .carousel-item-prev.carousel-item-right {
+	  position: absolute;
+	  top: 0;
+	  left: 0;
+	  z-index: -1;
+	  display: block;
+	  visibility: visible;
+	}
+	/* right or prev direction */
+	.active.carousel-item-right+.carousel-item-prev.carousel-item-right,
+	.carousel-item-prev.carousel-item-right+.carousel-item {
+	  position: relative;
+	  transform: translate3d(100%, 0, 0);
+	  visibility: visible;
+	  display: block;
+	  visibility: visible;
+	}
+  }
+  
+  /* Desktop and up */
+  
+  @media screen and (min-width: 992px) {
+	.carousel-inner .active,
+	.carousel-inner .active+.carousel-item,
+	.carousel-inner .active+.carousel-item+.carousel-item {
+	  display: block;
+	}
+	.carousel-inner .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left),
+	.carousel-inner .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left)+.carousel-item,
+	.carousel-inner .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left)+.carousel-item+.carousel-item {
+	  transition: none;
+	}
+	.carousel-inner .carousel-item-next,
+	.carousel-inner .carousel-item-prev {
+	  position: relative;
+	  transform: translate3d(0, 0, 0);
+	}
+	.carousel-inner .active.carousel-item+.carousel-item+.carousel-item+.carousel-item {
+		position: absolute;
+		top: 0;
+		right: -33.3333%;
+		z-index: -1;
+		display: block;
+		visibility: visible;
+		transition: top 2s ease; /* เพิ่ม transition ให้กับ top property */
+	}
+	/* left or forward direction */
+	.active.carousel-item-left+.carousel-item-next.carousel-item-left,
+	.carousel-item-next.carousel-item-left+.carousel-item,
+	.carousel-item-next.carousel-item-left+.carousel-item+.carousel-item,
+	.carousel-item-next.carousel-item-left+.carousel-item+.carousel-item+.carousel-item {
+	  position: relative;
+	  transform: translate3d(-100%, 0, 0);
+	  visibility: visible;
+	}
+	/* farthest right hidden item must be abso position for animations */
+	.carousel-inner .carousel-item-prev.carousel-item-right {
+	  position: absolute;
+	  top: 0;
+	  left: 0;
+	  z-index: -1;
+	  display: block;
+	  visibility: visible;
+	  transition: top 2s ease; /* เพิ่ม transition ให้กับ top property */
+
+	}
+	/* right or prev direction */
+	.active.carousel-item-right+.carousel-item-prev.carousel-item-right,
+	.carousel-item-prev.carousel-item-right+.carousel-item,
+	.carousel-item-prev.carousel-item-right+.carousel-item+.carousel-item,
+	.carousel-item-prev.carousel-item-right+.carousel-item+.carousel-item+.carousel-item {
+	  position: relative;
+	  transform: translate3d(100%, 0, 0);
+	  visibility: visible;
+	  display: block;
+	  visibility: visible;
+	}
+  }
