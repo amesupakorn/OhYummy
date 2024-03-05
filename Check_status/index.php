@@ -12,6 +12,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@100..900&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+
     <title>Check_status</title>
 </head>
 <?php
@@ -92,9 +94,11 @@ $order_status = "";
         </div>
     </div>
     <?php
-    $sql = "SELECT * FROM OrderTable 
-    JOIN Tables ON OrderTable.tableid = Tables.tableID
-    WHERE Tables.tableID = $tableID";
+    $sql = "SELECT *
+    FROM OrderTable o
+    JOIN Bill b ON o.orderid = b.orderid
+    JOIN Tables t ON o.tableid = t.tableID
+    WHERE t.tableID = $tableID AND b.billStatus = 'no';";
     $result = mysqli_query($conn->getDatabase(), $sql);
 
     if ($result) {
@@ -104,15 +108,20 @@ $order_status = "";
     }
 
 
+    if($result->num_rows > 0){
     if ($row = mysqli_fetch_assoc($result)) {
         $order_status = $row['orderStatus'];
         echo '<div style="height: 90px;"></div>
                     <div class="container">
                         <div class="centeritem">
                         <div class="texthead">
-                            <div style="height: 8px"></div>
-                            <h2 class="text-center">ออเดอร์ที่สั่ง</h2>
-                            <div style="height: 2px"></div>
+                            <div style="height: 10px"></div>
+                                <h2><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-bag-check" viewBox="0 0 16 20">
+                                <path fill-rule="evenodd" d="M10.854 8.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 0 1 .708-.708L7.5 10.793l2.646-2.647a.5.5 0 0 1 .708 0"/>
+                                <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1m3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1z"/>
+                              </svg>ออเดอร์ที่สั่ง</h2>
+                              <h5 style="color: black; display: inline; height: auto;">ข้อมูล ณ เวลา <p id="refreshTime" style="vertical-align: middle; display: inline; font-size: 18px;"></p></h5>
+                              <div style="height: 2px"></div>
                                 </div>
                             </div>
                         </div>
@@ -220,9 +229,25 @@ $order_status = "";
                     echo '</div>
                     </div>';
                 }
+            
             }
         }
     }
+} else{
+
+    echo '
+        <div style="height: 100px;"></div>
+            <div class="texthead">
+                <div style="height: 8px;"></div>
+                    <h4><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-bag-x" viewBox="0 0 16 20">
+                    <path fill-rule="evenodd" d="M6.146 8.146a.5.5 0 0 1 .708 0L8 9.293l1.146-1.147a.5.5 0 1 1 .708.708L8.707 10l1.147 1.146a.5.5 0 0 1-.708.708L8 10.707l-1.146 1.147a.5.5 0 0 1-.708-.708L7.293 10 6.146 8.854a.5.5 0 0 1 0-.708"/>
+                    <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1m3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1z"/>
+                  </svg>&nbsp;<span style="vertical-align: middle;">ไม่พบประวัติการสั่ง</span></h4>
+                <div style="height: 2px;"></div>
+            </div>
+            <div style="height: 400px;"></div>
+        ';
+}
     ?>
 
     </div>
@@ -234,9 +259,23 @@ $order_status = "";
 
 
 
+    <div style="height: 200px;"></div>
     <!-- --------------------------------------------------------------------------------- -->
 
+    <footer>
+    <div style="height: 30px;"></div>
 
+      <div>
+        <p>หน้าหลัก | รายการอาหาร | จองโต๊ะ | รีวิวจากลูกค้า</p>
+      </div>
+      <img src="../image_logo/logotab.png" alt="">
+      <div style="height: 30px;"></div>
+      <div class="copyright">
+        &copy; OHYUMMY 2024
+      </div>
+      <div style="height: 30px;"></div>
+
+	</footer>
 
     <!-- partial -->
     <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>

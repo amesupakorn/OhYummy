@@ -243,6 +243,7 @@ input[id="review"] {
   }
 
 footer{
+	color: #fff;
 	background-color: hsl(0, 0%, 9%);
     text-align: center;
 

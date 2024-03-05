@@ -29,3 +29,20 @@
 	});
 
 })(jQuery);
+
+
+function updateRefreshTime() {
+    var now = new Date();
+    var hours = now.getHours().toString().padStart(2, '0');
+    var minutes = now.getMinutes().toString().padStart(2, '0');
+    var refreshTime = hours + ':' + minutes;
+    document.getElementById('refreshTime').textContent = refreshTime;
+}
+
+// Call updateRefreshTime() function when page is loaded
+updateRefreshTime();
+
+// Call updateRefreshTime() function whenever page is refreshed
+window.onbeforeunload = function() {
+    updateRefreshTime();
+};

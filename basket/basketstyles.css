@@ -376,3 +376,15 @@ table, td, th {
 	padding: 5px 20px;
 	border-radius: 50px;
   }
+
+  footer{
+	color: #fff;
+	background-color: hsl(0, 0%, 9%);
+    text-align: center;
+
+}
+
+footer img{
+    height: 40px;
+    width: auto;
+}

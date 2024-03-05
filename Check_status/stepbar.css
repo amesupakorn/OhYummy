@@ -642,16 +642,40 @@ hr {
 	border-radius: 50px;
   }
 
-  .texthead h2{
-    color: #ffffff;
-
-    font-weight: 600;
-  }
-  
   .texthead{
     color: #ffffff;
     border-radius: 20px;
     margin-left: 25%;
     width: 50%;
     /* height: auto; background-color: white; box-shadow: 0 2px 1px 0 rgba(0, 0, 0, 0.115); font-weight: 500; */
+  }
+
+
+footer{
+	color: #fff;
+	background-color: hsl(0, 0%, 9%);
+    text-align: center;
+
+}
+
+footer img{
+    height: 40px;
+    width: auto;
+}
+
+.texthead h4{
+
+    color: #000;
+    font-weight: 600;
+  }
+  
+  .texthead{
+    text-align: center;
+    border-radius: 50px;
+    width: 50%;
+    height: auto; background-color: white; box-shadow: 0 2px 1px 0 rgba(0, 0, 0, 0.115); font-weight: 500;
+  }
+
+  .texthead h2{
+    color: black;
   }

@@ -168,9 +168,9 @@ function submitorder(){
 							timer: 3000
   
 						});
-						setTimeout(function() {
-							window.location.href = "../Check_status/index.php";
-						}, 1000);
+						// setTimeout(function() {
+						// 	window.location.href = "../Check_status/index.php";
+						// }, 1000);
 						return response.text();
 					}
 					throw new Error('Network response was not ok.');

@@ -216,8 +216,12 @@
 								$num = mysqli_num_rows($conn->executeQuery("OrderTable"))+1;
 								$sql = $sql = "INSERT INTO OrderTable(orderMenu, tableid, orderTime, orderStatus, orderTotal) 
 								VALUES ('$order_menu_json', $tableID, CONVERT_TZ(NOW(),@@session.time_zone,'+07:00'), 'take', $total)";
-						
-														mysqli_query($conn->getDatabase(), $sql);
+								mysqli_query($conn->getDatabase(), $sql);
+
+								$orderid = mysqli_insert_id($conn->getDatabase());
+
+								$insert_sql = "INSERT INTO Bill(tableId, billTotal, orderid, billStatus) VALUES  ($tableID, $total, $orderid, 'no')";
+								mysqli_query($conn->getDatabase(), $insert_sql);
 								$sqldel = "DELETE FROM BasketOrder WHERE tableId = $tableID";
 								mysqli_query($conn->getDatabase(), $sqldel);
 							}
@@ -287,7 +291,20 @@
 				
 				</div>
 			</div>
-			
+	<footer>
+    <div style="height: 30px;"></div>
+
+      <div>
+        <p>หน้าหลัก | รายการอาหาร | จองโต๊ะ | รีวิวจากลูกค้า</p>
+      </div>
+      <img src="../image_logo/logotab.png" alt="">
+      <div style="height: 30px;"></div>
+      <div class="copyright">
+        &copy; OHYUMMY 2024
+      </div>
+      <div style="height: 30px;"></div>
+
+	</footer>
 
     <!-- --------------------------------------------------------------------------------- -->
 
