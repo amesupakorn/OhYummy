@@ -115,7 +115,7 @@ $order_status = "";
                     <div class="container">
                         <div class="centeritem">
                         <div class="texthead">
-                            <div style="height: 2px"></div>
+                            <div style="height: 8px"></div>
                                 <div>
                                     <h2 class="orderhead">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-bag-check" viewBox="0 0 16 20">

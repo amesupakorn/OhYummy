@@ -44,7 +44,7 @@
 							<?php
 							if(!isset($_COOKIE['tableId'])) {
 								echo '<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
-										<a class="nav-link" href="../reserve/reserve.php">จองโต๊ะ</a>
+										<a class="nav-link" href="#">จองโต๊ะ</a>
 									</li>';
 							}else{
 								echo '<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
@@ -249,7 +249,7 @@
 				
 				$typefood = $row["menu_type"];
 				$foodid = $row["menuID"];
-			echo "<div class=\"card $typefood \" style=\"width: 18rem; height: 20rem; border-radius:15px; border: none; overflow: hidden;\">". 
+			echo "<div class=\"card $typefood\">". 
 					"<img class=\"card-img-top\" src=\"../image_menu/".$row["image_menu"] . "\"> " .
 					"<div class=\"card-body\">".
 					"<div class=\"title-price-container\">".
@@ -257,12 +257,14 @@
 						"<p class=\"card-text\">".$row["menu_price"]. " ฿ </p>". 
 					"</div>".
 						"<div style=\"display: flex\">
-							<div class=\"qty mt-5\" style=\"margin-top: 1rem!important; margin-left: 3%\">
+							<div class=\"many qty\">
+							   <div class='menu'>
 								<span class=\"minus bg-dark \" onclick=\"minus('$foodid')\">-</span>
 									
 										<input type=\"number\" class=\"count\" id=\"$foodid\" name=\"qty\" value=\"1\">
 	
 								<span class=\"plus bg-dark \" onclick=\"plus('$foodid')\">+</span>
+								</div>
                     		</div>
 							<div class=\"btncenter\">";
 							

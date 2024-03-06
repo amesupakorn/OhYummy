@@ -708,3 +708,7 @@ footer img{
 #refreshTime{
     vertical-align: middle; display: inline;
 }
+
+ .container .centeritem .texthead{
+    text-align: center;
+ }
