@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="png" sizes="96x96" href="logo.png" />
+    <link rel="icon" type="png" sizes="96x96" href="../image_logo/favicon.ico" />
     <link href="style.css" rel="stylesheet" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -221,27 +221,30 @@
     <h5>เลือกช่วงเวลาที่มี:</h5>
 
     <div class="button-container">
-    <button class="button">11.00 น.</button>
-    <button class="button">11.30 น.</button>
-    <button class="button">12.00 น.</button>
-    <button class="button">12.30 น.</button>
-    <button class="button">13.00 น.</button>
-  </div>
-  <div class="button-container">
-    <button class="button">13.30 น.</button>
-    <button class="button">14.00 น.</button>
-    <button class="button">14.30 น.</button>
-    <button class="button">15.00 น.</button>
-    <button class="button">15.30 น.</button>
-  </div>
-  <div class="button-container">
-    <button class="button">16.00 น.</button>
-    <button class="button">16.30 น.</button>
-    <button class="button">17.00 น.</button>
-    <button class="button">17.30 น.</button>
-    <button class="button">18.00 น.</button>
-  </div>
+  <button class="button" id="myButton1">11.00 น.</button>
+  <button class="button" id="myButton2">11.30 น.</button>
+  <button class="button" id="myButton3">12.00 น.</button>
+  <button class="button" id="myButton4">12.30 น.</button>
+  <button class="button" id="myButton5">13.00 น.</button>
+</div>
 
+<div class="button-container">
+  <button class="button" id="myButton6">13.30 น.</button>
+  <button class="button" id="myButton7">14.00 น.</button>
+  <button class="button" id="myButton8">14.30 น.</button>
+  <button class="button" id="myButton9">15.00 น.</button>
+  <button class="button" id="myButton10">15.30 น.</button>
+</div>
+
+<div class="button-container">
+  <button class="button" id="myButton11">16.00 น.</button>
+  <button class="button" id="myButton12">16.30 น.</button>
+  <button class="button" id="myButton13">17.00 น.</button>
+  <button class="button" id="myButton14">17.30 น.</button>
+  <button class="button" id="myButton15">18.00 น.</button>
+</div>
+
+<div style="height: 60px;"></div>
       <div class="center-container"><br>
         <button style="width: 300px;" id="confirmButton" class="btn btn-danger" onclick="updateReview()" >ยืนยัน</button><br><br>
       </div>
@@ -251,18 +254,18 @@
 
     <div style="height: 100px;"></div>
 
-  <footer>
-    <div style="height: 30px;"></div>
+    <footer>
+	<div style="height: 30px;"></div>
 
-        <div>
-          <p>หน้าหลัก | รายการอาหาร | จองโต๊ะ | รีวิวจากลูกค้า</p>
-        </div>
-        <img src="../image_logo/logotab.png" alt="">
-          <div style="height: 30px;"></div>
-          <div class="copyright">
-            &copy; OHYUMMY 2024
-        </div>
-        <div style="height: 30px;"></div>
+		<div>
+			<p>หน้าหลัก | รายการอาหาร | จองโต๊ะ | รีวิวจากลูกค้า</p>
+		</div>
+			<img src="../image_logo/logotab.png" alt="">
+			<div style="height: 30px;"></div>
+		<div class="copyright">
+			&copy; OHYUMMY 2024
+		</div>
+		<div style="height: 30px;"></div>
 
 	</footer>
 

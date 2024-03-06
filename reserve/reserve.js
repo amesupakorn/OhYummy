@@ -30,8 +30,6 @@
 	
   })(jQuery);
 
-  
-
 
       const MONTH_NAMES = [
       "January",
@@ -160,3 +158,18 @@
         },
       };
     }
+
+
+	var buttons = document.querySelectorAll(".button");
+
+	buttons.forEach(function(button) {
+	  button.addEventListener("click", function() {
+		// ถ้าปุ่มถูกเลือกอยู่แล้วให้เอา class "selected" ออก
+		var selectedButton = document.querySelector(".button.selected");
+		if (selectedButton) {
+		  selectedButton.classList.remove("selected");
+		}
+		// เพิ่ม class "selected" ให้กับปุ่มที่ถูกคลิก
+		this.classList.add("selected");
+	  });
+	});
