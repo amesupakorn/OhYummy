@@ -21,6 +21,19 @@ updateClock();
 
 $(document).ready(function() {
     $("#example").DataTable({
+      "language": {
+        "lengthMenu": "แสดง _MENU_ แถว",
+        "zeroRecords": "ไม่พบข้อมูล",
+      "info": "แสดง _START_ ถึง _END_ จาก _TOTAL_ แถว",
+      "infoEmpty": "ข้อมูลไม่พร้อมใช้งาน",
+      "search": "ค้นหาประวัติ",
+      "paginate": {
+        "first": "หน้าแรก",
+        "previous": "ก่อนหน้า",
+        "next": "ถัดไป",
+        "last": "หน้าสุดท้าย"
+      }
+    },
       aaSorting: [],
       responsive: true,
   

@@ -2,13 +2,28 @@
 
 
 $(document).ready(function() {
-    $("#example").DataTable({
+        $("#example").DataTable({
+          "language": {
+            "lengthMenu": "แสดง _MENU_ แถว",
+            "zeroRecords": "ไม่พบข้อมูล",
+          "info": "แสดง _START_ ถึง _END_ จาก _TOTAL_ แถว",
+          "infoEmpty": "ข้อมูลไม่พร้อมใช้งาน",
+          "search": "ค้นหาเมนู",
+          "paginate": {
+            "first": "หน้าแรก",
+            "previous": "ก่อนหน้า",
+            "next": "ถัดไป",
+            "last": "หน้าสุดท้าย"
+          }
+        },
         aaSorting: [],
         responsive: true,
         columnDefs: [
             { targets: [0, 6, 7], orderable: false }, // เลขคอลัมน์ที่ไม่ต้องการให้เรียง
         ]
+        
     });
+
 
     $(".dataTables_filter input")
     .attr("placeholder", "ค้นหา...")
