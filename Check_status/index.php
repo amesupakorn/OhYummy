@@ -124,9 +124,9 @@ $order_status = "";
                                         </svg> ออเดอร์ที่สั่ง
                                     </h2>
 
-                                    <div class="detailhead">ข้อมูล ณ เวลา 
+                                    <h5 class="detailhead">ข้อมูล ณ เวลา 
                                         <p id="refreshTime"></p>
-                                    </div>
+                                    </h5>
                                 </div>
                               <div style="height: 4px"></div>
                                 </div>
