@@ -12,6 +12,8 @@
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css"/>
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.2/dist/alpine.min.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css'><link rel="stylesheet" href="./style.css">
 
     <link rel="stylesheet" href="style.css" />
     <title>จองโต๊ะ</title>
@@ -131,17 +133,17 @@
     
     <div class="container">
       <div class="form-row">
-          <div class="form-group col-md-6">
+          <div class="form-group col-12 col-md-6">
               <label for="input">จำนวนที่นั่ง</label>
-  
-                  <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" style="border-radius: 8px; height: 40px; background-color: white;">
-                    <option selected>Choose a country</option>
-                    <option value="US">United States</option>
-                    <option value="CA">Canada</option>
-                    <option value="FR">France</option>
-                    <option value="DE">Germany</option>
+                  <select  class="custom-select" id="normal-select-1" placeholder-text="2 คน" id="inlineFormCustomSelect">
+                    <option value="2" class="select-dropdown__list-item">1 คน</option>
+                    <option value="2" class="select-dropdown__list-item">2 คน</option>
+                    <option value="4" class="select-dropdown__list-item">3 คน</option>
+                    <option value="4" class="select-dropdown__list-item">4 คน</option>
+                    <option value="6" class="select-dropdown__list-item">5 คน</option>
+                    <option value="6" class="select-dropdown__list-item">6 คน</option>
                   </select>
-              
+                                
             </div>
             <div class="form-group col-md-6">
               <label for="input">&nbsp;&nbsp;&nbsp;&nbsp;วันที่</label>
@@ -149,14 +151,14 @@
                 <div class="mb-5 w-100 ">
                   <div class="relative">
                     <input type="hidden" name="date" x-ref="date" :value="datepickerValue" />
-                    <input type="text" x-on:click="showDatepicker = !showDatepicker" x-model="datepickerValue" x-on:keydown.escape="showDatepicker = false" class=" bg-white w-full pl-4 py-2 leading-none rounded-lg shadow-sm focus:outline-none text-gray-600 font-medium focus:ring focus:ring-blue-600 focus:ring-opacity-50" placeholder="Select date" readonly />
+                    <input type="text" x-on:click="showDatepicker = !showDatepicker" x-model="datepickerValue" x-on:keydown.escape="showDatepicker = false" style="height: 42px" class=" bg-white w-full pl-4 leading-none rounded-lg shadow-sm focus:outline-none text-gray-600 font-medium focus:ring focus:ring-blue-600 focus:ring-opacity-50" placeholder="Select date" readonly />
 
                     <div class="absolute top-0 right-0 px-3 py-2">
                       <svg class="h-6 w-6 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                       </svg>
                     </div>
-                    <div class="bg-white mt-12 rounded-lg shadow p-4 absolute top-0 left-0" style="width: 30rem" x-show.transition="showDatepicker" @click.away="showDatepicker = false">
+                    <div class="bg-white mt-12 rounded-lg shadow p-4 absolute top-0 left-0" style="width: 20rem" x-show.transition="showDatepicker" @click.away="showDatepicker = false">
                       <div class="flex justify-between items-center mb-2">
                         <div>
                           <span x-text="MONTH_NAMES[month]" class="text-lg font-bold text-gray-800"></span>
@@ -222,26 +224,24 @@
 
     <div class="button-container">
   <button class="button" id="myButton1">11.00 น.</button>
-  <button class="button" id="myButton2">11.30 น.</button>
-  <button class="button" id="myButton3">12.00 น.</button>
-  <button class="button" id="myButton4">12.30 น.</button>
-  <button class="button" id="myButton5">13.00 น.</button>
+  <button class="button" id="myButton2">12.00 น.</button>
+  <button class="button" id="myButton3">13.00 น.</button>
+  <button class="button" id="myButton4">14.00 น.</button>
+  <button class="button" id="myButton5">15.00 น.</button>
+  <button class="button" id="myButton6">16.00 น.</button>
 </div>
 
 <div class="button-container">
-  <button class="button" id="myButton6">13.30 น.</button>
-  <button class="button" id="myButton7">14.00 น.</button>
-  <button class="button" id="myButton8">14.30 น.</button>
-  <button class="button" id="myButton9">15.00 น.</button>
-  <button class="button" id="myButton10">15.30 น.</button>
+  <button class="button" id="myButton7">17.00 น.</button>
+  <button class="button" id="myButton8">18.00 น.</button>
+  <button class="button" id="myButton9">19.00 น.</button>
+  <button class="button" id="myButton10">20.00 น.</button>
+  <button class="button" id="myButton11">21.00 น.</button>
+  <button class="button" id="myButton12">22.00 น.</button>
 </div>
 
 <div class="button-container">
-  <button class="button" id="myButton11">16.00 น.</button>
-  <button class="button" id="myButton12">16.30 น.</button>
-  <button class="button" id="myButton13">17.00 น.</button>
-  <button class="button" id="myButton14">17.30 น.</button>
-  <button class="button" id="myButton15">18.00 น.</button>
+
 </div>
 
 <div style="height: 60px;"></div>
@@ -258,6 +258,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
     <script src="./reserve.js"></script>
+    <script  src="./script.js"></script>
+
     
   </body>
 </html>
