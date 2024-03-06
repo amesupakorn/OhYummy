@@ -436,6 +436,12 @@ hr {
      .count{
         font-size: 12px;
      }
+     .texthead h2{
+        font-size: 24px;
+     }
+     .texthead h5, p{
+        font-size: 18px;
+     }
 }
 
 @media screen and (max-width: 399px) { 
@@ -450,9 +456,11 @@ hr {
 		font-size: 24px;
 	 }
      .texthead h2{
-        font-weight: 400;
-        font-size: 27px;
-    }
+        font-size: 18px;
+     }
+     .texthead h5, p{
+        font-size: 14px;
+     }
 }
 
   * {
@@ -641,14 +649,14 @@ hr {
 	padding: 5px 20px;
 	border-radius: 50px;
   }
-
+/* 
   .texthead{
     color: #ffffff;
     border-radius: 20px;
     margin-left: 25%;
     width: 50%;
-    /* height: auto; background-color: white; box-shadow: 0 2px 1px 0 rgba(0, 0, 0, 0.115); font-weight: 500; */
-  }
+    height: auto; background-color: white; box-shadow: 0 2px 1px 0 rgba(0, 0, 0, 0.115); font-weight: 500;
+  } */
 
 
 footer{
@@ -672,10 +680,31 @@ footer img{
   .texthead{
     text-align: center;
     border-radius: 50px;
+    line-height: 10px;
     width: 50%;
-    height: auto; background-color: white; box-shadow: 0 2px 1px 0 rgba(0, 0, 0, 0.115); font-weight: 500;
+    height: auto; 
+    background-color: white; 
+    box-shadow: 0 2px 1px 0 rgba(0, 0, 0, 0.115); 
+    font-weight: 500;
+    margin-left: 25%;
+    line-height: 10px;
   }
 
   .texthead h2{
     color: black;
   }
+
+  .orderHead{
+    font-size: 32px;
+  }
+
+  .detailhead{
+    font-size: 15px;
+    color: black; 
+    display: inline; 
+    height: 10px;
+  }
+
+#refreshTime{
+    vertical-align: middle; display: inline;
+}
