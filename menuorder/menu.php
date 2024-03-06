@@ -153,11 +153,7 @@
 									</button>';
 									}
 								}else{
-									echo '<button id="cart" class="cart" data-totalitems="0" onclick="alertlogin()"
-										><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">
-										<path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l1.313 7h8.17l1.313-7zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2"/>
-										</svg>
-									</button>';
+									echo '';
 								}
 								
 								
@@ -243,7 +239,7 @@
 			<?php
 	
 
-			$sql = "SELECT * from Menu";
+			$sql = "SELECT * from Menu WHERE menu_status = 'on'";
 			$result =  mysqli_query($conn->getDatabase(), $sql);
 		
 
@@ -292,6 +288,40 @@
 			</div>
 		</div>
    </div>
+	<?php
+   if(isset($tableID)){
+									$sqlr = "SELECT SUM(countMenu) as totalCount FROM BasketOrder WHERE tableId = $tableID";
+									$resultTotal =  mysqli_fetch_assoc(mysqli_query($conn->getDatabase(), $sqlr));
+									$total = $resultTotal['totalCount'];
+									if(!$total == ''){
+										echo '
+										<div class="floating-chat"  aria-hidden="true">
+										<button id="cart" class="cart" data-totalitems="'.$total.'"
+											onclick="location.href = \'../basket/basket.php\';"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-cart-fill" viewBox="0 0 16 16">
+											<path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2"/>
+										  </svg>
+										</button>
+										</div>';
+									}
+									else{
+										echo '
+										<div class="floating-chat"  aria-hidden="true">
+											<button id="cart" class="cart" data-totalitems="0"
+										onclick="location.href = \'../basket/basket.php\';"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-cart-fill" viewBox="0 0 16 16">
+										<path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2"/>
+									  </svg>
+									</button>
+									</div>';
+									}
+								}else{
+									echo '';
+
+								}
+
+	?>
+   
+
+
 
    <footer>
     <div style="height: 30px;"></div>
@@ -311,6 +341,7 @@
 	
 
 <!-- partial -->
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
 <script src='https://unpkg.com/jquery@3.3.1/dist/jquery.js'></script>
 <script src='https://unpkg.com/popper.js@1.12.9/dist/umd/popper.js'></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>

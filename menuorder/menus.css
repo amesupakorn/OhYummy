@@ -394,8 +394,8 @@ input:disabled{
 
 .card-text {
 	margin-right: 8%;
-    font-size: 25px; /* คงไว้เป็นขนาดตัวอักษรเดิม */
-    color: red; /* คงไว้เป็นสีของข้อความเดิม */
+    font-size: 22px; /* คงไว้เป็นขนาดตัวอักษรเดิม */
+    color: #da0000; /* คงไว้เป็นสีของข้อความเดิม */
     margin-bottom: 0; /* ลบช่องว่างด้านล่าง */
     text-align: right; /* จัดให้ราคาอยู่ทางขวา */
     /* ลบสไตล์อินไลน์สำหรับ text-align */
@@ -440,7 +440,7 @@ input:disabled{
 	font-weight: 600;
 	position: absolute;
 	top: -12px;
-	right: -12px;
+	right: -8px;
 	background: #2bd156;
 	line-height: 24px;
 	padding: 0 5px;
@@ -583,4 +583,28 @@ footer img{
 	  display: block;
 	  visibility: visible;
 	}
+  }
+
+  .floating-chat {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgb(255, 255, 255);
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    width: 60px;
+    height: 58px;
+    transform: translateY(0px);
+    transition: all 250ms ease-out;
+    border-radius: 50%;
+    background: #fd0000ef;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+  }
+  .floating-chat.enter:hover {
+    background-color: #d80000ef;
+    box-shadow: 0 10px 20px rgba(27, 27, 27, 0.81), 0 6px 6px rgba(29, 29, 29, 0.819);
+    opacity: 1;
   }

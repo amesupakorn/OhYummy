@@ -27,9 +27,8 @@
 	});	
 
 
-	
-	
-	
+		
+		
   })(jQuery);
 
   (function ($) {
@@ -164,3 +163,4 @@ function alertlogin(){
 		confirmButtonText: "โอเค"
 	  })
 }
+
