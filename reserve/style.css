@@ -311,3 +311,21 @@ h1 {
   .dates li.inactive {
 	color: #ccc;
   }
+
+
+  .imghead{
+	width: 100%
+  }
+
+  .fixed-image {
+    background: url("image.jpg") fixed center;
+    background-size: cover;
+    height: 500px;
+    text-align: center;
+
+}
+
+.text h1{
+    padding: 140px;
+    letter-spacing: 5px;
+}
