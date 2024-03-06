@@ -134,7 +134,7 @@
           <div class="form-group col-md-6">
               <label for="input">จำนวนที่นั่ง</label>
   
-                  <select id="countries" class="border-gray-300 py-2 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                  <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" style="border-radius: 8px; height: 40px; background-color: white;">
                     <option selected>Choose a country</option>
                     <option value="US">United States</option>
                     <option value="CA">Canada</option>
@@ -253,22 +253,6 @@
 
 
     <div style="height: 100px;"></div>
-
-    <footer>
-	<div style="height: 30px;"></div>
-
-		<div>
-			<p>หน้าหลัก | รายการอาหาร | จองโต๊ะ | รีวิวจากลูกค้า</p>
-		</div>
-			<img src="../image_logo/logotab.png" alt="">
-			<div style="height: 30px;"></div>
-		<div class="copyright">
-			&copy; OHYUMMY 2024
-		</div>
-		<div style="height: 30px;"></div>
-
-	</footer>
-
 
     <!-- partial -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
