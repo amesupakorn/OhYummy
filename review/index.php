@@ -151,12 +151,12 @@
     <!-- --------------------------------------------------------------------------------- -->
     <script>
 
-      function updateReview() {
+   function updateReview() {
       let review = document.getElementById("review").value;
       let name = document.getElementById("name").value;
       let tel = document.getElementById("Tel").value;
 
-      if(review == "" && name == "" && tel == ""){
+      if(review.trim() === "" || name.trim() === "" || tel.trim() === ""){
         Swal.fire({
           icon: "error",
           title: "โปรดกรอกข้อมูลให้ครบ"

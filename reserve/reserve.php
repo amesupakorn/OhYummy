@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css"/>
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.2/dist/alpine.min.js" defer></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
-<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css'><link rel="stylesheet" href="./style.css">
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css'><link rel="stylesheet" href="./style.css">
 
     <link rel="stylesheet" href="style.css" />
     <title>จองโต๊ะ</title>
@@ -122,17 +122,20 @@
 
     <?php
           if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            // if(isset($_POST['name']) && isset($_POST['tel']) && isset($_POST['seat']) && isset($_POST['email']) && isset($_POST['date'])){
+            if(isset($_POST['name'])){
               
-            //   $name = $_POST['name'];
-            //   $tel = $_POST['tel'];
-            //   $email = $_POST['email'];
-            //   $seat = $_POST['seat'];
-            //   $date = $_POST['date'];
-            //   echo 'dd';
-            //   $sql = "INSERT INTO Reserve(cust_Name, cust_Tel, email, Reserve_time) VALUES ('$name', '$tel', '$email', $date)";
-            //   mysqli_query($conn->getDatabase(), $sql);
-            // }
+              $name = $_POST['name'];
+              $tel = $_POST['phone'];
+              $email = $_POST['email'];
+              $table = $_POST['table'];
+              $date = $_POST['reserveDate'];
+              $time = $_POST['time'];
+              $formatDate = date('Y-m-d', strtotime($date));
+
+
+              $sql = "INSERT INTO Reserve(cust_Name, cust_Tel, tableid, email, reserve_day, reserve_time) VALUES ('$name', '$tel', $table, '$email', '$formatDate', '$time')";
+              mysqli_query($conn->getDatabase(), $sql);
+            }
 
            
           
@@ -161,7 +164,7 @@
                 <div class="mb-5 w-100 ">
                   <div class="relative">
                     <input type="hidden"  name="date" x-ref="date" :value="datepickerValue" />
-                    <input type="text" id="date" name="date"  x-on:click="showDatepicker = !showDatepicker" x-model="datepickerValue" x-on:keydown.escape="showDatepicker = false" style="height: 42px" class=" bg-white w-full pl-4 leading-none rounded-lg shadow-sm focus:outline-none text-gray-600 font-medium focus:ring focus:ring-blue-600 focus:ring-opacity-50" placeholder="Select date" readonly />
+                    <input type="text" id="date" name="date" x-on:click="showDatepicker = !showDatepicker" x-model="datepickerValue" x-on:keydown.escape="showDatepicker = false" style="height: 42px" class=" bg-white w-full pl-4 leading-none rounded-lg shadow-sm focus:outline-none text-gray-600 font-medium focus:ring focus:ring-blue-600 focus:ring-opacity-50" placeholder="Select date" readonly />
 
                     <div class="absolute top-0 right-0 px-3 py-2">
                       <svg class="h-6 w-6 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -318,7 +321,7 @@
                               <br>
                               <p>หากแผนของคุณเปลี่ยนแปลงหรือคาดว่าจะล่าช้า โปรดแจ้งให้เราทราบโดยเร็วที่สุด</p>
                       
-                              <button style="width: 280px;" id="confirmButton" class="btn btn-danger" onclick="reserveNow(<?php echo $_POST('date')?>, <?php echo $_POST('seat')?>)" >ยืนยันการจอง</button>
+                              <button style="width: 280px;" id="confirmButton" class="btn btn-danger" onclick="reserveNow('<?php echo $_POST['date']?>', '<?php echo $_POST['seat']?>')" >ยืนยันการจอง</button>
                             </div>
                          </div>
                      </div>
