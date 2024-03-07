@@ -36,7 +36,7 @@
               $review = $_POST['review'];
               $name = $_POST['name'];
               $tel = $_POST['Tel'];
-              $sql = "INSERT INTO Review(descrip, username, tel, ReviewTime) VALUES ('$review', '$name', '$tel', DATE_ADD(NOW(), INTERVAL 7 HOUR))";
+              $sql = "INSERT INTO Review(descript, username, tel, ReviewTime) VALUES ('$review', '$name', '$tel', DATE_ADD(NOW(), INTERVAL 7 HOUR))";
               mysqli_query($conn->getDatabase(), $sql);
             }
           }
