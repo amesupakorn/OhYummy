@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css"/>
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.2/dist/alpine.min.js" defer></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
-<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css'><link rel="stylesheet" href="./style.css">
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css'><link rel="stylesheet" href="./style.css">
 
     <link rel="stylesheet" href="style.css" />
     <title>จองโต๊ะ</title>
@@ -114,29 +114,7 @@
     <div class="content" style="height: 50px"></div>
 
     <?php
-    $disableButton = "";
-          if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            $date = $_POST['reserveDate'];
-            $table = $_POST['table'];
-
-            $formatDate = date('Y-m-d', strtotime($date));
-            
-            $sql = "SELECT * FROM Reserve r WHERE r.reserve_day = '$formatDate' AND tableid = $table";
-            $result = mysqli_query($conn->getDatabase(), $sql);
-
-            if ($result->num_rows > 0) {
-              // ถ้ามีการจองแล้ว ให้วนลูปเช็ค reserve_time
-              while ($row = $result->fetch_assoc()) {
-                  $reservedTime = $row['reserve_time'];
-                  // ตรวจสอบเวลาที่จองแล้ว หากเวลาตรงกับปุ่ม ให้ปิดปุ่ม
-                  if ($reservedTime == "16:00:00") {
-                      $disableButton = "disabled";
-            }
-        }
-        } else {
-            // ถ้ายังไม่มีการจอง ให้เปิดใช้งานปุ่ม
-            $disableButton = "";
-        }
+    
             // if(isset($_POST['name']) && isset($_POST['tel']) && isset($_POST['seat']) && isset($_POST['email']) && isset($_POST['date'])){
               
             //   $name = $_POST['name'];
@@ -151,7 +129,7 @@
 
            
           
-          }
+          
     ?>
 
     
@@ -240,7 +218,7 @@
             </div>
           
 
-            <button style="width: 200px; text-align:" id="confirmButton" class="btn btn-danger" onclick="report()" >เช็ค</button><br><br>
+            <button style="width: 200px; text-align:" id="confirmButton" class="btn btn-danger" onclick="checkValue()" >เช็ค</button><br><br>
 
     <hr style="width: 100%; ">
     <div style="height: 30px"></div> 
@@ -249,19 +227,42 @@
 
 
   <?php
-  
+       if (isset($_POST['reserveDate'])) {
+        $date = $_POST['reserveDate'];
+        $table = $_POST['table'];
+    
+        $formatDate = date('Y-m-d', strtotime($date));
+        
+        $sql = "SELECT * FROM Reserve r WHERE r.reserve_day = '$formatDate' AND tableid = $table";
+        $result = mysqli_query($conn->getDatabase(), $sql);
+      
+    if ($result->num_rows > 0) {
+      // ถ้ามีการจองแล้ว ให้วนลูปเช็ค reserve_time
+      while ($row = $result->fetch_assoc()) {
+        $reservedTime = $row['reserve_time'];
+        if ($reservedTime == "16:00:00") {
+          echo '<button disabled>16.00 น.</button>';
+        } else {
+          echo '<button type="button" class="btn btn-primary">Primary</button>
+';
+        }
+         
+      }
+  }else{
+    echo '<div>16.00 น.</div>';
+  }
+}
     ?>
-          
-
-  
-      <div class="button-container">
-        <button class="button" id="myButton1"  <?php echo isset($disableButton) ? $disableButton : ''?>>11.00 น.</button>
-        <button class="button" id="myButton2"  <?php echo isset($disableButton) ? $disableButton : ''; ?>>12.00 น.</button>
-        <button class="button" id="myButton3"  <?php echo isset($disableButton) ? $disableButton : ''; ?>>13.00 น.</button>
-        <button class="button" id="myButton4"  <?php echo isset($disableButton) ? $disableButton : ''; ?>>14.00 น.</button>
-        <button class="button" id="myButton5"  <?php echo isset($disableButton) ? $disableButton : ''; ?>>15.00 น.</button>
-        <button class="button" id="myButton6"  <?php echo isset($disableButton) ? $disableButton : ''; ?>>16.00 น.</button>
-    </div>
+    <!-- else{
+      echo '
+      <button class="button" id="myButton1"  >11.00 น.</button>
+      <button class="button" id="myButton2"  >12.00 น.</button>
+      <button class="button" id="myButton3"  >13.00 น.</button>
+      <button class="button" id="myButton4"  >14.00 น.</button>
+      <button class="button" id="myButton5"  >15.00 น.</button>
+      <button class="button" id="myButton6"  >16.00 น.</button>';
+    } -->
+    
 
       <!-- <div class="button-container">
         <button class="button" id="myButton7">17.00 น.</button>
@@ -273,11 +274,11 @@
       </div> -->
 
 
-<div style="height: 60px;"></div>
-      <div class="center-container"><br>
+<!-- <div style="height: 60px;"></div> -->
+      <!-- <div class="center-container"><br>
         <button style="width: 300px;" id="confirmButton" class="btn btn-danger" onclick="updateReview()" >ยืนยัน</button><br><br>
       </div>
-    </div>
+    </div> -->
     <!-- --------------------------------------------------------------------------------- -->
 
 

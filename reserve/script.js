@@ -203,7 +203,6 @@ const MONTH_NAMES = [
         this.datepickerValue = this.formatDateForDisplay(
           selectedDate
         );
-        checkValue(this.datepickerValue);
         // this.$refs.date.value = selectedDate.getFullYear() + "-" + ('0' + formattedMonthInNumber).slice(-2) + "-" + ('0' + selectedDate.getDate()).slice(-2);
         this.isSelectedDate(date);
         this.showDatepicker = false;
@@ -251,33 +250,29 @@ const MONTH_NAMES = [
 
 
 
-
-function checkValue(date){
+  async function checkValue(){
     var seat= document.getElementById('seat').value
-    var dateReserve = date
+    var dateReserve = document.getElementById('date').value
 
     let formData = new URLSearchParams();
     formData.append('reserveDate', dateReserve);
     formData.append('table', seat);
 
-	fetch('./reserve.php', {
-		method: 'POST',
-		headers: {
-			'Content-Type': 'application/x-www-form-urlencoded',
-		},
-		body: formData.toString()	
-	})
-	.then(response => {
-		setTimeout(function() {
-			location.reload();
-		}, 1000);
-		return response.text();
-	})
-	.catch(error => {
-		alert('There was a problem with the fetch operation: ' + error.message);
-	});
+  await fetch('./reserve.php', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded',
+    },
+    body: formData.toString()	
+  })
+  .then(response => {
+    return response.text()
+  
+  })
+  .catch(error => {
+    alert('There was a problem with the fetch operation: ' + error.message);
+  });
 }
-
 
 
 
