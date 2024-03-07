@@ -133,7 +133,7 @@ const MONTH_NAMES = [
   ];
   const DAYS = ["อาทิตย์", "จันทร์", "อังคาร", "พุธ", "พฤหัส", "ศุกร์", "เสาร์"];
 
-  function app() {
+function app() {
     return {
       showDatepicker: false,
       datepickerValue: "",
@@ -250,31 +250,15 @@ const MONTH_NAMES = [
 
 
 
-  async function checkValue(){
-    var seat= document.getElementById('seat').value
-    var dateReserve = document.getElementById('date').value
 
-    let formData = new URLSearchParams();
-    formData.append('reserveDate', dateReserve);
-    formData.append('table', seat);
 
-  await fetch('./reserve.php', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/x-www-form-urlencoded',
-    },
-    body: formData.toString()	
-  })
-  .then(response => {
-    return response.text()
-  
-  })
-  .catch(error => {
-    alert('There was a problem with the fetch operation: ' + error.message);
-  });
+
+function openCard() {
+    document.getElementById("addReserve").style.display = "block";
+    document.getElementById("cardOverlay").style.display = "block";
 }
 
-
-
-
-
+function closeCard() {
+    document.getElementById("addReserve").style.display = "none";
+    document.getElementById("cardOverlay").style.display = "none";
+}

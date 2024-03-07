@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css"/>
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.2/dist/alpine.min.js" defer></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
-    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css'><link rel="stylesheet" href="./style.css">
+<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css'><link rel="stylesheet" href="./style.css">
 
     <link rel="stylesheet" href="style.css" />
     <title>จองโต๊ะ</title>
@@ -32,11 +32,18 @@
 	 include('../connectDatabase/connectToDatabase.php');
 
 	 $conn = new database();  
-
-	 if(isset($_GET['tableId'])) {
-		// กำหนดค่าใน $_COOKIE โดยตรง
-		setcookie('tableId', $_GET['tableId'], 0, '/'); // 0 คือ session cookie จะหมดอายุเมื่อเบราว์เซอร์ปิด
-	}
+   
+   if ($_SERVER["REQUEST_METHOD"] == "POST") {
+      if(isset($_POST['reserveDate'])){
+        $name = $_POST['name'];
+        $seat = $_POST['table'];
+        $date = $_POST['reserveDate'];
+        $email = $_POST['email'];
+        $phone = $_POST['phone'];
+        $time = $_POST['time'];
+      }
+   }
+  
 
 
 ?>
@@ -114,7 +121,7 @@
     <div class="content" style="height: 50px"></div>
 
     <?php
-    
+          if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // if(isset($_POST['name']) && isset($_POST['tel']) && isset($_POST['seat']) && isset($_POST['email']) && isset($_POST['date'])){
               
             //   $name = $_POST['name'];
@@ -129,15 +136,16 @@
 
            
           
-          
+          }
     ?>
 
     
     <div class="container">
+      <form  action="reserve.php" method="POST">
       <div class="form-row">
           <div class="form-group col-12 col-md-6">
               <label for="input">จำนวนที่นั่ง</label>
-                  <select  class="custom-select" placeholder-text="เลือกโต๊ะสำหรับคุณ" id="seat" onchange="report()">
+                  <select  class="custom-select" placeholder-text="เลือกโต๊ะสำหรับคุณ" id="seat" name="seat">
                     <option value="1" class="select-dropdown__list-item">โต๊ะที่ 1 สำหรับ 1 - 2 คน</option>
                     <option value="2" class="select-dropdown__list-item">โต๊ะที่ 2 สำหรับ 1 - 2 คน</option>
                     <option value="3" class="select-dropdown__list-item">โต๊ะที่ 3 สำหรับ 3 - 4 คน</option>
@@ -153,7 +161,7 @@
                 <div class="mb-5 w-100 ">
                   <div class="relative">
                     <input type="hidden"  name="date" x-ref="date" :value="datepickerValue" />
-                    <input type="text" id="date"  x-on:click="showDatepicker = !showDatepicker" x-model="datepickerValue" x-on:keydown.escape="showDatepicker = false" style="height: 42px" class=" bg-white w-full pl-4 leading-none rounded-lg shadow-sm focus:outline-none text-gray-600 font-medium focus:ring focus:ring-blue-600 focus:ring-opacity-50" placeholder="Select date" readonly />
+                    <input type="text" id="date" name="date"  x-on:click="showDatepicker = !showDatepicker" x-model="datepickerValue" x-on:keydown.escape="showDatepicker = false" style="height: 42px" class=" bg-white w-full pl-4 leading-none rounded-lg shadow-sm focus:outline-none text-gray-600 font-medium focus:ring focus:ring-blue-600 focus:ring-opacity-50" placeholder="Select date" readonly />
 
                     <div class="absolute top-0 right-0 px-3 py-2">
                       <svg class="h-6 w-6 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -216,69 +224,108 @@
               </div>
               </div>
             </div>
-          
-
-            <button style="width: 200px; text-align:" id="confirmButton" class="btn btn-danger" onclick="checkValue()" >เช็ค</button><br><br>
-
+        
+        <div style="text-align: center;">
+        <button style="width: 340px;" id="confirmButton" class="btn btn-danger"  name="submit" >เช็ค</button><br><br>
+      </div>  
+            
+     </form>
     <hr style="width: 100%; ">
     <div style="height: 30px"></div> 
     
-    <h5>เลือกช่วงเวลาที่มี:</h5>
 
+    <div class="container center" style="text-align: center;">
+<?php
+        if(isset($_POST['date'])){
 
-  <?php
-       if (isset($_POST['reserveDate'])) {
-        $date = $_POST['reserveDate'];
-        $table = $_POST['table'];
-    
-        $formatDate = date('Y-m-d', strtotime($date));
-        
-        $sql = "SELECT * FROM Reserve r WHERE r.reserve_day = '$formatDate' AND tableid = $table";
-        $result = mysqli_query($conn->getDatabase(), $sql);
-      
-    if ($result->num_rows > 0) {
-      // ถ้ามีการจองแล้ว ให้วนลูปเช็ค reserve_time
-      while ($row = $result->fetch_assoc()) {
-        $reservedTime = $row['reserve_time'];
-        if ($reservedTime == "16:00:00") {
-          echo '<button disabled>16.00 น.</button>';
-        } else {
-          echo '<button type="button" class="btn btn-primary">Primary</button>
-';
+          $date = $_POST['date'];
+          $table = $_POST['seat'];
+
+          $formatDate = date('Y-m-d', strtotime($date));
+
+          $sql = "SELECT * FROM Reserve r WHERE r.reserve_day = '$formatDate' AND tableid = $table";
+          $result = mysqli_query($conn->getDatabase(), $sql);
+
+          // เตรียมรายการเวลาที่สามารถจองได้
+          $available_times = [
+            "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", 
+            "17:00", "18:00", "19:00", "20:00", "21:00", "22:00"
+          ];
+
+          // ตรวจสอบผลลัพธ์จากคิวรี่
+          if ($result->num_rows > 0) {
+            // หาว่ามีเวลาใดบ้างที่ถูกจองแล้ว
+            $reserved_times = [];
+            while($row = $result->fetch_assoc()){
+              $reserved_times[] = substr($row['reserve_time'], 0, 5); // เอาเฉพาะ HH:MM
+            }
+
+            echo '<h5>เลือกช่วงเวลา</h5>';
+
+            // แสดงปุ่มเวลาที่สามารถจองได้หรือไม่ได้
+            foreach ($available_times as $time) {
+              if (in_array($time, $reserved_times)) {
+                echo "<button value='$time' onclick='handleClick(this.value)' class='button' disabled>$time น.</button>";
+              } else {
+                echo "<button value='$time' onclick='handleClick(this.value)' class='button'>$time น.</button>";
+              }
+            }
+          } else {
+            // ถ้าไม่มีการจองในวันและเวลานั้นๆ
+            foreach ($available_times as $time) {
+              echo "<button value='$time' onclick='handleClick(this.value)' class='button'>$time น.</button>";
+            }
+          }
+          echo '          
+          <div style="height: 60px;"></div>
+          <div class="center-container"><br>
+            <button style="width: 340px;" id="confirmButton" class="btn btn-danger" onclick="openCard()" >ยืนยัน</button><br><br>
+          </div>
+        </div>';
         }
-         
-      }
-  }else{
-    echo '<div>16.00 น.</div>';
-  }
-}
-    ?>
-    <!-- else{
-      echo '
-      <button class="button" id="myButton1"  >11.00 น.</button>
-      <button class="button" id="myButton2"  >12.00 น.</button>
-      <button class="button" id="myButton3"  >13.00 น.</button>
-      <button class="button" id="myButton4"  >14.00 น.</button>
-      <button class="button" id="myButton5"  >15.00 น.</button>
-      <button class="button" id="myButton6"  >16.00 น.</button>';
-    } -->
-    
+       
 
-      <!-- <div class="button-container">
-        <button class="button" id="myButton7">17.00 น.</button>
-        <button class="button" id="myButton8">18.00 น.</button>
-        <button class="button" id="myButton9">19.00 น.</button>
-        <button class="button" id="myButton10">20.00 น.</button>
-        <button class="button" id="myButton11">21.00 น.</button>
-        <button class="button" id="myButton12">22.00 น.</button>
-      </div> -->
+?>
+</div>
 
 
-<!-- <div style="height: 60px;"></div> -->
-      <!-- <div class="center-container"><br>
-        <button style="width: 300px;" id="confirmButton" class="btn btn-danger" onclick="updateReview()" >ยืนยัน</button><br><br>
-      </div>
-    </div> -->
+
+        <div id="addReserve" class="card-window">
+            <div class="card-add">
+                    <span class="close-button" onclick="closeCard()">&times;</span>         
+                 <div class="card-content">
+                    <div class="container">
+                      <div style="height: 40px;"></div>
+                        <h5>ดำเนินการจองของคุณให้เสร็จสิ้น</h5>
+                        <p>กรุณากรอกรายละเอียดของคุณ:</p>
+                    
+                              <div class="form-group">
+                                <label >ชื่อของคุณ<strong style="color: red;">*</strong></label>
+                                <input type="text" class="form-control" id="name"  placeholder="">
+                              </div>
+                              <div class="form-group">
+                                <label >อีเมลของคุณ<strong style="color: red;">*</strong></label>
+                                <input type="email" class="form-control" id="email" placeholder="">
+                              </div>
+                              <div class="form-group">
+                                <label >เบอร์โทรศัพท์<strong style="color: red;">*</strong></label>
+                                <input type="number" class="form-control" id="phone" placeholder="">
+                              </div><br>
+                              <div class="form-check">
+                                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                <label class="form-check-label" for="exampleCheck1">โปรดทราบว่าเราจะถือโต๊ะของคุณไว้สูงสุด 15 นาทีนับจากเวลาที่จอง</label>
+                              </div>
+                              <br>
+                              <p>หากแผนของคุณเปลี่ยนแปลงหรือคาดว่าจะล่าช้า โปรดแจ้งให้เราทราบโดยเร็วที่สุด</p>
+                      
+                              <button style="width: 280px;" id="confirmButton" class="btn btn-danger" onclick="reserveNow(<?php echo $_POST('date')?>, <?php echo $_POST('seat')?>)" >ยืนยันการจอง</button>
+                            </div>
+                         </div>
+                     </div>
+                 </div>
+
+
+
     <!-- --------------------------------------------------------------------------------- -->
 
 
@@ -287,9 +334,7 @@
     <!-- partial -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-    <script src="./reserve.js"></script>
-    <script  src="./script.js"></script>
 
-    
+    <script  src="./script.js"></script>    
   </body>
 </html>

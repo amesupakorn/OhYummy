@@ -1,4 +1,5 @@
 
+
 html{
     background-color: #1a1a1a;
 }
@@ -247,8 +248,7 @@ hr{
   
  .button[disabled] {
     /* เปลี่ยนสีเป็นเทา */
-    background-color: #989898;
-	color: #989898;
+    background-color: #949494;
     /* ปิดการใช้งานการคลิก */
     pointer-events: none;
 }
@@ -315,19 +315,19 @@ footer img{
 
 .select-dropdown {
 	position: relative;
-	max-width: 95%;
+	max-width: 100%;
   }
   .select-dropdown::last-child {
 	margin-right: 0px;
   }
   .select-dropdown__button {
-	padding: 12px 25px 10px 15px;
+	padding: 12px 35px 10px 15px;
 	background-color: #fff;
 	color: #616161;
 	border: 1px solid #cecece;
 	border-radius: 8px;
 	cursor: pointer;
-	width: 350px;
+	width: 550px;
 	text-align: left;
   }
   .select-dropdown__button::focus {
@@ -413,3 +413,45 @@ footer img{
 	font-size: 14px;
 }
 }
+
+
+.card-window {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+  }
+  
+  
+  .card-add {
+    color: #000;
+    background-color: white;
+    margin: 10% auto;
+	margin-top: 24%;
+    padding: 10px;
+    width: 85%;
+    height: 70%;
+    transition: 0.3s ease;
+    border-radius: 20px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  }
+  
+  .close-button {
+    color: black;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .close-button:hover,
+  .close-button:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
