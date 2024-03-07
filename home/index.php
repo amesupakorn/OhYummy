@@ -7,6 +7,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css'>
 	<link rel="stylesheet" href="./style.css">
+	
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"/>
+	<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <title>หน้าหลัก</title>
 </head>
 <body style="background-color: #1a1a1a; color: azure; font-family: Noto Sans Thai, sans-serif;">	
@@ -193,9 +197,72 @@
 	  </section>
 
 	  <!-- ---------------review--------------- -->
-	  
-	  <!-- ---------------review--------------- -->
 
+	  	<div>
+			<h5 class="comp-title">CUSTOMER REVIEWS</h5>
+			<h3>รีวิวจากลูกค้า</h3>
+		</div>
+
+	  <section id="review">
+		<div class="swiper mySwiper container">
+			<div class="swiper-wrapper content">
+
+<?php
+	 $select_sql = "SELECT username, descript, DATE(ReviewTime) AS ReviewTime FROM Review";
+	 $result = mysqli_query($conn->getDatabase(), $select_sql);
+	 
+	   if (mysqli_num_rows($result) > 0) {
+		 while ($row = mysqli_fetch_assoc($result)) {
+			echo '<div class="swiper-slide card">
+					<div class="card-content">
+						<div class="details">
+							<svg class="pro" xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+								<path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
+								<path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"/>
+								</svg>
+								<div class="name">'.$row['username'].'</div>
+								<div class="descript">
+								'.$row['descript'].'
+									<p><br>'.$row['ReviewTime'].'</p>
+								</div>
+						</div>
+
+					</div>
+				</div>';
+
+			}
+	   }
+?>
+			</div>
+		</div>
+
+		<div class="swiper-button-next"></div>
+		<div class="swiper-button-prev"></div>
+		<div class="swiper-pagination"></div>
+	 </section>
+
+  <!-- Swiper JS -->
+  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+  <script>
+    var swiper = new Swiper(".mySwiper", {
+      slidesPerView: 3,
+      spaceBetween: 30,
+      slidesPerGroup: 3,
+      loop: true,
+      loopFillGroupWithBlank: true,
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+      },
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+      },
+    });
+  </script>
+	  <!-- ---------------review--------------- -->
+	<div style="height: 80px;"></div>
 	  <div class="fixed-image">
 		<div class="text">
 			<h1>Location</h1>
