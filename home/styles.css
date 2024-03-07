@@ -21,6 +21,11 @@ body{
     flex-direction: column; /* หรือ row ตามที่ต้องการ */
 }
 
+.detailmenu{
+  color: #ffffff;
+  text-align: center;
+}
+
 /* #Navigation
 ================================================== */
 
