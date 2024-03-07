@@ -35,24 +35,14 @@
 	"use strict";
 	// Auto-scroll
 	$('#myCarousel').carousel({
-	  interval: 5000
-	});
-  
-	// Control buttons
-	$('.next').click(function () {
-	  $('.carousel').carousel('next');
-	  return false;
-	});
-	$('.prev').click(function () {
-	  $('.carousel').carousel('prev');
-	  return false;
+	  interval: 2000
 	});
   
 	// On carousel scroll
 	$("#myCarousel").on("slide.bs.carousel", function (e) {
 	  var $e = $(e.relatedTarget);
 	  var idx = $e.index();
-	  var itemsPerSlide = 3;
+	  var itemsPerSlide = 7;
 	  var totalItems = $(".carousel-item").length;
 	  if (idx >= totalItems - (itemsPerSlide - 1)) {
 		var it = itemsPerSlide -

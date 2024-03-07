@@ -450,7 +450,7 @@ body{
 
 }
 .text h1{
-    padding: 140px;
+    padding: 90px;
     letter-spacing: 20px;
 }
 
@@ -643,25 +643,25 @@ footer img{
 @media screen and (max-width: 499px) { 
     .head{
         width: 50%;
-        top: 10%;
+        top: 13%;
         margin-left: 26%;
         text-align: center;
     }
     .head img{
         width: auto;
-        height: 60px;
+        height: 70px;
     }
 
     .head h1{
-        font-size: 6px;
+        font-size: 12px;
     }
 
     .custom-btn{
         border: 1px solid;
         padding: 2px 5px;
         height: 20px;
-        width: 80px;
-        font-size: 7px;
+        width: 90px;
+        font-size: 10px;
     }
     .carousel-inner{
         height: 100%;
@@ -675,17 +675,50 @@ footer img{
     }
 
     .carousel-item img {
-        height: 300px;
+        height: 350px;
       }
+    .comp-title{
+      font-size: 16px;
+    }
+    .h2, h2{
+      font-size: 10px;
+    }
+    p{
+      font-size: 14px;
+    }
+
+    .quote{
+      font-size: 14px;
+    }
+
+    #OurStory .video-img{
+      height: 300px;
+      width: auto;
+    }
+
+    .recipes .image{
+      width: 100%;
+      background-image: url(../image_menu/08.jpeg);
+      background-size: cover;
+    }
+    #SpecialMenu h3{
+      font-size: 23px;
+    }
+    .text h1{
+      font-size: 20px;
+    }
+
+    .fixed-image{
+      background-size: cover;
+      height: 200px;
+      background-image: url(../image_menu/02.jpeg);
+    }
+    iframe{
+      text-align: center;
+      width: 100%;
+    }
 
 }
 
 
-
-@media screen and (max-width: 399px) { 
-
-    .carousel-item img {
-        height: 280px;
-      }
-}
 

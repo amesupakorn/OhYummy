@@ -418,7 +418,7 @@ input:disabled{
 	overflow: hidden !important;
 }
 
-@media screen and (max-width: 735px) { 
+@media screen and (max-width: 500px) { 
 	.card {
 		width: 10rem !important; 
 		height: 12rem !important;
@@ -455,8 +455,27 @@ input:disabled{
 		margin-top: -20%;
 		display: inline-flex;
 	}
+	.custom-btn3{
+		width: 50px;
+    	height: 25px;
+		font-size: 7.8px;
+	}
+	.typehead{
+		visibility: hidden;
+	}
+	.typehead1{
+		font-size: 20px;
+	}
+	.hideee{
+		height: 0px;
+	}
+
+
 }
 
+.bet{
+	height: 100px;
+}
 
 
 
