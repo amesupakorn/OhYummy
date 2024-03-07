@@ -133,11 +133,13 @@
 																	</div>
 																</span>
 																<h5 class=\"menu-price\"> " .  $row["menu_price"] . ".00 ฿</h5>
-																<div class=\"qty mt-5\" style=\"margin-top: 1rem!important; margin-left: 3%\">
-
+																
+																<div class=\"qty mt-5\" style=\"margin-top: 0rem!important; margin-left: 3%;\">
+																	<div class='menuC'>
 																	<span class=\"minus bg-dark \" name=\"minuss\" id=\"minuss\" onclick=\"minus('$foodid')\">-</span>
 																			<input onchange=\"updatedatabase($foodid)\" type=\"number\" class=\"count\" id=\"$foodid\" name=\"qty\" value=\"" .$row['countMenu']. "\">
 																	<span class=\"plus bg-dark \" name=\"pluss\" id=\"pluss\" onclick=\"plus('$foodid')\">+</span>
+																	</div>
 																</div>
 
 																<h6 id=\"each-total\" class=\"each-total\"><br>". $row["menu_price"]*$row['countMenu'] . ".00 ฿</h6>

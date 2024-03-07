@@ -318,17 +318,33 @@ table, td, th {
 .bill-card .btn{
 	margin-top: 20px;
 }
+.menuC{
+	margin-top: 12%;
+	margin-left: 5%;
+}
+
+/* @media screen and (max-width: 500px) { 
+	.qty .minus, .qty .plus {
+		width: 15px;
+		height: 15px;
+		font-size: 15px; 
+
+	}
+	.qty .count{
+		min-width: 18px;
+		font-size: 12px;
+	}
+	.menuC{
+		margin-top: -20%;
+		display: inline-flex;
+	}
+} */
 
 @media screen and (max-width: 768px) { 
  .menu-card h5{
 	font-size: 18px;
  }
- .menu-card p, .minus, .plus{
-	font-size: 14px;
- }
- .menu-card h6, .qty{
-	font-size: 16px;
- }
+
  .img-menu{
 	width: auto;
 	height: 100px;
@@ -337,19 +353,31 @@ table, td, th {
  .h-menu{
 	font-size: 32px;
  }
+ .menuC .minus, .menuC .plus {
+	width: 17px;
+	height: 17px;
+	font-size: 17px; 
+ }
+ .menuC .count{
+	min-width: 22px;
+	font-size: 14px;
+ }
 }
 
-@media screen and (max-width: 399px) { 
+@media screen and (max-width: 426px) { 
 	.menu-card h5{
-		font-size: 14px;
+		font-size: 15px;
 	 }
 	 .menu-card p{
-		font-size: 12px;
+		font-size: 14px;
 	 }
-	 .menu-card .minus, .plus{
-		font-size: 9px;
+	 .menuC .minus, .menuC .plus {
+		width: 15px;
+		height: 15px;
+		font-size: 15px; 
 	 }
-	 .menu-card h6, .qty{
+	 .menuC .count{
+		min-width: 15px;
 		font-size: 12px;
 	 }
 	 .img-menu{
@@ -363,6 +391,12 @@ table, td, th {
 	.menu-card{
 		height: 130px;
 	}
+	.each-total{
+		font-size: 15px;
+	}
+	.xmark{
+		margin-right: -30%;
+	 }
 }
 
 .textmenucard h3{
