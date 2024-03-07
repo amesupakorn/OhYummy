@@ -247,21 +247,13 @@ hr{
 	
   }
   
-  .buttondis{
-	padding: 10px 20px;
-	width: 30%;
-	border-radius: 5px;
-    background-color: #d7d7d7;
-    color: rgb(255, 255, 255);
-    border: none;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    cursor: pointer;
-	transition: background-color 0.3s;
-  }
+ .button[disabled] {
+    /* เปลี่ยนสีเป็นเทา */
+    background-color: #989898;
+	color: #989898;
+    /* ปิดการใช้งานการคลิก */
+    pointer-events: none;
+}
  .button {
     padding: 10px 20px;
 	width: 30%;

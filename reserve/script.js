@@ -268,9 +268,9 @@ function checkValue(date){
 		body: formData.toString()	
 	})
 	.then(response => {
-		// setTimeout(function() {
-		// 	location.reload();
-		// }, 1000);
+		setTimeout(function() {
+			location.reload();
+		}, 1000);
 		return response.text();
 	})
 	.catch(error => {

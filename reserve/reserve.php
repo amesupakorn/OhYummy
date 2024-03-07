@@ -114,7 +114,29 @@
     <div class="content" style="height: 50px"></div>
 
     <?php
+    $disableButton = "";
           if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            $date = $_POST['reserveDate'];
+            $table = $_POST['table'];
+
+            $formatDate = date('Y-m-d', strtotime($date));
+            
+            $sql = "SELECT * FROM Reserve r WHERE r.reserve_day = '$formatDate' AND tableid = $table";
+            $result = mysqli_query($conn->getDatabase(), $sql);
+
+            if ($result->num_rows > 0) {
+              // ถ้ามีการจองแล้ว ให้วนลูปเช็ค reserve_time
+              while ($row = $result->fetch_assoc()) {
+                  $reservedTime = $row['reserve_time'];
+                  // ตรวจสอบเวลาที่จองแล้ว หากเวลาตรงกับปุ่ม ให้ปิดปุ่ม
+                  if ($reservedTime == "16:00:00") {
+                      $disableButton = "disabled";
+            }
+        }
+        } else {
+            // ถ้ายังไม่มีการจอง ให้เปิดใช้งานปุ่ม
+            $disableButton = "";
+        }
             // if(isset($_POST['name']) && isset($_POST['tel']) && isset($_POST['seat']) && isset($_POST['email']) && isset($_POST['date'])){
               
             //   $name = $_POST['name'];
@@ -142,7 +164,7 @@
                     <option value="2" class="select-dropdown__list-item">โต๊ะที่ 2 สำหรับ 1 - 2 คน</option>
                     <option value="3" class="select-dropdown__list-item">โต๊ะที่ 3 สำหรับ 3 - 4 คน</option>
                     <option value="4" class="select-dropdown__list-item">โต๊ะที่ 4 สำหรับ 3 - 4 คน</option>
-                    <option value="5" class="select-dropdown__list-item">โต๊ะที่ 5 สำหรับ 5 - 6 คน</option>
+                    <option value="6" class="select-dropdown__list-item">โต๊ะที่ 5 สำหรับ 5 - 6 คน</option>
                     <option value="6" class="select-dropdown__list-item">โต๊ะที่ 6 สำหรับ 5 - 6 คน</option>
                   </select>
                                 
@@ -227,134 +249,29 @@
 
 
   <?php
-   if ($_SERVER["REQUEST_METHOD"] == "POST") {
-      if(isset($_POST['reserveDate'])){
+  
+    ?>
+          
 
-        $date = $_POST['reserveDate'];
-        $table = $_POST['table'];
+  
+      <div class="button-container">
+        <button class="button" id="myButton1"  <?php echo isset($disableButton) ? $disableButton : ''?>>11.00 น.</button>
+        <button class="button" id="myButton2"  <?php echo isset($disableButton) ? $disableButton : ''; ?>>12.00 น.</button>
+        <button class="button" id="myButton3"  <?php echo isset($disableButton) ? $disableButton : ''; ?>>13.00 น.</button>
+        <button class="button" id="myButton4"  <?php echo isset($disableButton) ? $disableButton : ''; ?>>14.00 น.</button>
+        <button class="button" id="myButton5"  <?php echo isset($disableButton) ? $disableButton : ''; ?>>15.00 น.</button>
+        <button class="button" id="myButton6"  <?php echo isset($disableButton) ? $disableButton : ''; ?>>16.00 น.</button>
+    </div>
 
-        $formatDate = date('Y-m-d', strtotime($date));
-        
-        $sql = "SELECT * FROM Reserve r WHERE r.reserve_day = '$formatDate' AND tableid = $table";
-        $result = mysqli_query($conn->getDatabase(), $sql);
-					
-        if ($result->num_rows > 0) {
-          while($row = $result->fetch_assoc()) {
-            echo  '<div class="button-container">';
-              // For 11.00
-              if($row['reserve_time'] == '11:00:00'){
-                echo '<button class="buttondis" id="myButton1" disabled>11.00 น.</button>';
-              } else {
-                echo '<button class="button" id="myButton1">11.00 น.</button>';
-              }
+      <!-- <div class="button-container">
+        <button class="button" id="myButton7">17.00 น.</button>
+        <button class="button" id="myButton8">18.00 น.</button>
+        <button class="button" id="myButton9">19.00 น.</button>
+        <button class="button" id="myButton10">20.00 น.</button>
+        <button class="button" id="myButton11">21.00 น.</button>
+        <button class="button" id="myButton12">22.00 น.</button>
+      </div> -->
 
-              // For 12.00
-              if($row['reserve_time'] == '12:00:00'){
-                echo '<button class="buttondis" id="myButton2" disabled>12.00 น.</button>';
-              } else {
-                echo '<button class="button" id="myButton2">12.00 น.</button>';
-              }
-
-              // For 13.00
-              if($row['reserve_time'] == '13:00:00'){
-                echo '<button class="buttondis" id="myButton3" disabled>13.00 น.</button>';
-              } else {
-                echo '<button class="button" id="myButton3">13.00 น.</button>';
-              }
-
-              // For 14.00
-              if($row['reserve_time'] == '14:00:00'){
-                echo '<button class="buttondis" id="myButton4" disabled>14.00 น.</button>';
-              } else {
-                echo '<button class="button" id="myButton4">14.00 น.</button>';
-              }
-
-              // For 15.00
-              if($row['reserve_time'] == '15:00:00'){
-                echo '<button class="buttondis" id="myButton5" disabled>15.00 น.</button>';
-              } else {
-                echo '<button class="button" id="myButton5">15.00 น.</button>';
-              }
-
-              // For 16.00
-              if($row['reserve_time'] == '16:00:00'){
-                echo '<button class="buttondis" id="myButton6" disabled>16.00 น.</button>';
-              } else {
-                echo '<button class="button" id="myButton6">16.00 น.</button>';
-              }
-            echo '</div>';
-
-            echo '<div class="button-container">';
-              // For 17.00
-                if($row['reserve_time'] == '17:00:00'){
-                  echo '<button class="buttondis" id="myButton7" disabled>17.00 น.</button>';
-                } else {
-                  echo '<button class="button" id="myButton7">17.00 น.</button>';
-                }
-
-                // For 18.00
-                if($row['reserve_time'] == '18:00:00'){
-                  echo '<button class="buttondis" id="myButton8" disabled>18.00 น.</button>';
-                } else {
-                  echo '<button class="button" id="myButton8">18.00 น.</button>';
-                }
-
-                // For 19.00
-                if($row['reserve_time'] == '19:00:00'){
-                  echo '<button class="buttondis" id="myButton9" disabled>19.00 น.</button>';
-                } else {
-                  echo '<button class="button" id="myButton9">19.00 น.</button>';
-                }
-
-                // For 20.00
-                if($row['reserve_time'] == '20:00:00'){
-                  echo '<button class="buttondis" id="myButton10" disabled>20.00 น.</button>';
-                } else {
-                  echo '<button class="button" id="myButton10">20.00 น.</button>';
-                }
-
-                // For 21.00
-                if($row['reserve_time'] == '21:00:00'){
-                  echo '<button class="buttondis" id="myButton11" disabled>21.00 น.</button>';
-                } else {
-                  echo '<button class="button" id="myButton11">21.00 น.</button>';
-                }
-
-                // For 22.00
-                if($row['reserve_time'] == '22:00:00'){
-                  echo '<button class="buttondis" id="myButton12" disabled>22.00 น.</button>';
-                } else {
-                  echo '<button class="button" id="myButton12">22.00 น.</button>';
-                }
-              echo '</div>';
-          }
-        }
-        else {
-          // ถ้าไม่มีการจองในวันและเวลานั้น แสดงปุ่มปกติ
-          echo 'งง';
-      }
-      }
-    }
-        else{
-          echo '   <div class="button-container">
-          <button class="button" id="myButton1">11.00 น.</button>
-          <button class="button" id="myButton2">12.00 น.</button>
-          <button class="button" id="myButton3">13.00 น.</button>
-          <button class="button" id="myButton4">14.00 น.</button>
-          <button class="button" id="myButton5">15.00 น.</button>
-          <button class="button" id="myButton6">16.00 น.</button>
-        </div>
-        
-        <div class="button-container">
-          <button class="button" id="myButton7">17.00 น.</button>
-          <button class="button" id="myButton8">18.00 น.</button>
-          <button class="button" id="myButton9">19.00 น.</button>
-          <button class="button" id="myButton10">20.00 น.</button>
-          <button class="button" id="myButton11">21.00 น.</button>
-          <button class="button" id="myButton12">22.00 น.</button>
-        </div>';
-        }
-  ?>
 
 <div style="height: 60px;"></div>
       <div class="center-container"><br>
