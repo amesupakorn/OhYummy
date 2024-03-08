@@ -228,17 +228,21 @@ function app() {
         false;
     },
     getDateValue(date) {
-      let selectedDate = new Date(
-        this.year,
-        this.month,
-        date
-      );
-      this.datepickerValue = this.formatDateForDisplay(
-        selectedDate
-      );
-      // this.$refs.date.value = selectedDate.getFullYear() + "-" + ('0' + formattedMonthInNumber).slice(-2) + "-" + ('0' + selectedDate.getDate()).slice(-2);
-      this.isSelectedDate(date);
-      this.showDatepicker = false;
+        let selectedDate = new Date(this.year, this.month, date);
+        let currentDate = new Date(); // วันที่ปัจจุบัน
+        // Check if the selected date is not in the past
+        if (selectedDate >= currentDate) {
+          this.datepickerValue = this.formatDateForDisplay(selectedDate);
+          this.isSelectedDate(date);
+          this.showDatepicker = false;
+        } else {
+          Swal.fire({
+            icon: "error",
+            title: "โปรดเลือกวันให้ถูกต้อง"
+        });
+         
+        }      
+    
     },
     getNoOfDays() {
       let daysInMonth = new Date(
