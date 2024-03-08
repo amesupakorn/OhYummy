@@ -182,7 +182,7 @@ body{
 
 /* ------------------ btn -------------------*/
 
-.custom-btn {
+ .custom-btn {
     margin-top: 1%;
     width: 300px;
     height: 50px;
@@ -201,7 +201,7 @@ body{
   }
 
   
-.btn-11 {
+  .btn-11 {
     overflow: hidden;
     transition: all 0.3s ease;
   }
@@ -225,15 +225,15 @@ body{
 
 /* section --------------------------------------- */
 
-#OurStory {
-    padding: 100px 0;
-    font-size: 18px;
+  #OurStory {
+      padding: 100px 0;
+      font-size: 18px;
+    }
+
+  #OurStory .comp-title{
+      letter-spacing: 8px;
+
   }
-
-#OurStory .comp-title{
-    letter-spacing: 8px;
-
-}
   #OurStory .quote {
     color: #ADADAD;
     margin: 0.5rem 1rem;
@@ -242,21 +242,7 @@ body{
     color: #202020;
     font-weight: 700;
   }
-  #OurStory .reserve-btn {
-    display: inline-block;
-    border: 1px solid #202020;
-    text-align: center;
-    padding: 20px 40px;
-    font-family: "Rozha One", serif;
-    text-decoration: none;
-    color: #202020;
-    text-transform: uppercase;
-    transition: all 0.5s ease-in-out;
-  }
-  #OurStory .reserve-btn:hover {
-    background: #97b518;
-    color: #202020;
-  }
+
   #OurStory .video-img {
     max-width: 450px;
     height: 550px;

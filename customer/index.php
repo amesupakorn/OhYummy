@@ -57,19 +57,15 @@
 									</li>';
 							}else{
 								echo '<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
-								<a class="nav-link" href="Check_status/index.php">สถานะออเดอร์ของฉัน</a>
-							</li>
+										<a class="nav-link" href="Check_status/index.php">สถานะออเดอร์ของฉัน</a>
+									 </li>
               			
-												<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
-								<a class="nav-link" href="review/index.php">รีวิวและรายงานปัญหา</a>
-								</li>
-								'
-								;
+									<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+										<a class="nav-link" href="review/index.php">รีวิวและรายงานปัญหา</a>
+									</li>';
 							}
 							?>
 							
-			
-						
 							<?php
 							if(isset($_COOKIE['tableId'])) {
 								echo '<a class=" pl-4 pl-md-0 ml-0 ml-md-4 customnav">&nbsp;&nbsp;&nbsp;&nbsp;ลูกค้าโต๊ะที่ '.$_COOKIE['tableId'].'</a>
@@ -81,10 +77,10 @@
 					</div>
 					
 				</nav>	
-				</div>
 			</div>
 		</div>
 	</div>
+</div>
 
 
     <!-- --------------------------------------------------------------------------------- -->
@@ -209,32 +205,32 @@
 		<div class="swiper mySwiper container">
 			<div class="swiper-wrapper content">
 
-<?php
-	 $select_sql = "SELECT username, descript, DATE(ReviewTime) AS ReviewTime FROM Review";
-	 $result = mysqli_query($conn->getDatabase(), $select_sql);
-	 
-	   if (mysqli_num_rows($result) > 0) {
-		 while ($row = mysqli_fetch_assoc($result)) {
-			echo '<div class="swiper-slide card">
-					<div class="card-content">
-						<div class="details">
-							<svg class="pro" xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
-								<path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
-								<path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"/>
-								</svg>
-								<div class="name">'.$row['username'].'</div>
-								<div class="descript">
-								'.$row['descript'].'
-									<p><br>'.$row['ReviewTime'].'</p>
+			<?php
+				$select_sql = "SELECT username, descript, DATE(ReviewTime) AS ReviewTime FROM Review";
+				$result = mysqli_query($conn->getDatabase(), $select_sql);
+				
+				if (mysqli_num_rows($result) > 0) {
+					while ($row = mysqli_fetch_assoc($result)) {
+						echo '<div class="swiper-slide card">
+								<div class="card-content">
+									<div class="details">
+										<svg class="pro" xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+											<path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
+											<path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"/>
+											</svg>
+											<div class="name">'.$row['username'].'</div>
+											<div class="descript">
+											'.$row['descript'].'
+												<p><br>'.$row['ReviewTime'].'</p>
+											</div>
+									</div>
+
 								</div>
-						</div>
+							</div>';
 
-					</div>
-				</div>';
-
-			}
-	   }
-?>
+						}
+				}
+			?>
 			</div>
 		</div>
 
@@ -283,7 +279,7 @@
 		<div>
 			<p>หน้าหลัก | รายการอาหาร | จองโต๊ะ | รีวิวจากลูกค้า</p>
 		</div>
-        	<img src="../../image_logo/logotab.png" alt="">
+        	<img src="../image_logo/logotab.png" alt="">
 			<div style="height: 30px;"></div>
 		<div class="copyright">
 			&copy; OHYUMMY 2024
