@@ -260,7 +260,7 @@ body{
   #OurStory .video-img {
     max-width: 450px;
     height: 550px;
-    background: url("../image_menu/20.jpeg") no-repeat center;
+    background: url("image_menu/20.jpeg") no-repeat center;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -322,7 +322,7 @@ body{
     padding: 20px;
   }
   #SpecialMenu .box .box-img-one {
-    background: url("../image_menu/08.jpeg") no-repeat center;
+    background: url("image_menu/08.jpeg") no-repeat center;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -344,7 +344,7 @@ body{
     margin-bottom: 75px;
   }
   #SpecialMenu .box .box-img-three {
-    background: url("../image_menu/04.jpeg") no-repeat center;
+    background: url("image_menu/04.jpeg") no-repeat center;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -448,7 +448,7 @@ body{
 
   
 .fixed-image {
-    background: url("../image_menu/01.jpeg") fixed center;
+    background: url("image_menu/01.jpeg") fixed center;
     background-size: cover;
     height: 300px;
     text-align: center;
@@ -703,7 +703,7 @@ footer img{
 
     .recipes .image{
       width: 100%;
-      background-image: url(../image_menu/08.jpeg);
+      background-image: url(image_menu/08.jpeg);
       background-size: cover;
     }
     #SpecialMenu h3,#review h3{
@@ -716,7 +716,7 @@ footer img{
     .fixed-image{
       background-size: cover;
       height: 200px;
-      background-image: url(../image_menu/02.jpeg);
+      background-image: url(image_menu/02.jpeg);
     }
     iframe{
       text-align: center;

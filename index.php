@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="icon" type="png" sizes="96x96" href="../image_logo/favicon.ico" />
+    <link rel="icon" type="png" sizes="96x96" href="image_logo/favicon.ico" />
     <link href="styles.css" rel="stylesheet" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css'>
@@ -19,7 +19,7 @@
 <?php
      session_set_cookie_params(0);
 	 session_start();
-	 include('../connectDatabase/connectToDatabase.php');
+	 include('connectDatabase/connectToDatabase.php');
 
 	 $conn = new database();  
 
@@ -36,7 +36,7 @@
 				<div class="col-12">
 				<nav class="navbar navbar-expand-md navbar-light">
 					
-					<a class="navbar-brand" ><img src="../image_logo/logotab2.png" alt=""></a>	
+					<a class="navbar-brand" ><img src="image_logo/logotab2.png" alt=""></a>	
 					
 					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 						<span class="navbar-toggler-icon"></span>
@@ -45,23 +45,23 @@
 					<div class="collapse navbar-collapse" id="navbarSupportedContent">
 						<ul class="navbar-nav ml-auto py-4 py-md-0" style="text-align: center;" >
 							<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4 active">
-								<a class="nav-link" href="../home/index.php">หน้าหลัก</a>
+								<a class="nav-link" href=home/index.php">หน้าหลัก</a>
 							</li>
 							<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
-								<a class="nav-link" href="../menuorder/menu.php">รายการอาหาร</a>
+								<a class="nav-link" href="menuorder/menu.php">รายการอาหาร</a>
 							</li>
 							<?php
 							if(!isset($_COOKIE['tableId'])) {
 								echo '<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
-										<a class="nav-link" href="../reserve/reserve.php">จองโต๊ะ</a>
+										<a class="nav-link" href="reserve/reserve.php">จองโต๊ะ</a>
 									</li>';
 							}else{
 								echo '<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
-								<a class="nav-link" href="../Check_status/index.php">สถานะออเดอร์ของฉัน</a>
+								<a class="nav-link" href="Check_status/index.php">สถานะออเดอร์ของฉัน</a>
 							</li>
               			
 												<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
-								<a class="nav-link" href="../review/index.php">รีวิวและรายงานปัญหา</a>
+								<a class="nav-link" href="review/index.php">รีวิวและรายงานปัญหา</a>
 								</li>
 								'
 								;
@@ -117,10 +117,10 @@
 	  </div>
     
       <div class="head">
-        <img src="../image_logo/logotab.png" alt="">
+        <img src="image_logo/logotab.png" alt="">
         <h1>KOREAN RESTAURANT</h1>
-        <a href="../menuorder/menu.php"><button class="custom-btn btn-11">รายการอาหาร</button></a>
-		<a href="../reserve/index.php"><button class="custom-btn btn-11">จองโต๊ะ</button></a>
+        <a href="menuorder/menu.php"><button class="custom-btn btn-11">รายการอาหาร</button></a>
+		<a href="reserve/index.php"><button class="custom-btn btn-11">จองโต๊ะ</button></a>
 
       </div>
 
@@ -192,7 +192,7 @@
 		  <div style="height: 30px;"></div>
 
 		  <div class="btncenter">
-			<a href="../menuorder/menu.php"><button class="custom-btn2 btn-2">ดูรายการอาหาร</button></a>
+			<a href="menuorder/menu.php"><button class="custom-btn2 btn-2">ดูรายการอาหาร</button></a>
 		  </div>
 
 		</div>
@@ -283,7 +283,7 @@
 		<div>
 			<p>หน้าหลัก | รายการอาหาร | จองโต๊ะ | รีวิวจากลูกค้า</p>
 		</div>
-			<img src="../image_logo/logotab.png" alt="">
+			<img src="image_logo/logotab.png" alt="">
 			<div style="height: 30px;"></div>
 		<div class="copyright">
 			&copy; OHYUMMY 2024
