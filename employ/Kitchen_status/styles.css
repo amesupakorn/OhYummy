@@ -1,0 +1,134 @@
+html {
+	font-family: Noto Sans Thai, sans-serif;
+}
+
+body {
+
+	transition: background-color .5s;
+	background-color: #f6f9fc;
+	color: #000000;
+}
+
+hr.hr1 {
+	border-top: 3px solid rgb(255, 255, 255);
+}
+
+.btn-warning {
+	color: #ffffff;
+
+}
+
+.card {
+	color: #000;
+	border-radius: 10px;
+	
+}
+
+.card-text {
+	color: #484848
+}
+
+.bottom-text {
+	position: absolute;
+	bottom: 10px;
+	/* Adjust as needed */
+	left: 0;
+	width: 100%;
+	text-align: center;
+	/* You can adjust text alignment as needed */
+	color: #484848;
+}
+
+.card-body {
+	box-shadow: 0 2px 5px 1px #b3b3b383;
+
+	height: 600px;
+	border-radius: 10px;
+	/* height: auto; */
+}
+
+.card-bg {
+	height: 70px;
+	background-color: #5d60ec;
+	color: #ffffff;
+	border-radius: 5px;
+}
+
+.br-c {
+	line-height: 10px;
+}
+
+.nav {
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+	height: 50px;
+	box-shadow: 0 0 3px rgba(255, 255, 255, 0.2);
+	background-color: #ffffff;
+	display: flex;
+	z-index: 1000;
+	overflow-x: auto;
+}
+
+.nav__link {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	flex-grow: 1;
+	min-width: 50px;
+	overflow: hidden;
+	white-space: nowrap;
+	font-family: sans-serif;
+	font-size: 13px;
+	color: #444444;
+	text-decoration: none;
+	-webkit-tap-highlight-color: transparent;
+	transition: background-color 0.1s ease-in-out;
+}
+
+.nav__link:hover {
+    background-color: #e0e0e082;
+    color:  #4447ff;
+  }
+  
+  .nav__link--active {
+    
+    color: #5d60ec;
+  }
+  
+
+.nav__icon {
+	font-size: 18px;
+}
+
+.menu {
+	max-height: 420px; /* Set the maximum height for the menu */
+	overflow-y: auto;
+}
+
+.menu .d-flex {
+	margin-bottom: 10px; /* Add margin between items */
+}
+
+#clock{
+	height: auto;
+	color: rgb(247, 247, 247);
+	text-align: center;
+	font-size: 20px;
+	background-color: #5d60ec;
+	padding: 2px 20px;
+	border-radius: 50px;
+	font-size: 22px;
+  }
+  
+  .texthead h3{
+	font-weight: 600;
+  }
+  
+  .texthead{
+	
+	border-radius: 20px;
+	width: 97.5%;
+	height: auto; background-color: white; box-shadow: 0 2px 1px 0 rgba(0, 0, 0, 0.115); font-weight: 500;
+  }
