@@ -1,0 +1,238 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@100..900&family=Roboto+Mono&display=swap');
+html{
+  background-color: #f6f9fc;
+}
+
+.nav {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 55px;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+  background-color: #f6f9fc;
+  display: flex;
+  z-index: 1000;
+  overflow-x: auto;
+}
+
+.nav__link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 1;
+  min-width: 50px;
+  overflow: hidden;
+  white-space: nowrap;
+  font-family: sans-serif;
+  font-size: 13px;
+  color: #444444;
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+  transition: background-color 0.1s ease-in-out;
+}
+
+.nav__link:hover {
+  background-color: #e0e0e082;
+  color:  #4447ff;
+}
+
+.nav__link--active {
+  
+  color: #5d60ec;
+}
+
+
+.nav__icon {
+  font-size: 18px;
+}
+
+
+.head{
+	height: 25px;
+}
+.bill-card{
+	position: relative;
+	height: auto;
+	background-color: #ffffff;
+	border-radius: 20px;
+	color: #000;
+	margin-bottom: 20px;
+}
+.th{
+	border-bottom: 1px solid #8e8e8e;
+}
+.menu{
+	text-align: left;
+}
+table, td, th {
+	height: 35px;
+}
+.bill-card .btn{
+	margin-top: 20px;
+}
+.img{
+  height: 100px;
+  width: auto;
+  text-align: right;
+  border-radius: 10px;
+}
+
+
+.table {
+  border-spacing: 0 0.85rem !important;
+}
+
+.table .dropdown {
+  display: inline-block;
+}
+
+.table td,
+.table th {
+  vertical-align: middle;
+  margin-bottom: 10px;
+  border: none;
+}
+
+.table thead tr,
+.table thead th {
+  border: none;
+  font-size: 12px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  background: transparent;
+}
+
+.table td {
+  background: #fff;
+}
+
+.table td:first-child {
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+.table td:last-child {
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+table.dataTable.dtr-inline.collapsed
+  > tbody
+  > tr[role="row"]
+  > td:first-child:before,
+table.dataTable.dtr-inline.collapsed
+  > tbody
+  > tr[role="row"]
+  > th:first-child:before {
+  top: 28px;
+  left: 14px;
+  border: none;
+  box-shadow: none;
+}
+
+table.dataTable.dtr-inline.collapsed > tbody > tr[role="row"] > td:first-child,
+table.dataTable.dtr-inline.collapsed > tbody > tr[role="row"] > th:first-child {
+  padding-left: 48px;
+}
+
+table.dataTable > tbody > tr.child ul.dtr-details {
+  width: 100%;
+}
+
+table.dataTable > tbody > tr.child span.dtr-title {
+  min-width: 50%;
+}
+
+table.dataTable.dtr-inline.collapsed > tbody > tr > td.child,
+table.dataTable.dtr-inline.collapsed > tbody > tr > th.child,
+table.dataTable.dtr-inline.collapsed > tbody > tr > td.dataTables_empty {
+  padding: 0.75rem 1rem 0.125rem;
+}
+
+div.dataTables_wrapper div.dataTables_length label,
+div.dataTables_wrapper div.dataTables_filter label {
+  margin-bottom: 0;
+}
+
+@media (max-width: 767px) {
+  div.dataTables_wrapper div.dataTables_paginate ul.pagination {
+    -ms-flex-pack: center !important;
+    justify-content: center !important;
+    margin-top: 1rem;
+  }
+}
+
+.btn-icon {
+  background: #fff;
+}
+.btn-icon .bx {
+  font-size: 20px;
+}
+
+.btn .bx {
+  vertical-align: middle;
+  font-size: 20px;
+}
+
+.dropdown-menu {
+  padding: 0.25rem 0;
+}
+
+.dropdown-item {
+  padding: 0.5rem 1rem;
+}
+
+.table a {
+  color: #212529;
+}
+
+.menu {
+  width: 300px;
+	max-height: 420px; /* Set the maximum height for the menu */
+	overflow-y: auto;
+}
+
+.menu .d-flex {
+	margin-bottom: 10px; /* Add margin between items */
+}
+#clock{
+	height: auto;
+	color: rgb(247, 247, 247);
+	text-align: center;
+	font-size: 20px;
+	background-color: #5d60ec;
+	padding: 2px 20px;
+	border-radius: 50px;
+	font-size: 22px;
+  }
+
+
+.headmenu{
+    text-align: center;
+    padding: 0 20px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 1px 0 rgba(0, 0, 0, 0.115);
+    border-radius: 20px;
+
+}
+
+.headmenu h4{
+    margin-top: 5%;
+}
+
+.headcenter{
+    text-align: center;
+    width: 100%;
+}
+
+.texthead h3{
+  font-weight: 600;
+}
+
+.texthead{
+  
+  border-radius: 20px;
+  width: 97.5%;
+  height: auto; background-color: white; box-shadow: 0 2px 1px 0 rgba(0, 0, 0, 0.115); font-weight: 500;
+}

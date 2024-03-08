@@ -63,6 +63,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 			<i class="material-icons nav__icon">reorder</i>
 			<span class="nav__text">ดูสถานะออเดอร์</span>
 		</a>
+		
 		<a href="../kitchen_status/index.php" class="nav__link  nav__link--active">
 			<i class="material-icons nav__icon">soup_kitchen</i>
 			<span class="nav__text">จัดการออเดอร์ (ครัว)</span>
@@ -71,9 +72,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 			<i class="material-icons nav__icon">dashboard</i>
 			<span class="nav__text">หน้าหลัก</span>
 		</a>
+
         <a href="../editTable/index.php" class="nav__link">
 			<i class="material-icons nav__icon">table_restaurant</i>
 			<span class="nav__text">จัดการโต๊ะ</span>
+		</a>
+		<a href="../status_reserve/index.php" class="nav__link">
+			<i class="material-icons nav__icon">install_mobile</i>
+			<span class="nav__text">จัดการจองโต๊ะ</span>
 		</a>
 	
 		<a href="../bill/index.php"  class="nav__link">

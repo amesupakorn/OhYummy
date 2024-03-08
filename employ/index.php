@@ -37,7 +37,10 @@
 			<i class="material-icons nav__icon">table_restaurant</i>
 			<span class="nav__text">จัดการโต๊ะ</span>
 		</a>
-	
+        <a href="status_reserve/index.php" class="nav__link">
+			<i class="material-icons nav__icon">install_mobile</i>
+			<span class="nav__text">จัดการจองโต๊ะ</span>
+		</a>
 		<a href="bill/index.php"  class="nav__link">
 			<i class="material-icons nav__icon">payments</i>
 			<span class="nav__text">เช็คบิล</span>
