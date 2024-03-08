@@ -452,15 +452,25 @@ hr {
 	 .menu, .count{
 		font-size: 14px;
 	 }
+     .texthead{
+        margin-left: 15% !important;
+        width: 70% !important;
+     }
 	 h1{
 		font-size: 24px;
 	 }
      .texthead h2{
         font-size: 20px;
      }
+     .texthead h4{
+        font-size: 15px;
+     }
      .texthead h5, p{
         font-size: 14px;
      }
+
+     
+
 }
 
   * {

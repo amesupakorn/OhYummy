@@ -70,15 +70,17 @@
 							}else{
 								echo '<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
 								<a class="nav-link" href="../Check_status/index.php">สถานะออเดอร์ของฉัน</a>
-							</li>';
+							</li>
+              			
+							<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4 active">
+              <a class="nav-link" href="../review/index.php">รีวิวและรายงานปัญหา</a>
+            </li>
+            '
+              ;
 							}
 							?>
 							
-							
-							<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4 active">
-								<a class="nav-link" href="../review/index.php">รีวิวและรายงานปัญหา</a>
-							</li>
-							
+				
 						
 							<?php
 							if(isset($_COOKIE['tableId'])) {
@@ -113,13 +115,13 @@
         <textarea type="text" id="review" name="review" class="col-12" rows="8" placeholder="แสดงความคิดเห็นของท่าน"></textarea>
       </div>
       <div class="form-row">
-        <div class="col">
+        <div class="col-12">
           <div class="form-floating mb-3">
             <label for="name">ชื่อ (Name) <strong style="color: #DC0000;">*</strong></label><br />
             <input  type="text" id="name" name="name" class="col-12"  placeholder="ชื่อ" />
           </div>
         </div>
-        <div class="col">
+        <div class="col-12">
           <div class="form-floating mb-3">
             <label for="Tel">เบอร์โทรศัพท์สำหรับติดต่อ (Tel.) <strong style="color: #DC0000;">*</strong></label><br />
             <input    type="number" id="Tel" name="Tel" class="col-12"  placeholder="เบอร์โทรศัพท์"

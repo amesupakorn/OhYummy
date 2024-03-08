@@ -64,9 +64,15 @@ $order_status = "";
 										<a class="nav-link" href="#">จองโต๊ะ</a>
 									</li>';
 							}else{
-								echo '<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4 active">
+								echo '<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
 								<a class="nav-link" href="../Check_status/index.php">สถานะออเดอร์ของฉัน</a>
-							</li>';
+							</li>
+              			
+                                                <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4 active">
+                                <a class="nav-link" href="../review/index.php">รีวิวและรายงานปัญหา</a>
+                                </li>
+                                '
+                                ;
 							}
 
 

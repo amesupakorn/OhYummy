@@ -286,7 +286,8 @@ footer{
 
 footer img{
 	
-    height: 40px;
+	margin-left: 45.5%;
+    height: 50px;
     width: auto;
 }
 
@@ -304,11 +305,6 @@ footer{
   background-color: hsl(0, 0%, 9%);
   text-align: center;
 
-}
-
-footer img{
-    height: 40px;
-    width: auto;
 }
 
 
@@ -398,11 +394,19 @@ footer img{
 		height: 400px;
 	}
 
+	
+
+	.imgfooter{
+		margin-left: -20%;
+	}
+  }
+
 
  @media screen and (max-width: 360px) {
 	.select-dropdown__button {
 		width: 335px;
 	}
+	
  }
 .texthead{
 
@@ -417,7 +421,6 @@ footer img{
 	text-align: center;
 	margin-left: -30%;
 	font-size: 14px;
-}
 }
 
 

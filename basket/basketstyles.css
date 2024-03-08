@@ -319,10 +319,15 @@ table, td, th {
 	margin-top: 20px;
 }
 .menuC{
-	margin-top: 12%;
-	margin-left: 5%;
+	margin-top: 8%;
+	margin-left: -5%;
 }
-
+.h6, h6 {
+    font-size: 1rem;
+}
+.each-total{
+	margin-top: -2%;
+}
 /* @media screen and (max-width: 500px) { 
 	.qty .minus, .qty .plus {
 		width: 15px;
@@ -393,10 +398,25 @@ table, td, th {
 	}
 	.each-total{
 		font-size: 15px;
+		margin-top: -13%;
+		margin-left: -10%;
 	}
 	.xmark{
 		margin-right: -30%;
 	 }
+	 .fa-close:before, .fa-multiply:before, .fa-remove:before, .fa-times:before, .fa-xmark:before {
+		content: "\f00d";
+		margin-left: -45%;
+		position: absolute;
+		margin-top: -20%;
+	}
+	.menuC{
+		margin-top: 25%;
+	}
+	.menu-price{
+		margin-left: -5%;
+
+	}
 }
 
 .textmenucard h3{

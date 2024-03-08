@@ -44,16 +44,18 @@
 							}else{
 								echo '<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
 								<a class="nav-link" href="../Check_status/index.php">สถานะออเดอร์ของฉัน</a>
-							</li>';
+							</li>
+              			
+												<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+								<a class="nav-link" href="../review/index.php">รีวิวและรายงานปัญหา</a>
+								</li>
+								'
+								;
 							}
 
 
 							?>
-							
-							
-							<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
-								<a class="nav-link" href="../review/index.php">รีวิวและรายงานปัญหา</a>
-							</li>
+						
 							
 						
 							<?php
@@ -118,7 +120,7 @@
 															<div class=\"img col-5 col-sm-4 col-lg-4\">
 																<img  src=\"../image_menu/".$row["image_menu"] . "\" class=\"img-menu\">".
 															"</div>
-															<div class=\"col-3 col-sm-5 col-lg-5\">
+															<div class=\"col-4 col-sm-5 col-lg-5\">
 																<div class=\"head\"></div>
 																<h5>" . $row["menu_name"] . "</h5>
 																<p>จำนวน</p>

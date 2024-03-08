@@ -323,11 +323,29 @@
                  </div>
 
 
+   <div style="height: 200px;"></div>
+      </div>
+   <footer>
+    <div style="height: 30px;"></div>
+
+      <div>
+        <p>หน้าหลัก | รายการอาหาร | จองโต๊ะ | รีวิวจากลูกค้า</p>
+      </div>
+      <div class="imgfooter">
+        <img src="../image_logo/logotab.png" alt="">
+      </div>
+      <div style="height: 30px;"></div>
+      <div class="copyright">
+        &copy; OHYUMMY 2024
+      </div>
+      <div style="height: 30px;"></div>
+
+	</footer>
 
     <!-- --------------------------------------------------------------------------------- -->
 
 
-    <div style="height: 100px;"></div>
+
 
     <!-- partial -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
