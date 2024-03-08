@@ -447,7 +447,11 @@ input:disabled{
 		font-size: 12px;
 	}
 	.custom-btn2 {
-		width: 60px;
+		position: absolute;
+		margin-top: 0%;
+		margin-left: -35%;
+  
+		width: 70px;
 		height: 25px;
 		font-size: 8px;
 	}
@@ -496,6 +500,28 @@ input:disabled{
 	  }
 
 
+}
+
+@media screen and (max-width: 380px) {
+
+.card {
+		width: 9rem !important; 
+		height: 11rem !important;
+		margin: 0.1rem;
+	}
+	.custom-btn2 {
+		width: 50px;
+		height: 25px;
+		font-size: 6px;
+	}
+	.card-title{
+		font-size: 10px;
+	}
+	.custom-btn3{
+		width: 45px;
+    	height: 25px;
+		font-size: 6px;
+	}
 }
 
 .bet{

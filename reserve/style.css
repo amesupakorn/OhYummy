@@ -398,6 +398,12 @@ footer img{
 		height: 400px;
 	}
 
+
+ @media screen and (max-width: 360px) {
+	.select-dropdown__button {
+		width: 335px;
+	}
+ }
 .texthead{
 
 	margin-top: -58%;
@@ -435,7 +441,7 @@ footer img{
 	margin-top: 24%;
     padding: 10px;
     width: 85%;
-    height: 70%;
+    height: auto;
     transition: 0.3s ease;
     border-radius: 20px;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
