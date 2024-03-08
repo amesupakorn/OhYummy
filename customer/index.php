@@ -283,7 +283,7 @@
 		<div>
 			<p>หน้าหลัก | รายการอาหาร | จองโต๊ะ | รีวิวจากลูกค้า</p>
 		</div>
-			<img src="../image_logo/logotab.png" alt="">
+        	<img src="../../image_logo/logotab.png" alt="">
 			<div style="height: 30px;"></div>
 		<div class="copyright">
 			&copy; OHYUMMY 2024

@@ -332,7 +332,7 @@
         <p>หน้าหลัก | รายการอาหาร | จองโต๊ะ | รีวิวจากลูกค้า</p>
       </div>
       <div class="imgfooter">
-        <img src="../image_logo/logotab.png" alt="">
+        <img src="../../image_logo/logotab.png" alt="">
       </div>
       <div style="height: 30px;"></div>
       <div class="copyright">
