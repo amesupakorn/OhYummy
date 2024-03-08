@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="png" sizes="96x96" href="../image_logo/favicon.ico" />
+    <link rel="icon" type="png" sizes="96x96" href="../../image_logo/favicon.ico" />
     <link href="style.css" rel="stylesheet" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -53,7 +53,7 @@
 				<div class="col-12">
 				<nav class="navbar navbar-expand-md navbar-light">
 					
-					<a class="navbar-brand" ><img src="../image_logo/logotab2.png" alt=""></a>	
+					<a class="navbar-brand" ><img src="../../image_logo/logotab2.png" alt=""></a>	
 					
 					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 						<span class="navbar-toggler-icon"></span>
@@ -128,7 +128,7 @@
               $formatDate = date('Y-m-d', strtotime($date));
 
 
-              $sql = "INSERT INTO Reserve(cust_Name, cust_Tel, tableid, email, reserve_day, reserve_time) VALUES ('$name', '$tel', $table, '$email', '$formatDate', '$time')";
+              $sql = "INSERT INTO Reserve(cust_Name, cust_Tel, tableid, email, reserve_day, reserve_time, status_Reserve) VALUES ('$name', '$tel', $table, '$email', '$formatDate', '$time', 'wait')";
               mysqli_query($conn->getDatabase(), $sql);
             }
 

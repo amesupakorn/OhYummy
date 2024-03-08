@@ -88,7 +88,7 @@
                 $sql = "UPDATE Reserve SET status_Reserve = 'finish' WHERE reserveID = $id";
                 mysqli_query($conn->getDatabase(), $sql);
 
-                $sqlupdate = "UPDATE Tables SET table_status = 'reserve' AND checkIn = '$datetime'";
+                $sqlupdate = "UPDATE Tables SET table_status = 'reserve', checkIn = '$datetime' WHERE tableID = $tableid";
                 mysqli_query($conn->getDatabase(), $sqlupdate);
             }
         }
