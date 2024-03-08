@@ -203,7 +203,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 					}
 				}
 			} else {
-				echo '<h1 style="color: #9C9C9C; margin-top: 25%; margin-left: 35%;">ไม่มีออเดอร์ในขณะนี้....</h1>';
+				echo '<h1 style="color: #9C9C9C; margin-top: 25%; margin-left: 45%;">ไม่มีออเดอร์ในขณะนี้....</h1>';
 			}
 
 			?>
