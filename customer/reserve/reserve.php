@@ -32,19 +32,6 @@
      include('../../connectDatabase/connectToDatabase.php');
 
 	 $conn = new database();  
-   
-   if ($_SERVER["REQUEST_METHOD"] == "POST") {
-      if(isset($_POST['reserveDate'])){
-        $name = $_POST['name'];
-        $seat = $_POST['table'];
-        $date = $_POST['reserveDate'];
-        $email = $_POST['email'];
-        $phone = $_POST['phone'];
-        $time = $_POST['time'];
-      }
-   }
-  
-
 
 ?>
 	<div class="navigation-wrap start-header start-style">
