@@ -202,14 +202,14 @@ function app() {
       ).slice(-2);
       let formattedYear = date.getFullYear();
       if (this.dateFormat === "DD-MM-YYYY") {
-        return `${formattedDate}-${formattedMonthInNumber}-${formattedYear}`; // 02-04-2021
+        return `${formattedDate}-${formattedMonthInNumber}-${formattedYear}`; // 09-03-2024
       }
       if (this.dateFormat === "YYYY-MM-DD") {
         
-        return `${formattedYear}-${formattedMonthInNumber}-${formattedDate}`; // 2021-04-02
+        return `${formattedYear}-${formattedMonthInNumber}-${formattedDate}`; // 2024-03-09
       }
       if (this.dateFormat === "D d M, Y") {
-        return `${formattedDay} ${formattedDate} ${formattedMonthShortName} ${formattedYear}`; // Tue 02 Mar 2021
+        return `${formattedDay} ${formattedDate} ${formattedMonthShortName} ${formattedYear}`; // Tue 09 March 2024
       }
       return `${formattedDay} ${formattedDate} ${formattedMonth} ${formattedYear}`;
     },
@@ -288,7 +288,7 @@ function app() {
     });
   });
 
-
+  
 
   var selectedTime = ''; // ตัวแปรเพื่อเก็บค่าเวลาที่เลือก
 

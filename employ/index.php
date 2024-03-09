@@ -6,7 +6,9 @@
     <link href="styles.css" rel="stylesheet" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css'><link rel="stylesheet" href="./style.css">
     <link rel='stylesheet' href='https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css'>
     <link rel='stylesheet' href='https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css'>
@@ -107,7 +109,8 @@
                                 </div>
                                 <div class="mt-2 mb-0 text-sm">
                                     <span class="text-nowrap text-sm text-muted">รายการอาหารที่ลงขายประจำวัน</span>
-                                    <a href="../editMenu/index.php"><button type="button" style="padding: 2px 2px; background-color: #f6f9fc; color: black;" class="avatar avatar-xs rounded-circle ">></button></a>
+                                    <a href="../editMenu/index.php"><button type="button" style="padding: 2px 2px; background-color: #f6f9fc; color: black;"
+                                     class="avatar avatar-xs rounded-circle ">></button></a>
 
                                 </div>
                             </div>
@@ -152,7 +155,7 @@
                                         $num = mysqli_num_rows(mysqli_query($conn->getDatabase(), $sql));
         
                                         echo '<span class="h3 font-bold mb-0">'.$num.'</span>';
-                                    ?>
+                                        ?>
                                     </div>
                                     <div class="col-auto">
                                         <div class="icon icon-shape bg-warning text-white text-lg rounded-circle">
@@ -187,7 +190,7 @@
                                             }
                                         }
                                         echo '<span class="h3 font-bold mb-0">'.$total.'.00</span>';
-                                    ?>
+                                        ?>
                                     </div>
                                     <div class="col-auto">
                                         <div class="icon icon-shape bg-info text-white text-lg rounded-circle">
@@ -279,7 +282,6 @@
                         </table>
                     </div>
                     <div class="card-footer border-0 py-5">
-                        <span class="text-muted text-sm">แสดง 3 โต๊ะจากโต๊ะทั้งหมด 9 โต๊ะ</span>
                     </div>
                 </div>
 
@@ -363,7 +365,6 @@
                         </table>
                     </div>
                     <div class="card-footer border-0 py-5">
-                        <span class="text-muted text-sm">แสดง 3 เมนูจากเมนูทั้งหมด 40 เมนู</span>
                     </div>
                 </div>
             </div>

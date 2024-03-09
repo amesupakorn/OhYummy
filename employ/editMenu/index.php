@@ -105,7 +105,7 @@
 
             }
 
-            if(isset($_POST['menu_price']) && isset($_POST['menu_typ'])){
+            if(isset($_POST['menu_price']) && isset($_POST['menu_type'])){
                 $menuprice = $_POST['menu_price'];
                 $menuid = $_POST['menu_id'];
                 $menutype = $_POST['menu_type'];
@@ -330,13 +330,14 @@
                                         </div>
                                     </div>
 
-                                 <img id="previewImage" src="#" alt="Preview" style="display: none; max-width: 50%; max-height: 50%;">
 
                                  <div style="height: 50px;"></div>
-                                 <button id="confirmButton" name="save" class="btn btn-primary">เพิ่มรายการอาหาร</button>
 
+
+                                <img id="previewImage" src="#" alt="Preview" style="display: none; max-width: 100%; max-height: 50%;">
+
+                                <button id="confirmButton" name="save" class="btn btn-primary">เพิ่มรายการอาหาร</button>
                                 </form>
-
                             </div>
                          </div>
                      </div>

@@ -210,7 +210,7 @@
               </div>
             </div>
         
-        <div style="text-align: center;">
+      <div style="text-align: center;">
         <button style="width: 340px;" id="confirmButton" class="btn btn-danger"  name="submit" >เช็ค</button><br><br>
       </div>  
             
@@ -272,9 +272,6 @@
 
 ?>
 </div>
-
-
-
         <div id="addReserve" class="card-window">
             <div class="card-add">
                     <span class="close-button" onclick="closeCard()">&times;</span>         
