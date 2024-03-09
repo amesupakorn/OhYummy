@@ -45,9 +45,19 @@ class database{
         }
     }
 
-    public function getDatabase(){
-        return $this->database;
-        
+    private function tableExist($table)
+    {
+        $sql = "SHOW TABLES FROM $this->database_name LIKE '{$table}'";
+        $tableInDb = $this->database->query($sql);
+        if ($tableInDb) {
+            if ($tableInDb->num_rows  == 1) {
+                return true;
+            } else {
+                array_push($this->database, $table . " Does not Exist");
+            }
+        } else {
+            return false;
+        }
     }
 
     public function closeConnection() {
@@ -63,6 +73,11 @@ class database{
           } else {
             echo "Error: " . $sql . "<br>" . $this->database->error;
           }
+    }
+
+    public function getDatabase(){
+        return $this->database;
+        
     }
 
     public function editRow($tableName, $value1, $value2, $select){
