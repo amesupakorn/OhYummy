@@ -146,7 +146,8 @@
                 <div class="mb-5 w-100 ">
                   <div class="relative">
                     <input type="hidden"  name="date" x-ref="date" :value="datepickerValue" />
-                    <input type="text" id="date" name="date" x-on:click="showDatepicker = !showDatepicker" x-model="datepickerValue" x-on:keydown.escape="showDatepicker = false" style="height: 42px" class=" bg-white w-full pl-4 leading-none rounded-lg shadow-sm focus:outline-none text-gray-600 font-medium focus:ring focus:ring-blue-600 focus:ring-opacity-50" placeholder="Select date" readonly />
+                    <input type="text" id="date" name="date" x-on:click="showDatepicker = !showDatepicker" x-model="datepickerValue" x-on:keydown.escape="showDatepicker = false" style="height: 42px" 
+                    class=" bg-white w-full pl-4 leading-none rounded-lg shadow-sm focus:outline-none text-gray-600 font-medium focus:ring focus:ring-blue-600 focus:ring-opacity-50" placeholder="Select date" readonly />
 
                     <div class="absolute top-0 right-0 px-3 py-2">
                       <svg class="h-6 w-6 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -160,7 +161,8 @@
                           <span x-text="year" class="ml-1 text-lg text-gray-600 font-normal"></span>
                         </div>
                         <div>
-                          <button type="button" class="focus:outline-none focus:shadow-outline transition ease-in-out duration-100 inline-flex cursor-pointer hover:bg-gray-100 p-1 rounded-full" @click="if (month == 0) {
+                          <button type="button" class="focus:outline-none focus:shadow-outline transition ease-in-out duration-100 inline-flex cursor-pointer hover:bg-gray-100 p-1 rounded-full" 
+                          @click="if (month == 0) {
                                   year--;
                                   month = 12;
                                 } month--; getNoOfDays()">

@@ -270,8 +270,9 @@
 			</div>
 		</div>
    </div>
+
 	<?php
-   					if(isset($tableID)){
+   								if(isset($tableID)){
 									$sqlr = "SELECT SUM(countMenu) as totalCount FROM BasketOrder WHERE tableId = $tableID";
 									$resultTotal =  mysqli_fetch_assoc(mysqli_query($conn->getDatabase(), $sqlr));
 									$total = $resultTotal['totalCount'];
