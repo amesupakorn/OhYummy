@@ -105,13 +105,13 @@
 
             }
 
-            if(isset($_POST['menu_price']) && isset($_POST['menu_type'])){
-                $menuprice = $_POST['menu_price'];
+            if(isset($_POST['menu_pri'])){
+                $menuprice = $_POST['menu_pri'];
                 $menuid = $_POST['menu_id'];
-                $menutype = $_POST['menu_type'];
+                $menutype = $_POST['menu_ty'];
                 
                 // ใช้เครื่องหมายเครื่องหมายจุลภาคในคำสั่ง SQL เพื่อระบุค่าแบบข้อความ
-                $querymenu = "UPDATE Menu SET menu_price = '$menuprice', menu_type = '$menutype' WHERE menuID = $menuid";
+                $querymenu = "UPDATE Menu SET menu_price = $menuprice, menu_type = '$menutype' WHERE menuID = $menuid";
                 
                 // ส่ Exec คำสั่ง SQL
                 mysqli_query($conn->getDatabase(), $querymenu);

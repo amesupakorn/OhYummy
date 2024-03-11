@@ -124,8 +124,8 @@ function updateMenu(id){
 
   let formData = new URLSearchParams();
     formData.append('menu_id', id);
-    formData.append('menu_type', type)
-    formData.append('menu_price', price);
+    formData.append('menu_ty', type)
+    formData.append('menu_pri', price);
 
 
     fetch('./index.php', {

@@ -243,7 +243,7 @@
 					</div>
 						<div class="col-12 col-lg-4">
 										<div class="container bill-card">
-											<h6><br>สรุปยอดการสั่งอาหาร (โต๊ะ1)</h6>
+											<h6><br>สรุปยอดการสั่งอาหาร</h6>
 											<hr>
 												<table border="0" style="text-align: right;" class="col-12">
 													<tr class="th">

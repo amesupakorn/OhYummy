@@ -285,7 +285,7 @@ body{
 
     height: 150px;
     width: 100%;
-    background: url("image_home/4.png") fixed center;
+    background: url("image_home/4.png");
     background-size: cover;
 }
   
@@ -434,7 +434,7 @@ body{
 
   
 .fixed-image {
-    background: url("../image_menu/01.jpeg") fixed center;
+    background: url("../image_menu/01.jpeg");
     background-size: cover;
     height: 300px;
     text-align: center;
@@ -689,8 +689,7 @@ footer img{
 
     .recipes .image{
       width: 100%;
-      background-image: url(../image_menu/08.jpeg);
-      background-size: cover;
+      background-image: url(../image_menu/13.jpeg);
     }
     #SpecialMenu h3,#review h3{
       font-size: 23px;

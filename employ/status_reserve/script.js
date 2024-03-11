@@ -125,9 +125,9 @@ $(document).ready(function() {
                     showConfirmButton: false,
                     timer: 3500
                   });
-                // setTimeout(function() {
-                //     location.reload();
-                // }, 1000);
+                setTimeout(function() {
+                    location.reload();
+                }, 1000);
                 return response.text();
             }
             throw new Error('Network response was not ok.');

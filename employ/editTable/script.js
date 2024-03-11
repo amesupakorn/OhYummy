@@ -110,8 +110,7 @@ function updateTable(id, seat) {
 
 
 function insertTable() {
-    let seat = document.getElementById('seatTable');
-    if(seat != "เลือกจำนวนที่นั่ง"){
+    let seat = document.getElementById('seatTable').value;
         let formData = new URLSearchParams();
         formData.append('insertSeat', seat)
         
@@ -126,7 +125,7 @@ function insertTable() {
             if (response.ok) {
                 Swal.fire({
                     icon: "success",
-                    title: "เพ่ิมโต๊ะเรียบร้อย",
+                    title: "เสร็จสิ้น",
                     showConfirmButton: false,
                     timer: 3500
                   });
@@ -140,13 +139,6 @@ function insertTable() {
         .catch(error => {
             alert('There was a problem with the fetch operation: ' + error.message);
         });
-    }
-    else{
-        Swal.fire({
-            icon: "error",
-            title: "โปรดใส่ข้อมูล",
-          });
-    }
     
 }
 

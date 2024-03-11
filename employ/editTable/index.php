@@ -11,7 +11,7 @@
     <title>จัดการโต๊ะ</title>
 </head>
 <body style="background-color: #f6f9fc; color: black; font-family: Noto Sans Thai, sans-serif;">
-<nav class="nav">
+    <nav class="nav">
         <a href="../editMenu/index.php" class="nav__link">
 			<i class="material-icons nav__icon">restaurant_menu</i>
 			<span class="nav__text">จัดการเมนู</span>
@@ -63,7 +63,8 @@
                     $tableStatus = $_POST['table_status'];
                     
                     if($tableStatus == 'full'){
-                        $query = "UPDATE Tables SET table_status = '$tableStatus', checkIn = CONVERT_TZ(NOW(),@@session.time_zone,'+07:00') WHERE tableID = $tableID";
+                        $query = "UPDATE Tables SET table_status = '$tableStatus', checkIn = CONVERT_TZ(NOW(),@@session.time_zone,'+07:00') 
+                        WHERE tableID = $tableID";
                         mysqli_query($conn->getDatabase(), $query);
                     }
                     else{
@@ -83,7 +84,7 @@
                
                     $seat = $_POST['insertSeat'];
                     
-                    $insert = "INSERT INTO Tables(seat, tablestatus) VALUES ($seat, 'empty')";
+                    $insert = "INSERT INTO Tables(seat, table_status) VALUES ($seat, 'empty')";
                     mysqli_query($conn->getDatabase(), $insert);
 
 
@@ -155,7 +156,8 @@
                                 <h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;จัดการโต๊ะ</h5>
                             </div>
                             <div class="col-6 col-lg-3">
-                                <a href="#" class="circle-button" onclick="openCardWindow()"><i class="material-icons nav__icon" style="margin-top: 8%;">add</i></a>
+                                <a href="#" class="circle-button" onclick="openCardWindow()">
+                                <i class="material-icons nav__icon" style="margin-top: 8%;">add</i></a>
                                 <p style="color: #007bff; display: inline-block; margin-left: 5px; vertical-align: middle; ">เพิ่มจำนวนโต๊ะ</p>
                             </div> 
                         </div>
@@ -193,11 +195,14 @@
                                         echo '<td>'.$row['checkIn'].'</td>';
                                         echo '
                                             <td>
-                                                <a href="#" class="circle-button2" onclick="openCardWindow2('.$row['tableID'].')"><i class="material-icons nav__icon" style="margin-top: 8%; color: #DB2700;">edit_note</i></a>
+                                                <a href="#" class="circle-button2" onclick="openCardWindow2('.$row['tableID'].')">
+                                                <i class="material-icons nav__icon" style="margin-top: 8%; color: #DB2700;">edit_note</i></a>
                                             </td>
                                             <td>
-                                                <button id="button_empty" style="padding: 3px 10px; type="button" onclick="updateTableStatus('.$row['tableID'].',\'empty\');" class="btn btn-secondary">ว่าง</button>
-                                                <button id="button_full" style="padding: 3px 10px; type="button" onclick="updateTableStatus('.$row['tableID'].',\'full\');" class="btn btn-primary">เต็ม</button>                    
+                                                <button id="button_empty" style="padding: 3px 10px; type="button" 
+                                                onclick="updateTableStatus('.$row['tableID'].',\'empty\');" class="btn btn-secondary">ว่าง</button>
+                                                <button id="button_full" style="padding: 3px 10px; type="button" 
+                                                onclick="updateTableStatus('.$row['tableID'].',\'full\');" class="btn btn-primary">เต็ม</button>                    
                                             </td>
                                               
                                             </tr>';
@@ -231,7 +236,7 @@
                         <form me>
                             <div class="form-row">
                                 <label class="mr-sm-2" for="inlineFormCustomSelect">จำนวนที่นั่ง</label>
-                                <select class="custom-select mr-sm-2" name="seatTable" id="seats">
+                                <select class="custom-select mr-sm-2" name="seatTable" id="seatTable">
                                     <option selected>เลือกจำนวนที่นั่ง</option>
                                     <option value="2">2</option>
                                     <option value="4">4</option>
@@ -274,7 +279,8 @@
                                          <option value="8">8</option>
                                      </select>
                                  </div>
-                                 <button id="confirmButton"  class="btn btn-primary" onclick="updateTable('.$row['tableID'].', document.getElementById(\'seat'.$row['tableID'].'\').value)">ยืนยัน</button>
+                                 <button id="confirmButton"  class="btn btn-primary" onclick="updateTable('.$row['tableID'].',
+                                  document.getElementById(\'seat'.$row['tableID'].'\').value)">ยืนยัน</button>
                              </div>
                          </div>
                      </div>
