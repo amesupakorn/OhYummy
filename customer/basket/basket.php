@@ -231,7 +231,7 @@
 								mysqli_query($conn->getDatabase(), $insert_sql);
 								$sqldel = "DELETE FROM BasketOrder WHERE tableId = $tableID";
 								mysqli_query($conn->getDatabase(), $sqldel);
-								$sqltel = "UPDATE Tables SET table_status = 'full' WHERE tableID = $tableID";
+								$sqltel = "UPDATE Tables SET table_status = 'full', checkIn = CONVERT_TZ(NOW(),@@session.time_zone,'+07:00') WHERE tableID = $tableID";
 								mysqli_query($conn->getDatabase(), $sqltel);
 								
 							}
