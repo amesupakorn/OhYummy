@@ -103,7 +103,7 @@
         <div style="height: 20px;"></div>
         <?php 
                 $num = mysqli_num_rows($conn->executeQuery("Reserve"));
-                echo  "<h3>&nbsp;&nbsp;&nbsp;การจองทั้งงหมด $num  | <span id=clock></span></h3>";
+                echo  "<h3>&nbsp;&nbsp;&nbsp;การจองทั้งหมด $num  | <span id=clock></span></h3>";
             ?>
         <div style="height: 10px;"></div>
       </div>
